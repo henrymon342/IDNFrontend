@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="bg-title">
+    <div class="title">
+      DISCIPULADO NAZARENO INTERNACIONAL
+      <!-- Discipulado Nazareno Internacional -->
+    </div>
+  </div>
+
+  <section class="ministerios">
+    <div class="card" *ngFor="let min of MINISTERIOS" >
+      <img [src]="min.pathLogo" alt="">
+      <div class="ministerio" >
+        {{ min.nombre }}
+      </div>
+    </div>
+  </section>
+
+
+  <section class="versiculo">
+    <div class="texto">
+      <p>
+        Que nadie te menosprecie por ser joven. Al contrario,
+        que los creyentes vean en ti un ejemplo a seguir
+        en la manera de hablar, en la conducta,
+        y en el amor, fe y pureza
+      </p>
+      <b class="cita">1ra Timoteo 4:12</b>
+    </div>
+</section>
+
+
+  <section class="roles">
+    <div class="role">
+      <span class="icon material-icons" style="color: #118ab2;">
+        landscape
+      </span>
+      <div class="title">MISIÓN</div>
+      <div class="text">
+        <p>Cumplir la gran comisión<b class="negrita">(Mateo 28:19-20)</b>
+          entre los niños, jóvenes y adultos a fin
+          de prepararlos 	para ser discípulos
+          semejantes a Cristo en las naciones.
+        </p>
+      </div>
+    </div>
+
+    <div class="role">
+      <span class="icon material-icons" style="color: #ffd166;">
+        wb_incandescent
+      </span>
+
+      <div class="title">VISIÓN</div>
+      <div class="text">
+        <p>Que en cada iglesia local estos ministerios,
+          sean un medio efectivo de discipulado más
+          allá del domingo, que provea fundamento
+          bíblico para la vida de santidad y que
+          involucre a toda la iglesia.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="bg-objetivos">
+    <div class="objetivos">
+      Objetivos
+    </div>
+  </div>
+
+  <section class="areas">
+    <div class="area">
+    <svg fill="#118ab2" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M351.2 4.8c3.2-2 6.6-3.3 10-4.1c4.7-1 9.6-.9 14.1 .1c7.7 1.8 14.8 6.5 19.4 13.6L514.6 194.2c8.8 13.1 13.4 28.6 13.4 44.4v73.5c0 6.9 4.4 13 10.9 15.2l79.2 26.4C631.2 358 640 370.2 640 384v96c0 9.9-4.6 19.3-12.5 25.4s-18.1 8.1-27.7 5.5L431 465.9c-56-14.9-95-65.7-95-123.7V224c0-17.7 14.3-32 32-32s32 14.3 32 32v80c0 8.8 7.2 16 16 16s16-7.2 16-16V219.1c0-7-1.8-13.8-5.3-19.8L340.3 48.1c-1.7-3-2.9-6.1-3.6-9.3c-1-4.7-1-9.6 .1-14.1c1.9-8 6.8-15.2 14.3-19.9zm-62.4 0c7.5 4.6 12.4 11.9 14.3 19.9c1.1 4.6 1.2 9.4 .1 14.1c-.7 3.2-1.9 6.3-3.6 9.3L213.3 199.3c-3.5 6-5.3 12.9-5.3 19.8V304c0 8.8 7.2 16 16 16s16-7.2 16-16V224c0-17.7 14.3-32 32-32s32 14.3 32 32V342.3c0 58-39 108.7-95 123.7l-168.7 45c-9.6 2.6-19.9 .5-27.7-5.5S0 490 0 480V384c0-13.8 8.8-26 21.9-30.4l79.2-26.4c6.5-2.2 10.9-8.3 10.9-15.2V238.5c0-15.8 4.7-31.2 13.4-44.4L245.2 14.5c4.6-7.1 11.7-11.8 19.4-13.6c4.6-1.1 9.4-1.2 14.1-.1c3.5 .8 6.9 2.1 10 4.1z"/></svg>
+      <div class="text">
+        <p>
+          Ser un pueblo de oración, dedicado a la Palabra,
+          haciendo discípulos semejantes a Cristo.
+        </p>
+      </div>
+    </div>
+
+    <div class="area">
+      <svg fill="#118ab2" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M335.5 4l288 160c15.4 8.6 21 28.1 12.4 43.5s-28.1 21-43.5 12.4L320 68.6 47.5 220c-15.4 8.6-34.9 3-43.5-12.4s-3-34.9 12.4-43.5L304.5 4c9.7-5.4 21.4-5.4 31.1 0zM320 160a40 40 0 1 1 0 80 40 40 0 1 1 0-80zM144 256a40 40 0 1 1 0 80 40 40 0 1 1 0-80zm312 40a40 40 0 1 1 80 0 40 40 0 1 1 -80 0zM226.9 491.4L200 441.5V480c0 17.7-14.3 32-32 32H120c-17.7 0-32-14.3-32-32V441.5L61.1 491.4c-6.3 11.7-20.8 16-32.5 9.8s-16-20.8-9.8-32.5l37.9-70.3c15.3-28.5 45.1-46.3 77.5-46.3h19.5c16.3 0 31.9 4.5 45.4 12.6l33.6-62.3c15.3-28.5 45.1-46.3 77.5-46.3h19.5c32.4 0 62.1 17.8 77.5 46.3l33.6 62.3c13.5-8.1 29.1-12.6 45.4-12.6h19.5c32.4 0 62.1 17.8 77.5 46.3l37.9 70.3c6.3 11.7 1.9 26.2-9.8 32.5s-26.2 1.9-32.5-9.8L552 441.5V480c0 17.7-14.3 32-32 32H472c-17.7 0-32-14.3-32-32V441.5l-26.9 49.9c-6.3 11.7-20.8 16-32.5 9.8s-16-20.8-9.8-32.5l36.3-67.5c-1.7-1.7-3.2-3.6-4.3-5.8L376 345.5V400c0 17.7-14.3 32-32 32H296c-17.7 0-32-14.3-32-32V345.5l-26.9 49.9c-1.2 2.2-2.6 4.1-4.3 5.8l36.3 67.5c6.3 11.7 1.9 26.2-9.8 32.5s-26.2 1.9-32.5-9.8z"/></svg>
+      <div class="text">
+        <p>Desarrollar intencionalmente relaciones con
+          los pueblos no alcanzados de manera que se
+          conviertan en discípulos  semejantes a Cristo.
+        </p>
+      </div>
+    </div>
+
+    <div class="area">
+      <svg fill="#118ab2" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M192 96a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm-8 384V352h16V480c0 17.7 14.3 32 32 32s32-14.3 32-32V192h56 64 16c17.7 0 32-14.3 32-32s-14.3-32-32-32H384V64H576V256H384V224H320v48c0 26.5 21.5 48 48 48H592c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48H368c-26.5 0-48 21.5-48 48v80H243.1 177.1c-33.7 0-64.9 17.7-82.3 46.6l-58.3 97c-9.1 15.1-4.2 34.8 10.9 43.9s34.8 4.2 43.9-10.9L120 256.9V480c0 17.7 14.3 32 32 32s32-14.3 32-32z"/></svg>
+      <div class="text">
+        <p>Enseñar la palabra de Dios a los niños, jóvenes
+          y adultos para que sean salvos, santificados
+          por completo y maduren en su experiencia cristiana,
+          resultando en una vida de compasión, evangelismo,
+          educación cristiana y haciendo discípulos
+        </p>
+      </div>
+    </div>
+
+    <div class="area">
+      <svg fill="#118ab2" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M488.2 59.1C478.1 99.6 441.7 128 400 128s-78.1-28.4-88.2-68.9L303 24.2C298.8 7.1 281.4-3.3 264.2 1S236.7 22.6 241 39.8l8.7 34.9c11 44 40.2 79.6 78.3 99.6V480c0 17.7 14.3 32 32 32s32-14.3 32-32V352h16V480c0 17.7 14.3 32 32 32s32-14.3 32-32V174.3c38.1-20 67.3-55.6 78.3-99.6L559 39.8c4.3-17.1-6.1-34.5-23.3-38.8S501.2 7.1 497 24.2l-8.7 34.9zM400 96a48 48 0 1 0 0-96 48 48 0 1 0 0 96zM80 96A48 48 0 1 0 80 0a48 48 0 1 0 0 96zm-8 32c-35.3 0-64 28.7-64 64v96l0 .6V480c0 17.7 14.3 32 32 32s32-14.3 32-32V352H88V480c0 17.7 14.3 32 32 32s32-14.3 32-32V252.7l13 20.5c5.9 9.2 16.1 14.9 27 14.9h48c17.7 0 32-14.3 32-32s-14.3-32-32-32H209.6l-37.4-58.9C157.6 142 132.1 128 104.7 128H72z"/></svg>
+      <div class="text">
+        <p>
+          Animar a participar a todos a participar fielmente
+         en un ministerio de discipulado, tales como escuela
+         dominical/estudios bíblicos.
+        </p>
+      </div>
+    </div>
+
+
+  </section>
+
+</div>

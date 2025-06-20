@@ -1,0 +1,313 @@
+
+.container{
+  width: 100%;
+  position: relative;
+  .wave{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -10;
+  }
+  .container-title{
+    height: auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Secular One', sans-serif;
+    padding: 2em 0;
+    background: url('../../../assets/bgs/bg_iglesias1.jpg');
+    color: #f9f9f9;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    position: relative;
+    &:before {
+            content:'';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0,0,0,0.4);
+    }
+    .title{
+      text-align: center;
+      font-size: var(--super-titulo-tamano);
+      font-weight: var(--negrita-super-titulo);
+      margin: 0;
+      position: relative;
+    }
+    .sub-title{
+      font-size: var(--texto-tamano);
+      margin: 0;
+      padding: 1em 8em;
+      position: relative;
+    }
+  }
+
+  .church{
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    .block1{
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      .church-header{
+        justify-self: center;
+        align-self: center;
+        color: #263746;
+        width: 450px;
+        height: 300px;
+        .church-post{
+          display: grid;
+          place-items: center;
+         .church-logo{
+          background-image: url('https://res.cloudinary.com/duu9333ux/image/upload/v1681745252/nazarene-logo_3.ico');
+          color: #263746;
+          opacity: .8;
+          width: 150px;
+          height: 100px;
+          background-position: center center;
+          background-size: cover;
+         }
+         .church-deno{
+          margin: 0;
+          font-size: var(--titulo-tamano);
+          font-weight: 500;
+         }
+        }
+        .church-name{
+          margin: 0;
+          font-size: var(--super-titulo-tamano);
+          font-weight: 800;
+          font-family: 'Secular One', sans-serif;
+        }
+        .church-zone{
+          margin: 0;
+          font-weight: 600;
+          text-align: end;
+        }
+      }
+      .church-actions{
+        width: 100%;
+        padding: 4em;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .btn{
+          mat-icon{
+            width: auto;
+            color: #263746;
+            transform: scale(1.5);
+          }
+        }
+      }
+      .church-search{
+        width: auto;
+        justify-self: center;
+        padding: 4em;
+        .search{
+          height: 40px;
+          display: flex;
+          cursor: pointer;
+          padding: 8px 8px;
+          border-radius: 10px;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+          input{
+            outline: none;
+            border: none;
+            width: 240px;
+            font-size: var(--texto-tamano);
+          }
+          .btn{
+            mat-icon{
+              font-size: 24px;
+              color: #263746;
+            }
+          }
+        }
+      }
+    }
+    .block2{
+      padding: 2em;
+    }
+  }
+}
+
+.nochurchs{
+  margin: 0;
+  font-size: 3em;
+  font-weight: 900;
+  min-height: 90vh;
+  height: fit-content;
+  font-family: "Secular One", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation-duration: 3s;
+  animation-name: animar2;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+
+@keyframes animar2 {
+  from {
+    transform: scale(.9);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+@media (min-width: 320px) and (max-width: 425px) {
+  .container{
+    .container-title{
+      padding: 1em 0;
+      height: auto;
+      text-align: center;
+      .title{
+        font-size: var(--titulo-mediano);
+        font-weight: var(--negrita-super-titulo);
+        padding: 1em;
+      }
+      .sub-title{
+        font-size: var(--texto-tamano);
+        padding: 1em 2em;
+      }
+    }
+
+    .church{
+      display: flex;
+      flex-wrap: wrap;
+      // grid-template-columns: 50% 50%;
+
+      .block1{
+        .church-header{
+          .church-post{
+           .church-logo{
+            width: 120px;
+            height: 70px;
+           }
+           .church-deno{
+            font-size: var(--texto-tamano);
+            font-weight: 500;
+            padding-top: 1em;
+           }
+          }
+          .church-name{
+            font-size: var(--titulo-mediano);
+            font-weight: 800;
+          }
+          .church-zone{
+            font-weight: 500;
+          }
+        }
+        .church-actions{
+          position: absolute;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 50px; /* o el alto que necesites */
+          // padding: 2em;
+        }
+      }
+      .block2{
+        width: 100%;
+        padding: .5em;
+      }
+    }
+    // .church{
+    //   height: auto;
+    //   display: flex;
+    //   flex-wrap: wrap;
+    //   // grid-template-columns: 50% 50%;
+
+    //   .block1{
+    //     display: flex;
+    //     flex-direction: column;
+    //     width: 100%;
+    //     // grid-template-rows: 60% 20% 20%;
+
+    //     .church-header{
+    //       width: 100%;
+    //       padding: .5em;
+    //       .church-post{
+    //        .church-logo{
+    //         opacity: 1;
+    //         width: 52px;
+    //         height: 40px;
+    //         padding: .5em;
+    //        }
+    //        .church-deno{
+    //         margin: 0;
+    //         font-size: 14px;
+    //         font-weight: 500;
+    //         // padding: 2em;
+    //         border-bottom: 1px #263746 solid;
+
+    //         small{
+    //           font-size: 10px;
+    //         }
+    //        }
+    //       }
+    //       .church-name{
+    //         font-size: 16px;
+    //         font-weight: 600;
+    //         font-family: 'Comfortaa', cursive;
+    //         text-align: center;
+    //         padding: .2em;
+    //       }
+    //       .church-zone{
+    //         font-weight: 900;
+    //         width: 100%;
+    //         font-size: 12px;
+    //         padding-top: .5em;
+    //       }
+    //     }
+
+    //     .church-search{
+    //       padding: .5em;
+    //       // display: flex;
+    //       // justify-content: space-between;
+    //       width: 100%;
+    //       .search{
+    //         height: auto;
+    //         padding: 8px;
+    //         input{
+    //           width: 100%;
+    //         }
+    //         &:hover{
+    //           input{
+    //             width: 100%;
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    //   .block2{
+    //     padding: .5em;
+    //   }
+    // }
+  }
+  .nochurchs{
+    font-size: 2em;
+    font-weight: 800;
+  }
+}
+
+// @media (min-width: 768px) {
+
+// }
+
+// @media (min-width: 1200px) {
+
+// }

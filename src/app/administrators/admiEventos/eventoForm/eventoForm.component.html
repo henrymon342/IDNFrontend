@@ -1,0 +1,171 @@
+<h1>{{title}} Evento</h1>
+
+<div class="container">
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <!-- Ministerio -->
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Ministerio</mat-label>
+      <mat-select formControlName="ministerio" name="ministerio">
+        @for (min of MINISTERIOS; track min) {
+          <mat-option [value]="min">{{min}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Título -->
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="titulo" />
+      <mat-error *ngIf="form.get('titulo')?.hasError('required')">El título es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Modalidad -->
+    <mat-radio-group formControlName="modalidad" class="unir-columnas">
+      @for (modalidad of MODALIDADES; track modalidad) {
+        <mat-radio-button [value]="modalidad" class="example-margin">
+          {{ modalidad }}
+        </mat-radio-button>
+      }
+    </mat-radio-group>
+
+    @if (this.form.get('modalidad')?.value === 'PRESENCIAL') {
+      <!-- PRESENCIAL -->
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Lugar</mat-label>
+        <mat-select formControlName="optionplace" name="optionplace">
+          @for (lugar of LUGARES; track lugar) {
+            <mat-option [value]="lugar">{{lugar}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      @if (this.form.get('optionplace')?.value === 'ALGUNA IGLESIA') {
+      <!-- ALGUNA IGLESIA -->
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Iglesia</mat-label>
+        <mat-select formControlName="place" name="place">
+          @for (iglesia of IGLESIAS; track iglesia) {
+            <mat-option [value]="iglesia">{{iglesia}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      }@else{
+        <!-- OTRO LUGAR -->
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Otro lugar</mat-label>
+          <input matInput formControlName="place" />
+          <mat-error *ngIf="form.get('place')?.hasError('required')">El lugar es obligatorio</mat-error>
+        </mat-form-field>
+      }
+    }@else{
+      <!-- VIRTUAL -->
+      <!-- PLATAFORMAS -->
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Plataforma</mat-label>
+        <mat-select formControlName="optionplace" name="place">
+          @for (plataforma of PLATAFORMAS; track plataforma) {
+            <mat-option [value]="plataforma">{{plataforma}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      @if(this.form.get('optionplace')?.value === 'OTRO'){
+        <!-- OTRO LUGAR -->
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Otro lugar</mat-label>
+          <input matInput formControlName="place" />
+          <mat-error *ngIf="form.get('place')?.hasError('required')">El lugar es obligatorio</mat-error>
+        </mat-form-field>
+      }
+    }
+
+    <!-- Fechas -->
+    <mat-radio-group formControlName="tipofecha">
+      @for (tipo of TIPOSFECHA; track tipo) {
+        <mat-radio-button [value]="tipo" class="example-margin">
+          {{ tipo }}
+        </mat-radio-button>
+      }
+    </mat-radio-group>
+
+    <!-- Un dia -->
+    @if(this.form.get('tipofecha')?.value === 'UN DÍA'){
+      <mat-form-field appearance="outline">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fechaini">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    }@else {
+      <!-- muchos dias -->
+      <mat-form-field appearance="outline">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date" formControlName="fechaini">
+          <input matEndDate placeholder="End date" formControlName="fechafin">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    }
+
+    <!-- Hora inicio -->
+    <mat-form-field appearance="outline">
+      <mat-label>Hora inicio</mat-label>
+      <input
+        formControlName="horaini"
+        type="text"
+        matInput
+        placeholder="10:00"
+        matTimepicker
+      />
+    </mat-form-field>
+
+    @if(this.form.get('tipofecha')?.value !== 'UN DÍA'){
+      <!-- Hora fin -->
+      <mat-form-field appearance="outline">
+        <mat-label>Hora fin</mat-label>
+        <input
+          formControlName="horafin"
+          type="text"
+          matInput
+          placeholder="13:00"
+          matTimepicker
+        />
+      </mat-form-field>
+    }
+
+    <!-- Descripción -->
+    <mat-form-field appearance="outline" class="w-full unir-columnas">
+      <mat-label>Descripción</mat-label>
+      <input matInput formControlName="descripcion" />
+      <mat-error *ngIf="form.get('descripcion')?.hasError('required')">El descripcion es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Encargados -->
+    <mat-form-field class="example-form-field" appearance="outline" class="unir-columnas">
+      <mat-label>Encargados</mat-label>
+      <mat-chip-grid #reactiveChipGrid aria-label="Enter reactive form keywords" formControlName="encargado">
+      @for (keyword of reactiveKeywords(); track keyword) {
+        <mat-chip-row (removed)="removeReactiveKeyword(keyword)">
+          {{keyword}}
+        <button matChipRemove [attr.aria-label]="'remove reactive form' + keyword">
+          <mat-icon>cancel</mat-icon>
+        </button>
+        </mat-chip-row>
+      }
+      </mat-chip-grid>
+      <input
+        placeholder="Nuevo encargado..."
+        [matChipInputFor]="reactiveChipGrid"
+        (matChipInputTokenEnd)="addReactiveKeyword($event)"
+      />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" class="unir-columnas">
+      {{title}}
+    </button>
+  </form>
+</div>

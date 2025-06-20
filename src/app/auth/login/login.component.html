@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="fondo">
+    <div class="card">
+      <!-- (click)="gotohome()" -->
+      <div class="title">
+        <img class="title-img" alt="Logo de la Iglesia del Nazareno" />
+        <span>IGLESIA <small>del</small> NAZARENO</span>
+        <span class="dlp">DISTRITO  LA  PAZ</span>
+      </div>
+      <form class="example-form" [formGroup]="form" (submit)="login()">
+        <h3 class="titulo">Ingresar a su cuenta</h3>
+        <input
+          type="text"
+          placeholder="Username"
+          id="username"
+          formControlName="username"
+        />
+        <div class="pass">
+          <input
+            formControlName="password"
+            matInput
+            type="password"
+            placeholder="password"
+            class="input-text"
+            [type]="hide ? 'password' : 'text'"
+          />
+          <mat-icon matSuffix (click)="hide = !hide">{{
+            hide ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </div>
+        <div class="button">
+          <button mat-raised-button color="primary" type="submit">
+            Entrar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+@import '../node_modules/ngx-toastr/toastr';
+
+html, body { height: 97vh; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*{
+  box-sizing: border-box;
+  text-size-adjust: var(--texto-tamano);
+  font-family: "Montserrat", sans-serif;
+}
+
+:root {
+  --negrita-bajo-titulo: 300;
+  --texto-tamano: 16px;
+  --titulo-tamano: 18px;
+  --titulo-normal: 24px;
+  --titulo-mediano: 32px;
+  --super-titulo-tamano: 64px;
+  --negrita-medio-titulo: 600;
+  --negrita-super-titulo: 900;
+  --color-azul-oscuro: #263746;
+  //movil
+  --movil-texto-tamano-pequeno: 10px;
+  --movil-texto-tamano: 14px;
+  --movil-titulo-tamano: 16px;
+  --movil-titulo-mediano: 22px;
+  --movil-super-titulo-tamano: 32px;
+  --movil-negrita-super-titulo: 800;
+}

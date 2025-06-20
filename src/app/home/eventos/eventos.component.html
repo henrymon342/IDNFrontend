@@ -1,0 +1,128 @@
+<div class="container">
+  <section class="container-title">
+    <h3 class="title">EVENTOS</h3>
+    <h6 class="container-sub-title">
+      <p class="sub-title">
+        Todo lo que hagan, háganlo de buena gana, como si estuvieran sirviendo
+        al Señor y no a los hombres.
+      </p>
+      <p class="sub-title-cite">COLOSENSES 3:23</p>
+    </h6>
+  </section>
+
+  <section class="container-select-date">
+    <div class="arrow-btns">
+      <button
+        mat-button
+        mwlCalendarPreviousView
+        class="select-arrow"
+        [view]="view1"
+        [(viewDate)]="viewDate1"
+        (viewDateChange)="mesInteractivo(viewDate1)"
+      >
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+    </div>
+
+    <button
+      mat-raised-button
+      color="primary"
+      mwlCalendarToday
+      [(viewDate)]="viewDate1"
+      (viewDateChange)="mesInteractivo(viewDate1)"
+      class="select-mount"
+    >
+      <h3>
+        {{ viewDate1 | calendarDate : view + "ViewTitle" | uppercase }}
+      </h3>
+    </button>
+
+    <div class="arrow-btns">
+      <button
+        mat-button
+        mwlCalendarNextView
+        class="select-arrow"
+        [view]="view1"
+        [(viewDate)]="viewDate1"
+        (viewDateChange)="mesInteractivo(viewDate1)"
+      >
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+    </div>
+  </section>
+
+  <!-- <div class="botones">
+    <button mat-button color="primary"
+            (click)="cambioMinisterio('JNI')">
+            <span>
+              JNI
+            </span>
+    </button>
+    <button mat-button color="primary"
+            (click)="cambioMinisterio('MNI')">
+            <span>
+              MNI
+            </span>
+    </button>
+    <button mat-button color="primary"
+            (click)="cambioMinisterio('DNI')">
+            <span>
+              DNI
+            </span>
+    </button>
+  </div> -->
+
+  @if ( monthEvents.length == 0 ) {
+    <div class="sin_eventos">
+      <img class="image_sin_eventos animate__animated animate__fadeIn" src="https://nazarenolapaz.org.bo/assets/bgs/no_events3.jpg" alt="">
+    </div>
+  }
+
+  <div class="cont_events">
+    @for (item of monthEvents; track item) {
+      <app-evento [evento]="item"></app-evento>
+      @if (monthEvents.length === 0) {
+        <div class="cont">
+          <div class="caja">
+            <span class="material-symbols-outlined calendario">
+              calendar_month
+            </span>
+            <p class="texto">no existen eventos este mes!</p>
+          </div>
+        </div>
+      }
+    }
+    <!-- <app-event [evento]="item" *ngFor="let item of monthEvents"></app-event>
+    <ng-container *ngIf="monthEvents.length === 0">
+      <div class="cont">
+        <div class="caja">
+          <span class="material-symbols-outlined calendario">
+            calendar_month
+          </span>
+          <p class="texto">no existen eventos este mes!</p>
+        </div>
+      </div>
+    </ng-container> -->
+  </div>
+
+  <div class="bg_calendar">
+    <img class="title-img" alt="logo de la iglesia del nazareno para calendario" />
+    <h3 class="title">CALENDARIO DE EVENTOS {{ currentYear | date: 'yyyy' : locale | uppercase }}</h3>
+
+    <!-- (click)="changeStatusCalendar()" -->
+    <div class="btn-show-calendar" >
+      <mat-icon *ngIf="seeCalendar" (click)="scroll(target)"
+        >keyboard_arrow_down</mat-icon>
+      <mat-icon *ngIf="!seeCalendar">keyboard_arrow_up</mat-icon>
+    </div>
+  </div>
+
+  @if ( seeCalendar ) {
+    <app-calendar></app-calendar>
+  }
+  <!-- <ng-container class="animate__animated animate__fadeInUp" *ngIf="seeCalendar">
+    <app-calendar></app-calendar>
+  </ng-container> -->
+
+  <span class="" #target> </span>
+</div>

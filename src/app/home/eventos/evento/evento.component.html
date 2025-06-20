@@ -1,0 +1,76 @@
+<div class="container animate__animated animate__fadeInUp">
+  <div class="bloque1">
+    @if (evento.tipofecha == 'UN DÍA') {
+      <div class="mes">
+        <span>
+        {{evento.fechaini | date:'EEEE': 'en' | uppercase }}
+        </span>
+      </div>
+    }
+    <!-- <div class="mes" *ngIf="evento.tipofecha == 'UN DÍA'">
+      <span>
+      {{evento.fechaini | date:'EEEE': 'en' | uppercase }}
+      </span>
+    </div> -->
+    @if (evento.tipofecha == 'UN DÍA') {
+      <div class="dia">
+        <span>
+          {{evento.fechaini| date:'dd': 'en' | uppercase }}
+        </span>
+      </div>
+    }
+    <!-- <div class="dia" *ngIf="evento.tipofecha == 'UN DÍA'">
+      <span>
+        {{evento.fechaini| date:'dd': 'en' | uppercase }}
+      </span>
+    </div> -->
+    @if (evento.tipofecha != 'UN DÍA') {
+      <div class="dia">
+        <span>
+          {{evento.fechaini| date:'dd': 'en' | uppercase }}
+          -
+          {{evento.fechafin| date:'dd': 'en' | uppercase }}
+        </span>
+      </div>
+    }
+
+    <!-- <div class="dia" *ngIf="evento.tipofecha != 'UN DÍA'">
+      <span>
+        {{evento.fechaini| date:'dd': 'en' | uppercase }}
+        -
+        {{evento.fechafin| date:'dd': 'en' | uppercase }}
+      </span>
+    </div> -->
+  </div>
+  <!-- (click)="seeDetail(evento)" -->
+  <div class="bloque2" >
+    <div class="nombre">
+      <span > {{ evento.titulo | uppercase }} </span>
+    </div>
+    <div class="seccion">
+      <div class="realizado" *ngIf="hasFinished">
+        <!-- <marquee class="realizado_texto"> REALIZADO</marquee> -->
+      </div>
+      <div class="modalidad">
+        <span >  {{evento.modalidad}}  </span>
+        <span >||</span>
+        <span > {{evento.place}} </span>
+      </div>
+      <div class="hora">
+        <span> {{evento.horaini | date: 'h:mm a' | uppercase }} - {{evento.horafin | date: 'h:mm a' | uppercase }} </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bloque3" [ngStyle]="asignarColor()">
+    <div class="ministerio">
+      <span>  {{evento.ministerio}}  </span>
+    </div>
+    <!-- <div class="btn">
+      <span class="boton" [routerLink]="['/detalleproevento', evento.id]">ver más</span>
+    </div> -->
+  </div>
+</div>
+
+
+

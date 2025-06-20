@@ -1,0 +1,90 @@
+mat-toolbar {
+  display: grid;
+  grid-template-columns: 3% 94% 3%;
+  background: linear-gradient(180deg, #263746, #263746);
+  background-blend-mode: screen;
+  background-size: cover;
+  height: 60px;
+  .title{
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: flex-end;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    .title-img{
+      margin: 0em .3em;
+      width: 40px;
+      content: url("https://res.cloudinary.com/duu9333ux/image/upload/v1680726686/logoww.png");
+    }
+  }
+
+  mat-icon{
+    color: #fff;
+  }
+}
+
+mat-drawer-container{
+  height: 90vh;
+  overflow: hidden;
+  mat-action-list{
+    width: 20rem;
+    .item{
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .content{
+        text-align: center;
+        padding: .5em;
+        .icon{
+          width: 25px;
+        }
+      }
+    }
+  }
+}
+
+:host {
+  ::ng-deep {
+    .mat-expansion-panel-spacing {
+      margin: 0px 0 !important;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 425px) {
+  mat-toolbar {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    height: 60px;
+    .title{
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      align-items: flex-end;
+      font-size: 10px;
+      font-weight: 400;
+      .title-img{
+        margin: 0em .3em;
+        width: 30px;
+        content: url("https://res.cloudinary.com/duu9333ux/image/upload/v1680726686/logoww.png");
+      }
+    }
+  }
+  mat-drawer-container{
+    mat-action-list{
+      width: 15rem;
+    }
+  }
+}
+// // @media (min-width: 768px) {
+// // }
+// // @media (min-width: 1200px) {
+// // }

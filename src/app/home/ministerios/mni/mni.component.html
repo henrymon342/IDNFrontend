@@ -1,0 +1,235 @@
+
+<div class="container">
+  <div class="bg-title">
+    <div class="title">
+      <!-- Misiones Nazarenas Internacionales -->
+      MISIONES NAZARENAS INTERNACIONALES
+    </div>
+  </div>
+
+  <section class="ministerios">
+    @for (ministerio of MINISTERIOS; track ministerio) {
+      <div class="card">
+        <img [src]="ministerio.pathLogo" alt="">
+        <div class="ministerio" >
+          {{ ministerio.nombre }}
+        </div>
+      </div>
+    }
+  </section>
+
+  <div class="bg-subtitle">
+    <div class="subtitle">
+      ¿Quiénes somos?
+    </div>
+  </div>
+
+  <section class="text-subtitle">
+    <div class="text">
+      Misiones Nazarenas Internacionales (MNI)
+       es la organización responsable de involucrar
+       y movilizar a la iglesia local para que participe
+       en misiones en la Iglesia del Nazareno y es el
+       representante de la denominación para misiones
+       en el distrito y en la iglesia local.
+    </div>
+  </section>
+
+  <div class="bg-subtitle">
+    <div class="subtitle">
+      ¿Qué hacemos?
+    </div>
+  </div>
+
+  <section class="text-subtitle">
+    <div class="text">
+      Movilizamos a la iglesia en oración y
+      en el estudio de la Palabra de Dios.
+      También buscamos inspirar y desafiar
+      a niños, jóvenes y adultos a estar
+      abiertos al llamado de Dios, además
+      de promover un conocimiento de las
+      áreas misioneras de la Iglesia del
+      Nazareno y apoyar financieramente
+      la expansión del reino de Dios por
+      todo el mundo. MNI es el corazón que
+      une a la iglesia local con la misión
+      global promoviendo, informando,
+      involucrando y recaudando fondos para
+      apoyar las misiones en la Iglesia del
+      Nazareno.
+    </div>
+  </section>
+
+  <div class="bg-subtitle">
+    <div class="subtitle">
+      ¿Por qué lo hacemos?
+    </div>
+  </div>
+
+  <section class="text-subtitle">
+    <div class="text">
+      Respondemos al desafío de la Gran
+      Comisión (Hechos 1:8) de ser testigos
+      hasta el último rincón de la tierra.
+      Somos una iglesia que ha conocido
+      el evangelio, lo proclama, lo vive
+      y trabaja por extenderlo, no solo
+      en un ámbito local sino que avanza
+      rompiendo barreras transculturales
+      hasta donde no ha llegado.
+      Donde hay una Iglesia del Nazareno
+      hay testigos de Cristo y también
+      está MNI. Como un ministerio regional
+      ¡Desafiamos a cada nazareno a ser
+      un agente efectivo de la Gran Comisión!
+    </div>
+  </section>
+
+  <section class="text">
+    <div class="text-mni">
+      Misiones Nazarenas Internacionales (MNI) tiene
+         como propósito movilizar movilizar a la Iglesia
+          del Nazareno en su misión:
+          <b class="negrita"> ORANDO,
+            DISCIPULANDO,
+            DANDO Y EDUCANDO.
+          </b>
+    </div>
+    <div class="img-text">
+      <img class="img-mni-text" alt="">
+    </div>
+  </section>
+
+  <section class="versiculo">
+    <div class="texto">
+      <p>
+        Pero cuando el Espíritu Santo venga sobre vosotros,
+        recibiréis poder y saldréis a dar testimonio de mí
+        en Jerusalén, en toda la región de Judea, en Samaria
+        y hasta en las partes más lejanas de la tierra
+      </p>
+      <b class="cita">Hechos 1:8</b>
+    </div>
+</section>
+
+<div class="bg-subtitle">
+  <div class="subtitle">
+    Objetivos
+  </div>
+</div>
+
+<section class="roles">
+  <div class="role">
+    <mat-icon class="icon">looks_one</mat-icon>
+    <div class="text">
+      <p>Impulsar a nuestro pueblo de Dios a orar,
+        por los esfuerzos de la evangelización
+        local, distrital y mundial.
+      </p>
+    </div>
+  </div>
+
+  <div class="role">
+    <mat-icon class="icon">looks_two</mat-icon>
+    <div class="text">
+      <p>Informar a nuestro pueblo acerca de las
+        necesidades del mundo y de lo que la
+        iglesia esta haciendo para suplir estas
+        necesidades.
+      </p>
+    </div>
+  </div>
+
+  <div class="role">
+    <mat-icon class="icon">looks_3</mat-icon>
+    <div class="text">
+      <p>Desafiar a los niños y jóvenes a educarse
+        para las misiones y servir a la iglesia.
+      </p>
+    </div>
+  </div>
+
+  <div class="role">
+    <mat-icon class="icon">looks_4</mat-icon>
+    <div class="text">
+      <p>
+        Recaudar fondos para cumplir la gran comisión.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<div class="bg-subtitle">
+  <div class="subtitle">
+    Áreas de impacto
+  </div>
+</div>
+
+<section class="areas">
+  <div class="area">
+    <svg fill="#118ab2" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M351.2 4.8c3.2-2 6.6-3.3 10-4.1c4.7-1 9.6-.9 14.1 .1c7.7 1.8 14.8 6.5 19.4 13.6L514.6 194.2c8.8 13.1 13.4 28.6 13.4 44.4v73.5c0 6.9 4.4 13 10.9 15.2l79.2 26.4C631.2 358 640 370.2 640 384v96c0 9.9-4.6 19.3-12.5 25.4s-18.1 8.1-27.7 5.5L431 465.9c-56-14.9-95-65.7-95-123.7V224c0-17.7 14.3-32 32-32s32 14.3 32 32v80c0 8.8 7.2 16 16 16s16-7.2 16-16V219.1c0-7-1.8-13.8-5.3-19.8L340.3 48.1c-1.7-3-2.9-6.1-3.6-9.3c-1-4.7-1-9.6 .1-14.1c1.9-8 6.8-15.2 14.3-19.9zm-62.4 0c7.5 4.6 12.4 11.9 14.3 19.9c1.1 4.6 1.2 9.4 .1 14.1c-.7 3.2-1.9 6.3-3.6 9.3L213.3 199.3c-3.5 6-5.3 12.9-5.3 19.8V304c0 8.8 7.2 16 16 16s16-7.2 16-16V224c0-17.7 14.3-32 32-32s32 14.3 32 32V342.3c0 58-39 108.7-95 123.7l-168.7 45c-9.6 2.6-19.9 .5-27.7-5.5S0 490 0 480V384c0-13.8 8.8-26 21.9-30.4l79.2-26.4c6.5-2.2 10.9-8.3 10.9-15.2V238.5c0-15.8 4.7-31.2 13.4-44.4L245.2 14.5c4.6-7.1 11.7-11.8 19.4-13.6c4.6-1.1 9.4-1.2 14.1-.1c3.5 .8 6.9 2.1 10 4.1z"/></svg>
+    <div class="text">
+      <p>
+        MNI reúne a creyentes para que
+        oren en las iglesias locales,
+        conectándonos con hermanos y
+        hermanas en Cristo en todo el mundo.
+      </p>
+    </div>
+  </div>
+
+  <div class="area">
+    <svg fill="#118ab2" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M176 0c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16c-44.2 0-80-35.8-80-80c0-8.8 7.2-16 16-16zM56 16h48c13.3 0 24 10.7 24 24s-10.7 24-24 24H56C42.7 64 32 53.3 32 40s10.7-24 24-24zM24 88H136c13.3 0 24 10.7 24 24s-10.7 24-24 24H24c-13.3 0-24-10.7-24-24S10.7 88 24 88zm8 96c0-13.3 10.7-24 24-24h48c13.3 0 24 10.7 24 24s-10.7 24-24 24H56c-13.3 0-24-10.7-24-24zM272 16c0-8.8 7.2-16 16-16c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16c-44.2 0-80-35.8-80-80zM400 0c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16c-44.2 0-80-35.8-80-80c0-8.8 7.2-16 16-16zm80 144c0 44.2-35.8 80-80 80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16zM352 128c8.8 0 16 7.2 16 16c0 44.2-35.8 80-80 80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-96 16c0 44.2-35.8 80-80 80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16zM0 304c0-26.5 21.5-48 48-48H464c26.5 0 48 21.5 48 48V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V304zM48 416v48H96c0-26.5-21.5-48-48-48zM96 304H48v48c26.5 0 48-21.5 48-48zM464 416c-26.5 0-48 21.5-48 48h48V416zM416 304c0 26.5 21.5 48 48 48V304H416zm-96 80a64 64 0 1 0 -128 0 64 64 0 1 0 128 0z"/></svg>
+    <div class="text">
+      <p>El Fondo para la Evangelización
+        Mundial. Este es el combustible
+        que impulsa la misión de la Iglesia
+        del Nazareno al combinar las
+        ofrendas que cada persona e
+        iglesia aportan para financiar
+        los ministerios en todas partes.
+      </p>
+    </div>
+  </div>
+
+  <div class="area">
+    <svg fill="#118ab2" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M224 109.3V217.6L183.3 242c-14.5 8.7-23.3 24.3-23.3 41.2V512h96V416c0-35.3 28.7-64 64-64s64 28.7 64 64v96h96V283.2c0-16.9-8.8-32.5-23.3-41.2L416 217.6V109.3c0-8.5-3.4-16.6-9.4-22.6L331.3 11.3c-6.2-6.2-16.4-6.2-22.6 0L233.4 86.6c-6 6-9.4 14.1-9.4 22.6zM24.9 330.3C9.5 338.8 0 354.9 0 372.4V464c0 26.5 21.5 48 48 48h80V273.6L24.9 330.3zM592 512c26.5 0 48-21.5 48-48V372.4c0-17.5-9.5-33.6-24.9-42.1L512 273.6V512h80z"/></svg>
+    <div class="text">
+      <p>La Ofrenda de Alabastro, muchos
+        ministerios alrededor del mundo
+        reciben fondos para la compra de
+        propiedades y edificios.
+      </p>
+    </div>
+  </div>
+
+  <div class="area">
+    <svg fill="#118ab2" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M7.8 207.7c-13.1-17.8-9.3-42.8 8.5-55.9L142.9 58.5C166.2 41.3 194.5 32 223.5 32H384 544c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32H507.2l-44.9 36c-22.7 18.2-50.9 28-80 28H304 288 224c-17.7 0-32-14.3-32-32s14.3-32 32-32h64 16c8.8 0 16-7.2 16-16s-7.2-16-16-16H183.4L63.7 216.2c-17.8 13.1-42.8 9.3-55.9-8.5zM382.4 160l0 0 .9 0c-.3 0-.6 0-.9 0zM568.2 304.3c13.1 17.8 9.3 42.8-8.5 55.9L433.1 453.5c-23.4 17.2-51.6 26.5-80.7 26.5H192 32c-17.7 0-32-14.3-32-32V384c0-17.7 14.3-32 32-32H68.8l44.9-36c22.7-18.2 50.9-28 80-28H272h16 64c17.7 0 32 14.3 32 32s-14.3 32-32 32H288 272c-8.8 0-16 7.2-16 16s7.2 16 16 16H392.6l119.7-88.2c17.8-13.1 42.8-9.3 55.9 8.5zM193.6 352l0 0-.9 0c.3 0 .6 0 .9 0z"/></svg>
+    <div class="text">
+      <p>
+        El involucramiento de niños y
+        jóvenes por medio de la educación
+        y la promoción del llamado a las
+        misiones.
+      </p>
+    </div>
+  </div>
+
+  <div class="area">
+    <svg fill="#118ab2" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
+    <div class="text">
+      <p>
+        MNI provee medios intencionales para
+        que los distritos e iglesias puedan
+        cuidar a sus misioneros. Además provee
+        estrategias para generar una conexión
+        global entre los los misioneros y los
+        distritos.
+      </p>
+    </div>
+  </div>
+</section>
+
+</div>

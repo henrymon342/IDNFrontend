@@ -1,0 +1,359 @@
+
+.container{
+  background-color: #f9f9f9;
+  .bg-title{
+    background: url('../../../assets/bgs/bg_adoracion.jpg');
+    height: auto;
+    padding: 4em 0;
+    color: #f9f9f9;
+    font-family: 'Secular One', sans-serif;
+    background-attachment: fixed;
+    background-size: cover;
+    object-fit: cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    &:before {
+      content:'';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0,0,0,0.2);
+    }
+    .title{
+      position: relative;
+      font-size: var(--titulo-mediano);
+      font-weight: var(--negrita-medio-titulo);
+      background-color: #26374686;
+      padding: .5em 1em;
+      font-family: 'Secular One', sans-serif;
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        right: 100%;
+        top: 32px;
+        height: 75px;
+        width: 1500px;
+        background: url(https://www.samnaz.org/wp-content/uploads/2021/01/dotted-grid.png) repeat-x 0 0;
+        background-size: 80% 50%;
+        z-index: 260;
+      }
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 100%;
+        top: 32px;
+        height: 75px;
+        width: 1500px;
+        background: url(https://www.samnaz.org/wp-content/uploads/2021/01/dotted-grid.png) no-repeat 0 0;
+        background-size: 80% 50%;
+      }
+    }
+  }
+
+  .ministerios{
+    display: flex;
+    justify-content: space-around;
+    padding: 4em;
+    .card{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      img{
+        width: 250px;
+        height: 250px;
+      }
+      .ministerio{
+        padding: .5em;
+        font-weight: var(--negrita-medio-titulo);
+      }
+    }
+  }
+
+  .text-subtitle{
+    padding: 4em 4em 4em 4em;
+    font-size: var(--titulo-tamano);
+    font-weight: var(--negrita-bajo-titulo);
+    .text{
+      line-height: 2em;
+    }
+  }
+
+  .text{
+    display: flex;
+
+    .img-text{
+      .img-mni-text{
+        width: 500px;
+        height: 300px;
+        content: url("../../../assets/bgs/bg_peticion_oracion.jpg");
+        object-fit: cover;
+        border-radius: 10px;
+      }
+      .img-mni-text-2{
+        width: 500px;
+        height: 300px;
+        content: url("../../../assets/bgs/fondojni.png");
+        object-fit: cover;
+        border-radius: 10px;
+      }
+    }
+    .text-mni{
+      padding: 2em 4em;
+      font-size: var(--titulo-tamano);
+      font-weight: var(--negrita-bajo-titulo);
+      text-align: center;
+      line-height: 2em;
+      align-self: center;
+    }
+  }
+
+  .versiculo{
+    padding: 4em 4em;
+    font-size: var(--titulo-tamano);
+    font-weight: var(--negrita-bajo-titulo);
+    text-align: center;
+    line-height: 2em;
+    background-image: url('../../../assets/bgs/bg_jni.jpg');
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: auto;
+    color: #fff;
+    position: relative;
+    &:before {
+      content:'';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0,0,0,0.4);
+    }
+    .texto{
+      position: relative;
+      z-index: 20;
+    }
+  }
+
+  .roles{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 2em 4em;
+    .role{
+      text-align: center;
+      padding: 2em 4em;
+      .icon{
+        width: 52px;
+        color: #118ab2;
+      }
+      .title{
+        font-size: var(--titulo-tamano);
+        font-weight: var(--negrita-medio-titulo);
+      }
+      .text{
+        font-size: var(--texto-tamano);
+        line-height: 2em;
+      }
+    }
+  }
+
+  .bg-subtitle{
+    width: 100%;
+    height: 100px;
+    position: relative;
+    color: #353a47;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background-color: #f9f9f9;
+
+    &:before {
+      content:'';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    .subtitle{
+
+      margin: 0;
+      font-size: 2em;
+      font-weight: 900;
+      position: relative;
+      font-family: "Josefin Sans", sans-serif;
+      align-self: center;
+      padding: 0 2em;
+      line-height: 2;
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        right: 100%;
+        top: 8px;
+        height: 75px;
+        width: 1500px;
+        background: url(https://www.samnaz.org/wp-content/uploads/2021/01/dotted-grid-black.png) repeat-x 0 0;
+        background-size: 80% 50%;
+        z-index: 260;
+      }
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 100%;
+        top: 8px;
+        height: 75px;
+        width: 1500px;
+        background: url(https://www.samnaz.org/wp-content/uploads/2021/01/dotted-grid-black.png) no-repeat 0 0;
+        background-size: 80% 50%;
+      }
+    }
+  }
+
+  .areas{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 2em 4em;
+    .area{
+      text-align: center;
+      padding: 1em 4em;
+      .icon{
+        width: 52px;
+      }
+      .text{
+        font-size: var(--texto-tamano);
+        line-height: 2em;
+      }
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 425px) {
+  .container{
+    .bg-title{
+      padding: 2em 0;
+      .title{
+        font-size: var(--movil-titulo-mediano);
+        font-weight: var(--negrita-medio-titulo);
+        text-align: center;
+        padding: .5em 1em;
+        background-color: #26374686;
+        &:before {
+          top: 8px;
+          height: 50px;
+          width: 1000px;
+        }
+        &:after {
+          top: 8px;
+          height: 50px;
+          width: 1000px;
+        }
+      }
+    }
+
+    .ministerios{
+      display: flex;
+      flex-wrap: wrap;
+      padding: 1em;
+      .card{
+        text-align: center;
+        padding-bottom: 1em;
+        img{
+          width: 160px;
+          height: 160px;
+        }
+        .ministerio{
+          font-weight: var(--negrita-bajo-titulo);
+        }
+      }
+    }
+
+    .bg-subtitle{
+      height: auto;
+      .subtitle{
+        margin: 0;
+        font-size: var(--movil-titulo-mediano);
+        font-weight: var(--negrita-medio-titulo);
+        padding: 0 1em;
+        &:before {
+          height: 50px;
+          width: 1000px;
+        }
+        &:after {
+          height: 50px;
+          width: 1000px;
+        }
+      }
+    }
+
+    .text-subtitle{
+      padding: 2em 2em;
+      font-size: var(--movil-titulo-tamano);
+      .text{
+        line-height: 2em;
+      }
+    }
+
+    .text{
+      display: flex;
+      flex-direction: column;
+      .img-text{
+        .img-mni-text{
+          width: 100%;
+        }
+        .img-mni-text-2{
+          width: 100%;
+        }
+      }
+      .text-mni{
+        padding: 2em 1em;
+        font-size: var(--titulo-tamano);
+        font-weight: var(--negrita-bajo-titulo);
+        text-align: center;
+        line-height: 2em;
+        align-self: center;
+      }
+    }
+
+    .versiculo{
+      padding: 2em 1em;
+      font-size: var(--movil-titulo-tamano);
+    }
+
+    .roles{
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0em;
+      .role{
+        padding: 2em 1em;
+        .text{
+          font-size: var(--movil-texto-tamano);
+          line-height: 2em;
+        }
+      }
+    }
+
+    .areas{
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0em;
+      .area{
+        padding: 2em 1em;
+        .text{
+          font-size: var(--movil-texto-tamano);
+          line-height: 2em;
+        }
+      }
+    }
+  }
+}

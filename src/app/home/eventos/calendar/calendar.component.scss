@@ -1,0 +1,90 @@
+
+.container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1em;
+  .calendar{
+    width: 70%;
+    padding: 1em;
+  }
+
+  .container-select-date{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .select-mount{
+      width: 10em;
+      background: linear-gradient(180deg, #263746, #263746);
+      color: white;
+      border-radius: .5em;
+      border: none;
+      margin: 0 1em;
+
+      &:hover{
+        cursor: pointer;
+      }
+      h3{
+        padding: 0 1em;
+        font-family: 'Comfortaa', cursive;
+        font-weight: 200;
+      }
+    }
+
+    .select-arrow{
+      width: 4em;
+      height: 4em;
+      background: linear-gradient(180deg, #263746, #263746);
+      color: white;
+      border-radius: .5em;
+      border: none;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+
+@media (min-width: 320px) and (max-width: 425px) {
+  .container{
+    padding: 1em .5em;
+    .calendar{
+      width: 100%;
+      padding: .5em;
+    }
+
+    .container-select-date{
+      .select-mount{
+        width: 10em;
+        background: linear-gradient(180deg, #263746, #263746);
+        color: white;
+        border-radius: .5em;
+        border: none;
+        margin: 0 1em;
+        &:hover{
+          cursor: pointer;
+        }
+        h3{
+          padding: 0 1em;
+          font-family: 'Comfortaa', cursive;
+          font-weight: 200;
+        }
+      }
+
+      .select-arrow{
+        width: 4em;
+        height: 4em;
+        background: linear-gradient(180deg, #263746, #263746);
+        color: white;
+        border-radius: .5em;
+        border: none;
+        &:hover{
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

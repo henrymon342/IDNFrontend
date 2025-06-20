@@ -1,0 +1,507 @@
+.container {
+  background-color: #fcfcfc;
+  .one {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    // justify-content: center;
+    .church-header {
+      text-align: center;
+      // box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+
+      .church-post {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2em;
+        padding-bottom: 0;
+        .church-logo {
+          background-image: url("https://res.cloudinary.com/duu9333ux/image/upload/v1681745252/nazarene-logo_3.ico");
+          color: #263746;
+          opacity: 0.8;
+          width: 150px;
+          height: 100px;
+          background-position: center center;
+          background-size: cover;
+          // background-attachment: fixed;
+        }
+        .church-deno {
+          margin: 0;
+          font-size: 16px;
+          font-weight: 500;
+          font-family: "Comfortaa", cursive;
+          // padding: 2em;
+        }
+      }
+      .church-name {
+        margin: 0;
+        font-size: 3em;
+        font-weight: 900;
+        position: relative;
+        font-family: "Secular One", sans-serif;
+        color: #263746;
+        padding: 0 1em;
+      }
+      .church-zone {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: "Comfortaa", cursive;
+        text-align: center;
+      }
+    }
+    .img-church {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+
+      // border-radius: 10px;
+      height: 350px;
+      width: 100%;
+      object-fit: cover;
+      // box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+
+      img {
+        height: 350px;
+        width: 500px;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    place-items: center;
+    padding: 2em 2em;
+    .ubication{
+      width: auto;
+      height: auto;
+      position: relative;
+      .icon{
+        width: 70px;
+        height: 70px;
+        text-align: center;
+        padding: 1em;
+        background-color: #06d6a0;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        mat-icon{
+          color: white;
+          transform: scale(1.5);
+        }
+      }
+      .direccion{
+        border-radius: 10px;
+        text-align: -webkit-center;
+        padding: 2em 4em;
+        padding-top: 3em;
+        border: solid #06d6a0 4px;
+        // background-color: #048a81;
+        // color: #fff;
+        box-shadow: 0 15px 65px rgba(0, 0, 0, 0.1);
+        .subtitle{
+          padding-bottom: 1em;
+          font-family: "Secular One", sans-serif;
+          font-weight: 600;
+          font-size: 20px;
+        }
+        .texto{
+          font-family: "Comfortaa", cursive;
+          font-weight: 600;
+        }
+      }
+    }
+
+    .fundacion{
+      width: auto;
+      height: auto;
+      position: relative;
+      .icon{
+        width: 70px;
+        height: 70px;
+        text-align: center;
+        padding: 1em;
+        background-color: #ef476f;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        mat-icon{
+          color: white;
+          transform: scale(1.5);
+        }
+      }
+      .content-fund{
+        border-radius: 10px;
+        text-align: -webkit-center;
+        padding: 2em 4em;
+        padding-top: 3em;
+        border: solid #ef476f 4px;
+        // background-color: #048a81;
+        // color: #fff;
+        box-shadow: 0 15px 65px rgba(0, 0, 0, 0.1);
+        .subtitle{
+          // padding-bottom: 1em;
+          font-family: "Secular One", sans-serif;
+          font-weight: 600;
+          font-size: 20px;
+        }
+        .numero{
+          font-family: "Secular One", sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          padding: 2em 2em;
+          .anios{
+            font-size: 4em;
+            font-weight: 900;
+            position: relative;
+          }
+          .texto{
+            font-weight: 300;
+            font-size: 1em;
+          }
+        }
+        .texto{
+          font-family: "Comfortaa", cursive;
+          font-weight: 600;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          font-size: 16px;
+
+        }
+      }
+    }
+
+    .content-pastor{
+      width: 70%;
+      height: auto;
+      position: relative;
+      // border: solid #06d6a0 4px;
+      border-radius: 10px;
+
+      .content-img-pastor{
+        width: 100%;
+        height: 100%;
+        padding-top: 6em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        background-color: #26547c;
+        border-radius: 10px 10px 0 0;
+        .img-pastor{
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border-radius: 50%;
+          width: 150px;
+          height: 150px;
+        }
+      }
+      .nombre{
+        border-radius: 0 0 10px 10px;
+        text-align: -webkit-center;
+        padding: 2em 4em;
+        padding-top: 6em;
+        border: solid #26547c 4px;
+        background-color: #fcfcfc;
+        // color: #fff;
+        box-shadow: 0 15px 65px rgba(0, 0, 0, 0.1);
+        .subtitle{
+          padding-bottom: 1em;
+          font-family: "Secular One", sans-serif;
+          font-weight: 600;
+          font-size: 20px;
+        }
+        .texto{
+          font-family: "Comfortaa", cursive;
+          font-weight: 600;
+        }
+      }
+    }
+
+    .content-directiva{
+      width: 100%;
+      height: auto;
+      display: grid;
+      // place-content: center;
+      grid-gap: 24px 10px;
+      padding: 2em 0;
+      .persona{
+        width: 80%;
+        padding: 1em 2em;
+        box-shadow: 0 15px 65px rgba(0, 0, 0, 0.1);
+        .texto{
+          font-family: "Secular One", sans-serif;
+          // font-family: "Comfortaa", cursive;
+          font-weight: 500;
+          font-size: 20px;
+        }
+        .subtitulo{
+          font-family: "Secular One", sans-serif;
+          font-weight: 500;
+          font-size: 16px;
+          color: #263746b3;
+        }
+      }
+
+      .dni{
+        border-left: solid rgb(31, 138, 112) 8px;
+      }
+      .jni{
+        border-left: solid #ff9500 8px;
+      }
+      .mni{
+        border-left: solid rgb(0, 66, 90) 8px;
+      }
+    }
+  }
+
+  .horarios{
+    background-color: #fcfcfc;
+    .title {
+      background-color: rgb(0, 66, 90);
+      text-align: center;
+      padding: 1em;
+      color: #fcfcfc;
+      padding-bottom: 1em;
+      font-family: "Secular One", sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .content-cards{
+      display: flex;
+      justify-content: space-evenly;
+      padding: 2em 4em;
+      .card {
+        text-align: -webkit-center;
+        padding: 2em 6em;
+        border: solid #06d6a0 4px;
+
+        // background-color: #e9edf1;
+        color: #263746;
+        font-size: 16px;
+        font-family: "Comfortaa", cursive;
+        border-radius: 10px;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+        .culto {
+          font-family: "Secular One", sans-serif;
+          font-weight: 600;
+          font-size: 20px;
+          padding-bottom: 8px;
+          border-bottom: dotted rgb(0, 66, 90) 4px;
+        }
+        .dia {
+          font-weight: 500;
+          font-size: 16px;
+          padding: 1em;
+
+        }
+        .horario {
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+}
+
+@media (min-width: 320px) and (max-width: 425px) {
+  .container {
+    .one {
+      display: flex;
+      flex-direction: column;
+      .church-header {
+        .church-post {
+          padding: 2em;
+          padding-bottom: 0;
+          .church-logo {
+            width: 52px;
+            height: 40px;
+          }
+          .church-deno {
+            font-size: 16px;
+            border-bottom: 1px #263746 solid;
+            small {
+              font-size: 10px;
+            }
+          }
+        }
+        .church-name {
+          font-size: 16px;
+          font-weight: 500;
+          font-family: "Comfortaa", cursive;
+          padding: 0.3em;
+          padding-bottom: 2em;
+        }
+        .church-zone {
+          font-size: 12px;
+          text-align: right;
+          padding: 0.5em 1em;
+        }
+      }
+      .img-church {
+        img {
+        }
+      }
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 1em .5em;
+      .ubication{
+        .icon{
+          width: 50px;
+          height: 50px;
+          mat-icon{
+            transform: scale(1);
+          }
+        }
+        .direccion{
+          padding: 1em 2em;
+          padding-top: 3em;
+          justify-self: center;
+          .subtitle{
+            padding-bottom: .5em;
+            font-weight: 500;
+            font-size: 20px;
+          }
+          .texto{
+            font-weight: 500;
+          }
+        }
+      }
+
+      .fundacion{
+        width: 100%;
+        .icon{
+          width: 50px;
+          height: 50px;
+          mat-icon{
+            transform: scale(1);
+          }
+        }
+        .content-fund{
+          padding: 1em 2em;
+          padding-top: 3em;
+          .subtitle{
+            font-weight: 500;
+            font-size: 16px;
+          }
+          .numero{
+            padding: 1em 1em;
+            .anios{
+              font-size: 3em;
+              font-weight: 600;
+            }
+            .texto{
+              font-weight: 300;
+              font-size: 1em;
+            }
+          }
+          .texto{
+            font-weight: 500;
+            font-size: 16px;
+          }
+        }
+      }
+
+      .content-pastor{
+        width: 100%;
+        .content-img-pastor{
+          .img-pastor{
+          }
+        }
+        .nombre{
+          padding: 1em 2em;
+          padding-top: 6em;
+          .subtitle{
+            padding-bottom: .5em;
+            font-weight: 500;
+            font-size: 16px;
+          }
+          .texto{
+            font-weight: 500;
+          }
+        }
+      }
+
+      .content-directiva{
+        width: 100%;
+        height: auto;
+        display: grid;
+        // place-content: center;
+        grid-gap: 16px 8px;
+        padding: 1em 0;
+        .persona{
+          width: 100%;
+          padding: 1em 1em;
+          .texto{
+            font-size: 16px;
+          }
+          .subtitulo{
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .horarios{
+      padding-bottom: 1em;
+      .title {
+        padding: .5em;
+        padding-bottom: .5em;
+        font-size: 16px;
+      }
+      .content-cards{
+        display: grid;
+        row-gap: 1em;
+        padding: .5em .5em;
+        .card {
+          width: 100%;
+          padding: 1em 2em;
+          .culto {
+            font-weight: 500;
+            font-size: 16px;
+            padding-bottom: 8px;
+          }
+          .dia {
+            font-weight: 500;
+            font-size: 16px;
+            padding: 1em;
+          }
+          .horario {
+            font-size: 16px;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+  }
+}
+
+// @media (min-width: 768px) {
+
+// }
+
+// @media (min-width: 1200px) {
+
+// }

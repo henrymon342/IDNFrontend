@@ -1,0 +1,256 @@
+
+.container{
+  .container-title{
+    background: url(../../assets/bgs/bg_iglesias1.jpg);
+    width: 100%;
+    height: 300px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+
+    background-attachment: fixed;
+    padding: 4em;
+    text-align: center;
+    color: white;
+
+    &:before {
+      content:'';
+      position: absolute;
+            top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0,0,0,0.4);
+    }
+
+    .title{
+      margin: 0;
+      font-size: 4em;
+      font-weight: 900;
+      position: relative;
+      font-family: 'Secular One', sans-serif;
+    }
+
+    .container-sub-title{
+      position: relative;
+      .sub-title{
+        margin: 0;
+        font-size: 18px;
+        font-weight: 500;
+        font-family: 'Comfortaa', cursive;
+      }
+      .sub-title-cite{
+        margin: 0;
+        font-size: 18px;
+        font-weight: 200;
+        font-family: 'Secular One', sans-serif;
+        text-align: end;
+        padding: 1em;
+
+      }
+    }
+  }
+
+  .cont_events{
+    padding: 0em 8em;
+    min-height: 80vh;
+    padding-bottom: 1em;
+    .cont{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 80vh;
+      box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2);
+      .caja{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .calendario{
+          font-size: 4em;
+        }
+        .texto{
+          font-size: 1.5em;
+          font-weight: 900;
+          font-family: 'Secular One', sans-serif;
+        }
+      }
+    }
+  }
+
+  .bg_calendar{
+    background: url(../../assets/bgs/bg_adoracion.jpg);
+    background: linear-gradient(45deg, #4f779b, #00a2af);
+    width: 100%;
+    height: auto;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+
+    background-attachment: fixed;
+    padding: 1em;
+    text-align: center;
+    color: white;
+
+    .title-img{
+      margin: 0em .3em;
+      width: 60px;
+      content: url(../../assets/bgs/nazarene-logo-whi.png);
+    }
+
+    .title{
+      margin: 0;
+      font-size: 2em;
+      font-weight: 900;
+      position: relative;
+      font-family: 'Secular One', sans-serif;
+    }
+
+    .btn-show-calendar{
+      text-align: center;
+      mat-icon{
+        // font-size: 2.5em;
+        color: #eee;
+        transition: font-size .5s ease;
+        &:hover{
+          font-size: 3em;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .container-select-date{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em;
+    .select-mount{
+      width: 10em;
+      background: linear-gradient(180deg, #263746, #263746);
+      color: white;
+      border-radius: .5em;
+      border: none;
+      margin: 0 1em;
+
+      &:hover{
+        cursor: pointer;
+      }
+      h3{
+        padding: 0 1em;
+        font-family: 'Comfortaa', cursive;
+        font-weight: 200;
+      }
+    }
+
+    .select-arrow{
+      width: 4em;
+      height: 4em;
+      background: linear-gradient(180deg, #263746, #263746);
+      color: white;
+      border-radius: .5em;
+      border: none;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+
+@media (min-width: 320px) and (max-width: 425px) {
+  .container{
+    .container-title{
+      width: 100%;
+      height: 250px;
+      padding: 1em;
+      .title{
+        font-size: 32px;
+      }
+      .container-sub-title{
+        .sub-title{
+          font-size: 16px;
+          font-weight: 400;
+        }
+        .sub-title-cite{
+          font-size: 14px;
+          padding: 1em;
+        }
+      }
+    }
+
+    .cont_events{
+      padding: 0em .5em;
+      min-height: 80vh;
+      padding-bottom: 1em;
+      .cont{
+        .caja{
+          .calendario{
+            font-size: 1em;
+          }
+          .texto{
+            font-size: 1em;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+
+    .bg_calendar{
+      .title-img{
+        margin: 0em .3em;
+        width: 60px;
+        // content: url(../../assets/logos/logoww.png);
+        content: url(../../assets/bgs/nazarene-logo-whi.png);
+      }
+      .title{
+        margin: 0;
+        font-size: 1em;
+        font-weight: 700;
+      }
+
+      .btn-show-calendar{
+        mat-icon{
+          font-size: 2em;
+          &:hover{
+            font-size: 2em;
+          }
+        }
+      }
+    }
+
+    .container-select-date{
+      padding: 1em;
+      .select-mount{
+        width: 10em;
+        background: linear-gradient(180deg, #263746, #263746);
+        color: white;
+        border-radius: .5em;
+        border: none;
+        margin: 0 1em;
+        &:hover{
+          cursor: pointer;
+        }
+        h3{
+          padding: 0 1em;
+          font-family: 'Comfortaa', cursive;
+          font-weight: 200;
+        }
+      }
+
+      .select-arrow{
+        width: 4em;
+        height: 4em;
+        background: linear-gradient(180deg, #263746, #263746);
+        color: white;
+        border-radius: .5em;
+        border: none;
+        &:hover{
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

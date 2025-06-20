@@ -1,0 +1,148 @@
+<div class="container">
+
+  <section class="one">
+    <div class="church-header">
+      <div class="church-post">
+        <div class="church-logo">
+        </div>
+        <div class="church-deno"> IGLESIA <small>del</small> NAZARENO</div>
+      </div>
+      <h3 class="church-name">
+        {{ iglesia.nombre }}
+        </h3>
+      <h5 class="church-zone">
+        {{ iglesia.zona }}
+      </h5>
+
+      <!-- <div class="actions">
+        <div class="ubication">
+          <a href={{iglesia.ubicacion}}><mat-icon> location_on</mat-icon></a>
+          <div class="text">
+            UBICACIÓN
+          </div>
+        </div>
+        <div class="fundation">
+          <mat-icon>today</mat-icon>
+          <div class="text">
+            {{ iglesia.fundacion }}
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <img class="img-church" [src]="imagePath" alt="imagen de iglesia">
+  </section>
+
+  <section class="actions">
+
+
+    <div class="fundacion">
+      <div class="icon">
+        <a href={{iglesia.ubicacion}}><mat-icon> outlined_flag </mat-icon></a>
+      </div>
+
+      <div class="content-fund">
+        <div class="subtitle">
+          FUNDACIÓN
+        </div>
+        <div class="numero">
+          <div class="anios">
+            {{calcAnios(iglesia.fundacion)}}
+          </div>
+          <div class="texto">
+            años
+          </div>
+        </div>
+        <div class="texto">
+          <mat-icon>today</mat-icon>
+          <div class="text">
+            {{ iglesia.fundacion }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="ubication">
+      <div class="icon">
+        <a href={{iglesia.ubicacion}}><mat-icon> location_on</mat-icon></a>
+      </div>
+
+      <div class="direccion">
+        <div class="subtitle">
+          DIRECCIÓN
+        </div>
+        <div class="texto">
+          {{ iglesia.direccion }}
+        </div>
+      </div>
+    </div>
+
+    <div class="content-pastor">
+      <div class="content-img-pastor">
+        <img class="img-pastor" [src]="imagePathPas" alt="">
+
+        <!-- <a href={{iglesia.ubicacion}}><mat-icon> location_on</mat-icon></a> -->
+      </div>
+
+      <div class="nombre">
+        <div class="subtitle">
+          PASTOR
+        </div>
+        <div class="texto">
+          {{ pastorname }}
+        </div>
+      </div>
+    </div>
+
+    <div class="content-directiva">
+
+      <div class="persona dni">
+        <div class="texto">{{ iglesia.superdni }}</div>
+        <div class="subtitulo">SUPERINTENDENTE DNI</div>
+      </div>
+
+      <div class="persona jni">
+        <div class="texto">{{ iglesia.presijni }}</div>
+        <div class="subtitulo">PRESIDENTE JNI</div>
+      </div>
+
+      <div class="persona mni">
+        <div class="texto">{{ iglesia.presimni }}</div>
+        <div class="subtitulo">PRESIDENTE MNI</div>
+      </div>
+    </div>
+
+  </section>
+
+<section class="horarios">
+  <div class="title">
+    HORARIOS DE SERVICIO
+  </div>
+  <div class="content-cards">
+    <div class="card">
+      <div class="culto">
+        CULTO GENERAL
+      </div>
+      <div class="dia">
+        {{ iglesia.diacentral }}
+      </div>
+      <div class="horario">
+        {{ iglesia.horacentralini | date: 'h:mm a' }} - {{ iglesia.horacentralfin | date: 'h:mm a' }}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="culto">
+        CULTO JNI
+      </div>
+      <div class="dia">
+        {{ iglesia.diajni }}
+      </div>
+      <div class="horario">
+        {{ iglesia.horajniini | date: 'h:mm a' }} - {{ iglesia.horajnifin | date: 'h:mm a' }}
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>

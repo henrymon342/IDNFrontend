@@ -1,0 +1,180 @@
+<div class="container">
+  <section class="title-bg">
+    <h3 class="title-text"> {{ evento.titulo | uppercase }}</h3>
+    <span class="ministerio">
+      {{ evento.ministerio }}
+    </span>
+  </section>
+
+  <div class="finished" *ngIf="hasFinished">
+    <div class="cont-finished">
+      <div class="text">
+        {{estadoEvento}}
+      </div>
+      <!-- <div class="item" *ngFor="let word of REALIZADO">
+        {{ word }}
+      </div> -->
+    </div>
+  </div>
+
+  <section class="bg-timer" *ngIf="!hasFinished">
+    <div class="timer">
+      <div class="timer-item">
+        <h4>{{ day }}</h4>
+        <h5>DÍAS</h5>
+      </div>
+      <!-- <div class="dots"> · </div> -->
+      <div class="timer-item">
+        <h4>{{ hours }}</h4>
+        <h5>HRS</h5>
+      </div>
+      <!-- <div class="dots"> · </div> -->
+      <div class="timer-item">
+        <h4>{{ minutes }}</h4>
+        <h5>MIN</h5>
+      </div>
+      <!-- <div class="dots"> · </div> -->
+      <div class="timer-item">
+        <h4>{{ seconds }}</h4>
+        <h5>SEC</h5>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="info">
+    <div class="content-date">
+      <mat-icon class="icon_date">event</mat-icon>
+      <div class="date-type">
+        <div class="date">
+          <div class="bloque_fecha">
+            @if (evento.tipofecha == 'UN DÍA') {
+              <div class="mes">
+                <span>
+                {{evento.fechaini | date:'EEEE': 'en' | uppercase }}
+                </span>
+              </div>
+              <div class="dia">
+                <span>
+                  {{evento.fechaini| date:'dd': 'en' | uppercase }}
+                </span>
+              </div>
+            }@else {
+              <div class="dia">
+                <div>
+                  {{evento.fechaini| date:'dd': 'en' | uppercase }}
+                  <span class="nomdia">{{evento.fechaini | date:'EEEE': 'en' | uppercase }}</span>
+                  -
+                  {{evento.fechafin| date:'dd': 'en' | uppercase }}
+                  <span class="nomdia">{{evento.fechafin | date:'EEEE': 'en' | uppercase }}</span>
+
+                </div>
+              </div>
+            }
+            <!-- <div class="mes" *ngIf="evento.tipofecha == 'UN DÍA'">
+              <span>
+              {{evento.fechaini | date:'EEEE': 'en' | uppercase }}
+              </span>
+            </div> -->
+
+            <!-- <div class="dia" *ngIf="evento.tipofecha == 'UN DÍA'">
+              <span>
+                {{evento.fechaini| date:'dd': 'en' | uppercase }}
+              </span>
+            </div> -->
+            <!-- <div class="dia" *ngIf="evento.tipofecha != 'UN DÍA'">
+              <div>
+                {{evento.fechaini| date:'dd': 'en' | uppercase }}
+                <span class="nomdia">{{evento.fechaini | date:'EEEE': 'en' | uppercase }}</span>
+                -
+                {{evento.fechafin| date:'dd': 'en' | uppercase }}
+                <span class="nomdia">{{evento.fechafin | date:'EEEE': 'en' | uppercase }}</span>
+
+              </div>
+            </div> -->
+            <div class="mes_text">
+              <span>
+                {{evento.fechaini | date:'MMMM': 'en' | uppercase }}
+              </span>
+            </div>
+          </div>
+
+          <!-- <span *ngIf="evento.tipofecha != 'VARIOS DÍAS'">{{ evento.fechaini | date: 'EEEE, MMMM d, y' }}</span>
+          <span *ngIf="evento.tipofecha == 'VARIOS DÍAS'">{{ evento.fechaini | date: 'EEEE, MMMM d, y' }} - {{ evento.fechafin | date: 'EEEE, MMMM d, y' }}</span> -->
+          <!-- Agosto 5, 2022 -->
+        </div>
+        <div class="time">
+          <!-- {{ evento.horaini | date: 'h:mm a' }} -->
+          <!-- 1:00 pm -->
+        </div>
+      </div>
+    </div>
+
+    <div class="schedule">
+      {{ evento.horaini | date: 'h:mm a' }}
+    </div>
+  </section>
+
+  <section class="data-place">
+    <div class="data">
+      <div class="text">
+        {{ evento.modalidad }}
+      </div>
+      -------------------------
+      <!-- <div class="title">
+        MODALIDAD
+      </div> -->
+    </div>
+
+    <div class="data">
+      <div class="text">
+        @if (evento.optionplace == 'ALGUNA IGLESIA') {
+          <div class="">
+            <img class="title-img" alt="logo iglesia del nazareno" />
+            <div class="">
+              IGLESIA DEL NAZARENO
+            </div>
+          </div>
+        }
+        <!-- <div class="" *ngIf="evento.optionplace == 'ALGUNA IGLESIA'">
+          <img class="title-img" />
+          <div class="">
+            IGLESIA DEL NAZARENO
+          </div>
+        </div> -->
+        {{ evento.place }}
+      </div>
+      <!-- ------------------------- -->
+      <!-- <div class="title">
+        LUGAR O PLATAFORMA
+      </div> -->
+    </div>
+  </section>
+
+  <div class="bg-objetivos">
+    <div class="objetivos">
+      Descripción
+    </div>
+  </div>
+
+  <section class="presentation">
+    <div class="bg-center">
+      <div class="text">
+        {{ evento.descripcion }}
+      </div>
+    </div>
+  </section>
+
+  <div class="bg-objetivos">
+    <div class="objetivos">
+      Encagados
+    </div>
+  </div>
+
+
+  <div class="encargados"  *ngFor="let persona of ENCARGADOS">
+    <div class="encargado"> {{ persona }} </div>
+  </div>
+
+
+</div>

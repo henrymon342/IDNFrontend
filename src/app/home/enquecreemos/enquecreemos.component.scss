@@ -1,0 +1,316 @@
+.container{
+  width: 100%;
+  max-width: 100vw;
+  .container-title{
+    height: auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Secular One', sans-serif;
+    padding: 2em 0;
+    background: url('../../assets/bgs/bg_adoracion.jpg');
+    color: #f9f9f9;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    position: relative;
+    &:before {
+            content:'';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0,0,0,0.4);
+    }
+    .title{
+      text-align: center;
+      font-size: var(--super-titulo-tamano);
+      font-weight: var(--negrita-super-titulo);
+      margin: 0;
+      position: relative;
+    }
+    .sub-title{
+      font-size: var(--texto-tamano);
+      margin: 0;
+      padding: 1em 8em;
+      position: relative;
+    }
+  }
+  .bg-objetivos{
+    height: auto;
+    max-width: 100vw;
+    position: relative;
+    display: flex;
+    padding: 1em 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    .objetivos{
+      margin: 0;
+      font-size: 2em;
+      font-weight: 900;
+      position: relative;
+      font-family: "Josefin Sans", sans-serif;
+      align-self: center;
+      padding: 0 2em;
+      line-height: 2;
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 100%;
+        top: 8px;
+        height: 75px;
+        width: 1500px;
+        background: url(https://www.samnaz.org/wp-content/uploads/2021/01/dotted-grid-black.png) no-repeat 0 0;
+        background-size: 80% 50%;
+      }
+    }
+  }
+  .areas{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 4em 6em;
+    .area{
+      text-align: center;
+      padding: 1em 4em;
+      .icon{
+        width: 50px;
+      }
+      .text{
+        font-size: 1em;
+        line-height: 2em;
+        // font-family: "Comfortaa", cursive;
+        text-align: center;
+      }
+    }
+  }
+  .articles{
+  padding: 1em 10%;
+    .article{
+      margin: 1em;
+      mat-expansion-panel-header{
+        height: 60px;
+        text-align: justify;
+        mat-panel-description{
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  .valors{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2em 2em;
+    .valor{
+      background-color: var(--color-azul-oscuro);
+      color: #f9f9f9;
+      border-radius: 10px;
+      text-align: center;
+      padding: 2em 2em 1em 2em;
+      margin: 1em;
+
+      .text-title{
+        font-size: var(--titulo-mediano);
+        font-weight: 900;
+      }
+
+      .icon{
+        width: auto;
+        height: auto;
+        font-size: 1em;
+        display: flex;
+        justify-content: end;
+      }
+    }
+  }
+  .presentation{
+    display: flex;
+    justify-content: center;
+    padding: 4em;
+  }
+}
+
+
+@media (min-width: 320px) and (max-width: 425px) {
+  .container{
+    width: 100%;
+    .container-title{
+      padding: 1em 0;
+      // height: 280px;
+      .title{
+        font-size: var(--movil-super-titulo-tamano);
+        font-weight: var(--movil-negrita-super-titulo);
+      }
+      .sub-title{
+        font-size: var(--movil-texto-tamano);
+        padding: 1em 2em;
+      }
+    }
+    .bg-objetivos{
+      padding: .5em 0;
+      .objetivos{
+        font-size: var(--movil-titulo-mediano);
+        font-weight: 800;
+        padding: 0 1em;
+        &:after {
+          height: 50px;
+          width: 1000px;
+          top: 8px;
+        }
+      }
+    }
+    .areas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1em 1em;
+      .area{
+        padding: 1em 1em;
+        .text{
+          font-size: var(--movil-texto-tamano);
+        }
+      }
+    }
+    .articles{
+    padding: 1em 2%;
+      .article{
+        margin: 1em;
+        mat-expansion-panel-header{
+          height: 60px;
+          max-width: 90vw;
+          text-align: justify;
+          mat-panel-description{
+            // font-weight: 600;
+          }
+        }
+      }
+    }
+    .valors{
+      display: flex;
+      flex-wrap: wrap;
+      padding: 1em 1em;
+      .valor{
+        padding: 1em 1em 1em 1em;
+        margin-bottom: .5em;
+        .text-title{
+          font-size: var(--movil-titulo-mediano);
+        }
+      }
+    }
+    .presentation{
+      display: flex;
+      justify-content: center;
+      padding: 1em 2em;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .container{
+    // background-color: #118ab2;
+  }
+}
+
+// @media (min-width: 768px) {
+//   .container{
+//     background-color: #118ab2;
+//     .articles{
+//       padding: 1em 5%;
+//     }
+//     .bg-objetivos{
+//       .objetivos{
+//         font-size: 1.5em;
+//       }
+//     }
+//     .valors{
+//       display: flex;
+//       flex-wrap: wrap;
+//     }
+//     .presentation{
+//       padding: 0;
+//       padding-bottom: 1em;
+//       .bg-center{
+//         width: 100%;
+//         .text{
+//           padding: 2em 4em;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @media (min-width: 1200px) {
+//   .container{
+//     // background-color: crimson;
+//     .container-title{
+//       height: auto;
+//       padding: 2em;
+
+//       .title{
+//         font-size: var(--super-titulo-tamano);
+//         font-weight: var(--negrita-super-titulo);
+//       }
+//       .container-sub-title{
+//         .sub-title{
+//           font-size: 16px;
+//           line-height: 2;
+//           padding: 0 2em;
+//         }
+//       }
+//     }
+
+//     .bg-objetivos{
+//       // height: 100px;
+//       .objetivos{
+//         line-height: 1;
+//         font-size: 2em;
+//       }
+//     }
+
+//     .areas{
+//       padding: 2em;
+//       .area{
+//         padding: 2em;
+//         .icon{
+//           width: 2em;
+//         }
+//       }
+//     }
+
+//     .articles{
+//       padding: 0 20%;
+//       .article{
+//         mat-expansion-panel-header{
+//           mat-panel-description{
+//             font-size: 18px;
+//           }
+//         }
+//       }
+//     }
+
+//     .valors{
+//       display: grid;
+//       grid-template-columns: 1fr 1fr 1fr;
+//       padding: 1em 2em;
+//       .valor{
+//         .text-title{
+//           font-size: 24px;
+//           font-weight: 600;
+//           padding: 0;
+//         }
+//         .text{
+//           font-size: 16px;
+//         }
+//       }
+//     }
+
+//     .presentation{
+//       .bg-center{
+//         padding: 4em 6em;
+//       }
+//     }
+//   }
+// }

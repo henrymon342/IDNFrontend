@@ -1,0 +1,23 @@
+import { Component } from '@angular/core';
+import { EventModel } from '../../../core/models/event';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+
+@Component({
+  selector: 'app-detalle-evento',
+  standalone: true,
+  imports: [CommonModule, MatIconModule],
+  templateUrl: './detalle-evento.component.html',
+  styleUrl: './detalle-evento.component.scss'
+})
+export class DetalleEventoComponent {
+  public evento: EventModel = new EventModel();
+  public hasFinished = false;
+  public estadoEvento = '';
+  public ENCARGADOS: string[] = [];
+
+  day: any;
+  hours: any;
+  minutes: any;
+  seconds: any;
+}

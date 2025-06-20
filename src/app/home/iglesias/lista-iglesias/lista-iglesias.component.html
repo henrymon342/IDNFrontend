@@ -1,0 +1,84 @@
+<div class="container">
+  <svg class="wave" style="transform:rotate(0deg); transition: 0.3s" viewBox="0 0 1440 330" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(231, 111, 81, 1)" offset="0%"></stop><stop stop-color="rgba(244, 162, 97, 1)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,99L40,132C80,165,160,231,240,258.5C320,286,400,275,480,242C560,209,640,154,720,159.5C800,165,880,231,960,242C1040,253,1120,209,1200,170.5C1280,132,1360,99,1440,110C1520,121,1600,176,1680,170.5C1760,165,1840,99,1920,104.5C2000,110,2080,187,2160,214.5C2240,242,2320,220,2400,209C2480,198,2560,198,2640,176C2720,154,2800,110,2880,121C2960,132,3040,198,3120,236.5C3200,275,3280,286,3360,258.5C3440,231,3520,165,3600,126.5C3680,88,3760,77,3840,82.5C3920,88,4000,110,4080,99C4160,88,4240,44,4320,71.5C4400,99,4480,198,4560,198C4640,198,4720,99,4800,49.5C4880,0,4960,0,5040,44C5120,88,5200,176,5280,214.5C5360,253,5440,242,5520,209C5600,176,5680,121,5720,93.5L5760,66L5760,330L5720,330C5680,330,5600,330,5520,330C5440,330,5360,330,5280,330C5200,330,5120,330,5040,330C4960,330,4880,330,4800,330C4720,330,4640,330,4560,330C4480,330,4400,330,4320,330C4240,330,4160,330,4080,330C4000,330,3920,330,3840,330C3760,330,3680,330,3600,330C3520,330,3440,330,3360,330C3280,330,3200,330,3120,330C3040,330,2960,330,2880,330C2800,330,2720,330,2640,330C2560,330,2480,330,2400,330C2320,330,2240,330,2160,330C2080,330,2000,330,1920,330C1840,330,1760,330,1680,330C1600,330,1520,330,1440,330C1360,330,1280,330,1200,330C1120,330,1040,330,960,330C880,330,800,330,720,330C640,330,560,330,480,330C400,330,320,330,240,330C160,330,80,330,40,330L0,330Z"></path></svg>
+  <section class="container-title" >
+    <h3 class="title"> IGLESIAS </h3>
+      <p class="sub-title">
+        Y que la paz de Cristo reine en sus corazones,
+        porque con este propósito los llamó Dios a formar un solo cuerpo.
+        Y sean agradecidos.
+      </p>
+      <b class="sub-title">
+        COLOSENSES 3:15
+      </b>
+  </section>
+
+  @if(currentChurch.nombre) {
+    <section class="church">
+      <div class="block1">
+        <div class="church-search">
+          <div class="search">
+            <input type="text" placeholder="buscar" (input)="searchChurch(myInput.value)" #myInput>
+            <div class="btn">
+              <mat-icon>search</mat-icon>
+            </div>
+          </div>
+        </div>
+        <div class="church-header">
+          <div class="church-post">
+            <div class="church-logo">
+            </div>
+            <div class="church-deno"> IGLESIA <small>del</small> NAZARENO</div>
+          </div>
+          <h3 class="church-name">
+            <!-- [ngStyle]="{'font-size': 'font-size':{{currentChurch.nombre.length>14}} ? '1em' : '.5em'}" -->
+            <div [ngStyle]="{'font-size': currentChurch.nombre.length<14 ? '1em' : '.8em'}">{{ currentChurch.nombre }}</div>
+          </h3>
+          <div class="church-zone">
+            <div class="">{{ currentChurch.zona }}</div>
+          </div>
+        </div>
+        <div class="church-actions">
+          <div class="btn">
+            <button mat-icon-button (click)="toDirection('left')">
+              <mat-icon  >keyboard_arrow_left</mat-icon>
+            </button>
+          </div>
+          <div class="btn">
+            <button mat-icon-button (click)="toDirection('right')">
+              <mat-icon >keyboard_arrow_right</mat-icon>
+            </button>
+          </div>
+        </div>
+
+      </div>
+      <div class="block2">
+        <app-card-iglesia
+                      [idchurch]="currentChurch.id"
+                      [church]="currentChurch.nombre"
+                      [zona]="currentChurch.zona"
+                      [idPastor]="currentChurch.idPastor"
+                      [diacentral]="currentChurch.diacentral"
+                      [diajni]="currentChurch.diajni"
+                      [horacentralini]="currentChurch.horacentralini"
+                      [horacentralfin]="currentChurch.horacentralfin"
+                      [horajniini]="currentChurch.horajniini"
+                      [horajnifin]="currentChurch.horajnifin"
+                      [nombrepastor]="currentChurch.pastorname!"
+                      [imgpathpas]="currentChurch.imagePathPas!"
+                      [imgpathchurch]="currentChurch.imagePath!">
+        </app-card-iglesia>
+      </div>
+    </section>
+  }@else {
+    <div class="nochurchs">
+      <div class="">
+        No exixisten Iglesias!
+      </div>
+    </div>
+  }
+</div>
+
+
+
+
+

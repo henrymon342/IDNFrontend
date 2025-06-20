@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="img">
+    @if( imgpathpas ) {
+      <img [src]="imgpathchurch" [alt]="'imagen de iglesia ' + church" />
+    }
+    @else {
+      <div class="caja">
+        <div class="custom-loader"></div>
+      </div>
+    }
+  </div>
+
+  <div class="data-church">
+    <div class="data-pastor">
+      <div class="title">Pastor: </div>
+      <div class="text">
+        {{ nombrepastor | uppercase }}
+      </div>
+    </div>
+    <div class="data">
+      <div class="services">
+        <!-- <div class="title">SERVICIOS</div> -->
+        <div class="general">
+          <div class="subtitle">CULTO GENERAL</div>
+          <div class="text">
+            <div class="">
+              {{ diacentral }}
+            </div>
+            |
+            <div class="">
+              {{ horacentralini | date : "h:mm a" }} -
+              {{ horacentralfin | date : "h:mm a" }}
+            </div>
+          </div>
+        </div>
+        <div class="general">
+          <div class="subtitle">REUNION DE JÓVENES</div>
+          <div class="text">
+            <div class="">
+              {{ diajni }}
+            </div>
+            |
+            <div class="">
+              {{ horajniini | date : "h:mm a" }} -
+              {{ horajnifin | date : "h:mm a" }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="more">
+      <!-- <div class="img-pastor">
+      <ng-container class="" *ngIf="imgpathpas">
+        <img id="imgpas" [src]="imgpathpas" alt="imagen de pastor" />
+      </ng-container>
+      <ng-container class="" *ngIf="!imgpathpas">
+        <div class="custom-loader"></div>
+      </ng-container>
+    </div> -->
+      <button mat-raised-button color="primary" (click)="seeMore()">
+        VER MÁS
+      </button>
+    </div>
+  </div>
+</div>
