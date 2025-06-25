@@ -1,0 +1,266 @@
+
+
+  <div class="container">
+    <div class="header">
+      <h2>{{title}} Iglesia</h2>
+      <button mat-icon-button matMiniFab (click)="closeSidenav()">
+        <mat-icon class="blue-icon" color="warn">close</mat-icon>
+      </button>
+    </div>
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+
+    <h3 class="just-join-columns">Datos personales</h3>
+
+    <!-- Categoria -->
+    <mat-form-field appearance="outline">
+      <mat-label>Categoria</mat-label>
+      <mat-select formControlName="category">
+        @for (cat of CATEGORIES; track cat) {
+          <mat-option [value]="cat">{{cat}}</mat-option>
+        }
+      </mat-select>
+      <mat-error *ngIf="form.get('category')?.hasError('required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Nombre -->
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" />
+      <mat-error *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Dirección de vivienda -->
+    <mat-form-field appearance="outline">
+      <mat-label>Dirección de vivienda</mat-label>
+      <input matInput formControlName="direccion" />
+      <mat-error *ngIf="form.get('direccion')?.hasError('required') && form.get('direccion')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Teléfono celular -->
+    <mat-form-field appearance="outline">
+      <mat-label>Teléfono celular</mat-label>
+      <input matInput formControlName="celular" />
+      <mat-error *ngIf="form.get('celular')?.hasError('required') && form.get('celular')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Correo -->
+    <mat-form-field appearance="outline">
+      <mat-label>Correo electrónico</mat-label>
+      <input matInput formControlName="correo" />
+      <mat-error *ngIf="form.get('correo')?.hasError('required') && form.get('correo')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Fecha de nacimiento -->
+    <mat-form-field class="box-input2" appearance="outline" >
+      <mat-label>Fecha de nacimiento</mat-label>
+      <input matInput [matDatepicker]="picker"
+                      formControlName="fecha_nac">
+      <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle >
+      <mat-datepicker #picker
+                      startView="multi-year"
+                      [startAt]="STARTDATE"
+                      ></mat-datepicker>
+      <mat-error *ngIf="form.get('fecha_nac')?.hasError('required') && form.get('fecha_nac')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Lugar de nacimiento -->
+    <mat-form-field appearance="outline">
+      <mat-label>Lugar de nacimiento</mat-label>
+      <input matInput formControlName="lugar_nac" />
+      <mat-error *ngIf="form.get('lugar_nac')?.hasError('required') && form.get('lugar_nac')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Estado civil -->
+    <mat-form-field appearance="outline">
+      <mat-label>Estado civil</mat-label>
+      <mat-select formControlName="estado_civil">
+        @for (estado of ESTADO_CIVIL; track estado) {
+          <mat-option [value]="estado">{{estado}}</mat-option>
+        }
+      </mat-select>
+      <mat-error *ngIf="form.get('year')?.hasError('required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <h3 class="just-join-columns">Datos ministeriales</h3>
+
+    <!-- Año de Licencia recibida -->
+    <mat-form-field appearance="outline">
+      <mat-label>Año de Licencia recibida</mat-label>
+      <mat-select formControlName="year">
+        @for (year of YEARS; track year) {
+          <mat-option [value]="year">{{year}}</mat-option>
+        }
+      </mat-select>
+      <mat-error *ngIf="form.get('year')?.hasError('required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Otorgado en -->
+    <mat-form-field appearance="outline">
+      <mat-label>Otorgado en</mat-label>
+      <input matInput formControlName="dado_en" />
+      <mat-error *ngIf="form.get('dado_en')?.hasError('required') && form.get('dado_en')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Lugar de membresía -->
+    <mat-form-field appearance="outline">
+      <mat-label>Lugar de membresía</mat-label>
+      <input matInput formControlName="membresia" />
+      <mat-error *ngIf="form.get('membresia')?.hasError('required') && form.get('membresia')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+
+    <!-- Lugar de servicio ministerial -->
+    <mat-form-field appearance="outline">
+      <mat-label>Lugar de servicio ministerial</mat-label>
+      <input matInput formControlName="lugardeministerio" />
+      <mat-error *ngIf="form.get('lugardeministerio')?.hasError('required') && form.get('lugardeministerio')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Área -->
+    <mat-form-field appearance="outline">
+      <mat-label>Área</mat-label>
+      <mat-select formControlName="area">
+        @for (area of AREAS; track area) {
+          <mat-option value="{{area.area}}">
+            {{ area.area }} ({{ area.sigla }})
+          </mat-option>
+        }
+      </mat-select>
+      <mat-error *ngIf="form.get('area')?.hasError('required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <h3 class="just-join-columns">Datos de conyugue</h3>
+
+    <!-- Nombre completo de esposa/o -->
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre Completo de esposa(o)</mat-label>
+      <input matInput formControlName="nombre_esposa" />
+    </mat-form-field>
+
+    <!-- Fecha de nacimiento de conyugue -->
+    <mat-form-field class="box-input2" appearance="outline" >
+      <mat-label>Fecha de nacimiento de conyugue</mat-label>
+      <input matInput [matDatepicker]="picker1"
+                      formControlName="fecha_nac_esposa">
+      <mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle >
+      <mat-datepicker #picker1
+                      startView="multi-year"
+                      [startAt]="STARTDATE"
+                      ></mat-datepicker>
+    </mat-form-field>
+
+    <!-- Lugar de nacimiento de conyugue -->
+    <mat-form-field appearance="outline">
+      <mat-label>Lugar de nacimiento de conyugue</mat-label>
+      <input matInput formControlName="lugar_nac_esposa" />
+    </mat-form-field>
+
+    <h3 class="just-join-columns">Datos de salud de familia</h3>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 just-join-columns">
+      <!-- Nro Column -->
+      <ng-container matColumnDef="nro">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.nro}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- Age Column -->
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef> Edad </th>
+        <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+      </ng-container>
+
+      <!-- Health Column -->
+      <ng-container matColumnDef="health">
+        <th mat-header-cell *matHeaderCellDef> Salud </th>
+        <td mat-cell *matCellDef="let element"> {{element.health}} </td>
+      </ng-container>
+
+      <!-- Observation Column -->
+      <ng-container matColumnDef="observation">
+        <th mat-header-cell *matHeaderCellDef> Observación </th>
+        <td mat-cell *matCellDef="let element"> {{element.observation}} </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button (click)="deleteItem(element.id)">
+            <mat-icon class="blue-icon">edit_outline</mat-icon>
+          </button>
+
+          <button mat-icon-button (click)="modifyItem(element.id)">
+            <mat-icon class="red-icon">delete_outline</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <form [formGroup]="formFamily" class="form-family just-join-columns">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input formControlName="name"
+        type="text"
+        matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Edad</mat-label>
+        <input formControlName="age"
+        type="number"
+        matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Estado de salud</mat-label>
+        <input formControlName="health"
+        type="text"
+        matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Observación</mat-label>
+        <input formControlName="observation"
+        type="text"
+        matInput>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="button" (click)="addItem()">
+        Añadir
+      </button>
+    </form>
+
+
+    <!-- Preview image -->
+    @if(this.title == "Modificar"){
+      <h3 class="just-join-columns">Imagen actual</h3>
+      <img [src]="imagenIglesia.imagePath" alt="imagen de iglesia" class="just-join-columns img-iglesia" />
+    }
+
+    <h3 class="just-join-columns">Selección de imagen</h3>
+    <!-- Imagen -->
+    <ngx-dropzone (change)="onSelect($event)" class="just-join-columns">
+        <ngx-dropzone-label>Arrartrar imagen de Iglesia aquí</ngx-dropzone-label>
+        <ngx-dropzone-image-preview
+          ngProjectAs="ngx-dropzone-preview"
+          [removable]="true"
+          *ngFor="let f of files"
+          [file]="f"
+          accept="image/jpeg,image/jpg,image/png"
+          (removed)="onRemove(f)"
+        >
+          <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+        </ngx-dropzone-image-preview>
+      </ngx-dropzone>
+
+    <button mat-raised-button color="primary" type="submit" class="unir-columnas">
+      {{title}}
+    </button>
+  </form>
+</div>

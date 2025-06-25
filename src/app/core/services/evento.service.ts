@@ -1,40 +1,38 @@
-import { Injectable } from '@angular/core';
-import { EventModel } from '../models/event';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-
-const baseUrl = environment.URL;
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventoService {
 
-  constructor( private http: HttpClient) { }
+  private readonly baseUrl = environment.URL;
 
-  createEvent( event: EventModel ): Observable<any> {
-    return this.http.post(`${baseUrl}/eventos`, event);
+  constructor(private http: HttpClient) {}
+
+  obtenerEventos(ministerio: { ministerio: string }) {
+    return this.http.post<any>(`${this.baseUrl}/eventos/obtenerPorMinisterio`, ministerio);
   }
 
-  get(id:number): Observable<any> {
-  return this.http.get(`${baseUrl}/eventos/${id}`);
+  obtenerEvento(id: number) {
+    return this.http.get<any>(`${this.baseUrl}/eventos/${id}`);
   }
 
-  update(id: number, event: EventModel ): Observable<any> {
-  return this.http.put(`${baseUrl}/eventos/${id}`, event);
+  crearEvento(ministerio: any) {
+    return this.http.post<any>(`${this.baseUrl}/eventos`, ministerio);
   }
 
-  delete(id: number): Observable<any> {
-  return this.http.delete(`${baseUrl}/eventos/${id}`);
+  modificarEvento(id:number, ministerio: any) {
+    return this.http.put<any>(`${this.baseUrl}/eventos/${id}`, ministerio);
   }
 
-  findByMinisterio(ministerio: any):Observable<any> {
-    return this.http.post(`${baseUrl}/eventos/obtenerPorMinisterio`, ministerio);
+  eliminarEvento(id:number) {
+    return this.http.delete<any>(`${this.baseUrl}/eventos/${id}`);
   }
 
-  findByMonth(data:any): Observable<any> {
+  eventosPorMes(data:any) {
     console.log(data);
-    return this.http.post(`${baseUrl}/eventos/obtenerEventosXMes`, data);
+    return this.http.post<any>(`${this.baseUrl}/eventos/obtenerEventosXMes`, data);
   }
 }

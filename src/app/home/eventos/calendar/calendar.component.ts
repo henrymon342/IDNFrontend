@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CalendarEvent, CalendarModule, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
 import { EventoService } from '../../../core/services/evento.service';
-import { EventModel } from '../../../core/models/event';
 import { endOfDay, startOfDay, isSameMonth, isSameDay } from 'date-fns';
 import { Subject } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { DetalleEventoComponent } from '../detalle-evento/detalle-evento.component';
 import { IDNConstants } from '../../../shared/constants';
+import { Evento } from '../../../core/models/evento';
 
 @Component({
   selector: 'app-calendar',
@@ -20,7 +20,7 @@ import { IDNConstants } from '../../../shared/constants';
 export class CalendarComponent implements OnInit{
   view: CalendarView = CalendarView.Month;
   viewDate: Date = new Date();
-  public allEvents:EventModel[] = [];
+  public allEvents:Evento[] = [];
   eventos: CalendarEvent[] = [];
   public COLORS = IDNConstants.colors;
   refresh = new Subject<void>();
@@ -49,9 +49,9 @@ export class CalendarComponent implements OnInit{
     const gestion = fecha.getFullYear();
     console.log(nromes);
     console.log(gestion);
-    this._eventoService.findByMonth({ nromes, gestion }).subscribe( (res: any) =>{
+    this._eventoService.eventosPorMes({ nromes, gestion }).subscribe( (res: any) =>{
       console.log(res);
-      this.allEvents = res.data as EventModel[];
+      this.allEvents = res.data as Evento[];
       this.allEvents.forEach( evento => {
         const colorEvent = this.getMinisteryColor(evento);
         const objetofechas = this.getDatesEvents(evento);
@@ -86,7 +86,7 @@ export class CalendarComponent implements OnInit{
     // this.getEventbyMonth(this.viewDate);
   }
 
-  getMinisteryColor(evento: EventModel): any {
+  getMinisteryColor(evento: Evento): any {
     switch ( evento.ministerio ) {
       case 'JNI':
         return this.COLORS.orange;
@@ -99,7 +99,7 @@ export class CalendarComponent implements OnInit{
     }
   }
 
-  getDatesEvents( evento: EventModel ):object{
+  getDatesEvents( evento: Evento ):object{
     console.log("entro");
 
     if( evento.tipofecha == 'VARIOS DÍAS' ){
@@ -113,11 +113,11 @@ export class CalendarComponent implements OnInit{
 
   obtenerEventosMes(nromes:any, gestion:any) {
     const modelEvent:any[] = [];
-    this._eventoService.findByMonth({nromes, gestion}).subscribe( async (res: any) =>{
+    this._eventoService.eventosPorMes({nromes, gestion}).subscribe( async (res: any) =>{
       this.allEvents = res.data;
       console.log(res);
 
-      this.allEvents.forEach((element: EventModel) => {
+      this.allEvents.forEach((element: Evento) => {
         console.log(element);
         //COLORES
         let colorToEvent = '';
@@ -208,14 +208,14 @@ export class CalendarComponent implements OnInit{
     console.log('event', event);
     console.log('event', event.id);
     const idEvent: any = event.id;
-    this._eventoService.get(idEvent)
+    this._eventoService.obtenerEvento(idEvent)
     .subscribe(res => {
       console.log(res);
       this.openDialog('3000ms', '1500ms', res.data)
     })
   }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, evento: EventModel): void {
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, evento: Evento): void {
     const parametros = {
       width: '90vw',
       enterAnimationDuration,

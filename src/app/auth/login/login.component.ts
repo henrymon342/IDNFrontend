@@ -6,8 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { LoginForm } from '../Models/loginForm';
 import { AuthService } from '../auth.service';
-import { ToastService } from '../../shared/services/toast.service';
-import { LocalStorageService } from '../../shared/services/localstorage.service';
+import { ToastService } from '../../core/services/toast.service';
+import { LocalStorageService } from '../../core/services/localstorage.service';
 
 @Component({
   selector: 'app-login',

@@ -1,17 +1,42 @@
-/* Structure */
-// table {
-//   width: 100%;
-//   max-height: 50vh;
-//   overflow-y: auto;
-// }
-
-
 .example-container {
   max-height: 100vh;
   // overflow-y: auto;
   .example-sidenav {
     width: 80vw; /* o cualquier medida */
-    padding: 1em;
+    padding: 0 0 1em 1em;
+  }
+
+  .example-sidenav-content{
+    .container{
+      padding: 1em;
+
+      .header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .actions{
+          width: auto;
+        }
+      }
+
+      .table-container{
+        height: 71vh;
+        overflow-y: auto;
+
+        .table-container{
+          height: auto;
+        }
+      }
+
+      .blue-icon{
+        color: blue;
+      }
+
+      .red-icon{
+        color: red;
+      }
+    }
   }
 
   mat-drawer-content {
@@ -22,22 +47,7 @@
     align-items: flex-start;
   }
 
-  .container{
-    padding: 1em;
 
-    .table-container{
-      height: 82vh;
-      // overflow-y: auto;
-    }
-
-    .blue-icon{
-      color: blue;
-    }
-
-    .red-icon{
-      color: red;
-    }
-  }
 }
 
 

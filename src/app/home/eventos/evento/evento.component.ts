@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { EventModel } from '../../../core/models/event';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
+import { Evento } from '../../../core/models/evento';
 
 @Component({
   selector: 'app-evento',
@@ -11,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrl: './evento.component.scss'
 })
 export class EventoComponent {
-  @Input() evento: EventModel;
+  @Input() evento: Evento;
 
   public hasFinished: boolean = false;
 
@@ -19,12 +19,12 @@ export class EventoComponent {
 
   }
 
-  seeDetail(evento: EventModel): void{
+  seeDetail(evento: Evento): void{
     console.log(evento);
     this.openDialog('3000ms', '1500ms', evento)
   }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, evento: EventModel): void {
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, evento: Evento): void {
     const parametros = {
       width: '90vw',
       enterAnimationDuration,

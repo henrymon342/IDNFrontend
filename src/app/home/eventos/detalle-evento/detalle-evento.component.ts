@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { EventModel } from '../../../core/models/event';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { Evento } from '../../../core/models/evento';
 
 @Component({
   selector: 'app-detalle-evento',
@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './detalle-evento.component.scss'
 })
 export class DetalleEventoComponent {
-  public evento: EventModel = new EventModel();
+  public evento: Evento;
   public hasFinished = false;
   public estadoEvento = '';
   public ENCARGADOS: string[] = [];

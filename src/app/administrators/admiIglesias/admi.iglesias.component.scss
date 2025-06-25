@@ -1,0 +1,67 @@
+.example-container {
+  max-height: 100vh;
+  // overflow-y: auto;
+  .example-sidenav {
+    width: 80vw; /* o cualquier medida */
+    padding: 0 0 1em 1em;
+    overflow: hidden;
+  }
+
+  .example-sidenav-content{
+    .container{
+      padding: 1em;
+
+      .header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .actions{
+          width: auto;
+        }
+      }
+
+      .table-container{
+        height: 71vh;
+        overflow-y: auto;
+
+        .table-container{
+          height: auto;
+        }
+      }
+
+      .blue-icon{
+        color: blue;
+      }
+
+      .red-icon{
+        color: red;
+      }
+    }
+  }
+
+  mat-drawer-content {
+    width: 900px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+
+}
+
+
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+
+
+
+
+
+
+

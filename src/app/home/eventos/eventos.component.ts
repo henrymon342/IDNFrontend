@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarEvent, CalendarModule, CalendarView } from 'angular-calendar';
 import { EventoService } from '../../core/services/evento.service';
-import { EventModel } from '../../core/models/event';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { CalendarComponent } from './calendar/calendar.component';
@@ -9,6 +8,7 @@ import { EventoComponent } from './evento/evento.component';
 import { Subject } from 'rxjs';
 import { endOfDay, startOfDay } from 'date-fns';
 import { IDNConstants } from '../../shared/constants';
+import { Evento } from '../../core/models/evento';
 
 @Component({
   selector: 'app-eventos',
@@ -23,12 +23,12 @@ export class EventosComponent implements OnInit {
   viewDate1: Date = new Date();
   view: CalendarView = CalendarView.Month;
   view1: CalendarView = CalendarView.Month;
-  public monthEvents:EventModel[] = [];
+  public monthEvents:Evento[] = [];
   public seeCalendar: boolean = true;
   public currentYear = new Date();
   refresh = new Subject<void>();
 
-  public allEvents:EventModel[] = [];
+  public allEvents:Evento[] = [];
   private COLORS = IDNConstants.colors;
   events: CalendarEvent[] = [];
 
@@ -61,10 +61,10 @@ export class EventosComponent implements OnInit {
     console.log('FECHA_ACTUAL', this.viewDate);
     console.log('NUMERO DE MES', nromes);
 
-    this._eventoService.findByMonth({nromes, gestion}).subscribe( async (res:any) =>{
+    this._eventoService.eventosPorMes({nromes, gestion}).subscribe( async (res:any) =>{
       console.log(res);
       this.allEvents = res.data;
-      this.allEvents.forEach((element: EventModel) => {
+      this.allEvents.forEach((element: Evento) => {
         console.log(element);
         //COLORES
         let colorToEvent = '';
@@ -134,7 +134,7 @@ export class EventosComponent implements OnInit {
     const nromes = viewDate.getMonth();
     const gestion = viewDate.getFullYear();
     console.log('fecha --> ', viewDate);
-    this._eventoService.findByMonth({ nromes, gestion }).subscribe({
+    this._eventoService.eventosPorMes({ nromes, gestion }).subscribe({
       next: (res:any) => {
         console.log(res);
         this.monthEvents = res.data;

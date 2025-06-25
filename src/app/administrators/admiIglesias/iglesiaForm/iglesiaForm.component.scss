@@ -19,6 +19,14 @@
     text-align: center;
   }
 
+  .just-join-columns{
+    grid-column: span 2;
+  }
+
+  .img-iglesia{
+    width: 60%;
+    justify-self: center;
+    }
   .lista-encargados{
     grid-column: span 2;
     display: flex;

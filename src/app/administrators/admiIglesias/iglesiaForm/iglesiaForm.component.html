@@ -1,0 +1,223 @@
+
+
+  <div class="container">
+    <div class="header">
+      <h2>{{title}} Iglesia</h2>
+      <button mat-icon-button matMiniFab (click)="closeSidenav()">
+        <mat-icon class="blue-icon" color="warn">close</mat-icon>
+      </button>
+    </div>
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+
+    <h3 class="just-join-columns">Datos iniciales</h3>
+    <!-- Nombre de Iglesia -->
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Nombre de Iglesia</mat-label>
+      <input matInput formControlName="nombre" />
+      <mat-error *ngIf="form.get('nombre')?.hasError('required') && form.get('nombre')?.touched">El nombre de iglesia es obligatorio</mat-error>
+    </mat-form-field>
+
+<!-- Zona -->
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Zona</mat-label>
+      <mat-select formControlName="zona" name="zona">
+        @for (zona of ZONAS; track zona) {
+          <mat-option [value]="zona">{{zona}}</mat-option>
+        }
+      </mat-select>
+      <mat-error *ngIf="form.get('zona')?.hasError('required')">La zona es obligatoria</mat-error>
+    </mat-form-field>
+
+    <!-- Pastor -->
+    <mat-form-field appearance="outline">
+      <mat-label>Pastor</mat-label>
+      <input type="text"
+            placeholder="Seleccionar pastor"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="auto"
+            >
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        @for (option of filteredOptions | async; track option) {
+          <mat-option [value]="option.name" (onSelectionChange)="onPastorSeleccionado(option)">{{option.name}}</mat-option>
+        }
+      </mat-autocomplete>
+      <mat-error *ngIf="myControl.hasError('required')">El pastor es obligatorio</mat-error>
+    </mat-form-field>
+
+    <h3 class="just-join-columns">Directiva de la Iglesia</h3>
+
+    <!-- Presidente de JNI -->
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Presidente de JNI</mat-label>
+      <input matInput formControlName="presijni" />
+      <mat-error *ngIf="form.get('presijni')?.hasError('required')">El nombre de presidente es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Presidente de DNI -->
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Presidente de DNI</mat-label>
+      <input matInput formControlName="superdni" />
+      <mat-error *ngIf="form.get('superdni')?.hasError('required')">El nombre de presidente es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Presidente de MNI -->
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Presidente de MNI</mat-label>
+      <input matInput formControlName="presimni" />
+      <mat-error *ngIf="form.get('presimni')?.hasError('required')">El nombre de presidente es obligatorio</mat-error>
+    </mat-form-field>
+
+    <h3 class="just-join-columns">Culto central</h3>
+
+    <!-- Dia de culto central -->
+    <mat-form-field appearance="outline">
+      <mat-select
+        class="input-select"
+        placeholder="diacentral"
+        formControlName="diacentral">
+        @for (day of DAYS; track day) {
+          <mat-option [value]="day">{{ day }}</mat-option>
+        }
+      </mat-select>
+      <mat-error *ngIf="form.get('diacentral')?.hasError('required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Hora inicio culto central -->
+    <mat-form-field appearance="outline">
+      <mat-label>Hora inicio</mat-label>
+      <input
+        formControlName="horacentralini"
+        type="text"
+        matInput
+        readonly
+        [ngxMatTimepicker]="picker1"
+        mode="24h"
+      />
+      <ngx-mat-timepicker #picker1></ngx-mat-timepicker>
+      <mat-error *ngIf="form.get('horacentralini')?.hasError('required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Hora fin culto central -->
+    <mat-form-field appearance="outline">
+      <mat-label>Hora fin</mat-label>
+      <input
+        formControlName="horacentralfin"
+        type="text"
+        matInput
+        readonly
+        [ngxMatTimepicker]="picker2"
+        mode="24h"
+      />
+      <ngx-mat-timepicker #picker2></ngx-mat-timepicker>
+      <mat-error *ngIf="form.get('horacentralfin')?.hasError('required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <h3 class="just-join-columns">Culto JNI</h3>
+
+    <!-- Dia de culto JNI -->
+    <mat-form-field appearance="outline" >
+      <mat-select
+        class="input-select"
+        placeholder="día"
+        formControlName="diajni">
+        @for (day of DAYS; track day) {
+          <mat-option [value]="day">{{ day }}</mat-option>
+        }
+      </mat-select>
+      <mat-error *ngIf="form.get('diajni')?.hasError('required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Hora inicio culto JNI -->
+    <mat-form-field appearance="outline">
+      <mat-label>Hora inicio</mat-label>
+      <input
+        formControlName="horajniini"
+        type="text"
+        matInput
+        readonly
+        [ngxMatTimepicker]="picker3"
+        mode="24h"
+      />
+      <ngx-mat-timepicker #picker3></ngx-mat-timepicker>
+      <mat-error *ngIf="form.get('horajniini')?.hasError('required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Hora fin culto JNI -->
+    <mat-form-field appearance="outline">
+      <mat-label>Hora fin</mat-label>
+      <input
+        formControlName="horajnifin"
+        type="text"
+        matInput
+        readonly
+        [ngxMatTimepicker]="picker4"
+        mode="24h"
+      />
+      <ngx-mat-timepicker #picker4></ngx-mat-timepicker>
+      <mat-error *ngIf="form.get('horajnifin')?.hasError('required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <h3 class="just-join-columns">Datos específicos</h3>
+
+    <!-- Fecha de fundación -->
+    <mat-form-field class="fundacion" appearance="outline" class="box-input">
+      <mat-label>Fecha de fundación</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="fundacion"
+        readonly
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker
+        #picker
+        startView="multi-year"
+        [startAt]="STARTDATE"
+      ></mat-datepicker>
+      <mat-error *ngIf="form.get('fundacion')?.hasError('required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Dirección -->
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Dirección</mat-label>
+      <input matInput formControlName="direccion" />
+      <mat-error *ngIf="form.get('direccion')?.hasError('required')">La dirección es obligatoria</mat-error>
+    </mat-form-field>
+
+    <!-- Ubicación -->
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Ubicación</mat-label>
+      <input matInput formControlName="ubicacion" />
+      <mat-error *ngIf="form.get('ubicacion')?.hasError('required')">La ubicación es obligatoria</mat-error>
+    </mat-form-field>
+
+    @if(this.title == "Modificar"){
+      <h3 class="just-join-columns">Imagen actual</h3>
+      <img [src]="imagenIglesia.imagePath" alt="imagen de iglesia" class="just-join-columns img-iglesia" />
+    }
+
+    <h3 class="just-join-columns">Selección de imagen</h3>
+    <!-- Imagen -->
+    <ngx-dropzone (change)="onSelect($event)" class="just-join-columns">
+        <ngx-dropzone-label>Arrartrar imagen de Iglesia aquí</ngx-dropzone-label>
+        <ngx-dropzone-image-preview
+          ngProjectAs="ngx-dropzone-preview"
+          [removable]="true"
+          *ngFor="let f of files"
+          [file]="f"
+          accept="image/jpeg,image/jpg,image/png"
+          (removed)="onRemove(f)"
+        >
+          <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+        </ngx-dropzone-image-preview>
+      </ngx-dropzone>
+      <!-- <mat-error *ngIf="!this.file">La imagen es obligatoria</mat-error> -->
+
+
+
+    <button mat-raised-button color="primary" type="submit" class="unir-columnas">
+      {{title}}
+    </button>
+  </form>
+</div>

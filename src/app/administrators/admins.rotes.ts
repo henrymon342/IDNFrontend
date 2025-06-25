@@ -12,8 +12,8 @@ export const ADMINS_ROUTES: Routes = [
     children:[
       { path: 'eventos', component: AdmiEventosComponent },
       { path: 'iglesias', component: AdmiIglesiasComponent },
-      { path: 'pastores', component: AdmiPastoresComponent },
       { path: 'usuarios', component: AdmiUsuariosComponent },
+      { path: 'pastores', component: AdmiPastoresComponent },
       { path: '**', pathMatch: 'full', redirectTo: 'eventos'}
     ]
   }

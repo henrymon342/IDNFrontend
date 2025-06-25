@@ -1,0 +1,98 @@
+
+
+  <div class="container">
+    <div class="header">
+      <h2>{{title}} Usuario</h2>
+      <button mat-icon-button matMiniFab (click)="closeSidenav()">
+        <mat-icon class="blue-icon" color="warn">close</mat-icon>
+      </button>
+    </div>
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <!-- TIPO DE ADMINISTRADOR -->
+    <mat-form-field appearance="outline">
+      <mat-label>Tipo de administrador</mat-label>
+      <mat-select formControlName="type" name="zona">
+        @for (tipo of TYPEUSERS; track tipo) {
+          <mat-option [value]="tipo">{{tipo}}</mat-option>
+        }
+      </mat-select>
+      <mat-error *ngIf="form.get('type')?.hasError('required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    @if(form.value.type == 'ACTIVIDADES'){
+      <!-- MINISTERIO -->
+    <mat-form-field appearance="outline">
+      <mat-label>Ministerio</mat-label>
+      <mat-select formControlName="ministerio" name="zona">
+        @for (min of MINISTERIOS; track min) {
+          <mat-option [value]="min">{{min}}</mat-option>
+        }
+      </mat-select>
+      <mat-error *ngIf="form.get('type')?.hasError('required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+    } // validar si es de tipo actividad al enviar puede etener valor si o no
+
+    <h3 class="just-join-columns">Datos personales</h3>
+
+<!-- Nombres -->
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre(s)</mat-label>
+      <input matInput formControlName="name" />
+      <mat-error *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">El nombre es obligatorio</mat-error>
+    </mat-form-field>
+
+<!-- Apellidos -->
+    <mat-form-field appearance="outline">
+      <mat-label>Apellidos</mat-label>
+      <input matInput formControlName="lastname" />
+      <mat-error *ngIf="form.get('lastname')?.hasError('required') && form.get('lastname')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+<!-- Cargo -->
+    <mat-form-field appearance="outline">
+      <mat-label>Cargo</mat-label>
+      <input matInput formControlName="cargo" />
+      <mat-error *ngIf="form.get('cargo')?.hasError('required') && form.get('cargo')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+<!-- Lugar de membresia -->
+    <mat-form-field appearance="outline" class="unir-columnas">
+      <mat-label>Lugar de membresia</mat-label>
+      <input matInput formControlName="miembroen" />
+      <mat-error *ngIf="form.get('miembroen')?.hasError('required') && form.get('miembroen')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <h3 class="just-join-columns">Datos de autenticación</h3>
+
+    <!-- Usuario -->
+    <mat-form-field appearance="outline" class="unir-columnas">
+      <mat-label>Usuario</mat-label>
+      <input matInput formControlName="username" />
+      <mat-error *ngIf="form.get('username')?.hasError('required') && form.get('username')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Contraseña -->
+    <mat-form-field appearance="outline" class="unir-columnas">
+      <mat-label>Contraseña</mat-label>
+      <input matInput formControlName="password"
+          type="password"
+          [type]="hide ? 'password' : 'text'"  />
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-error *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+<!-- Confirmar Contraseña -->
+    <mat-form-field appearance="outline" class="unir-columnas">
+      <mat-label>Confirmar Contraseña</mat-label>
+      <input matInput formControlName="password_confirm"
+          type="password"
+          [type]="hide ? 'password' : 'text'"  />
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-error *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" class="unir-columnas">
+      {{title}}
+    </button>
+  </form>
+</div>

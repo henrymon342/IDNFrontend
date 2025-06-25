@@ -1,19 +1,36 @@
 <mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="over" position="end">
-    <app-event-form [eventId]="eventoId"></app-event-form>
+  <mat-drawer #drawer class="example-sidenav" mode="over" position="end" (closed)="onClose()">
+    <app-event-form [drawer]="drawer" [eventId]="eventoId" (closeDrawer)="onClose($event)"></app-event-form>
   </mat-drawer>
 
   <div class="example-sidenav-content">
     <div class="container">
-      <p>Administración de Eventos</p>
+      <header class="header">
+        <h1>Administración de Eventos</h1>
 
-      <button mat-icon-button (click)="openEventoForm()">
-        <mat-icon class="blue-icon">add</mat-icon>
-      </button>
+        <div class="actions">
+          <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+            @for (link of LINKS; track link) {
+              <a mat-tab-link
+                (click)="onTabClick(link)"
+                [active]="activeLink == link">
+                {{ link }}
+              </a>
+            }
+          </nav>
+          <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+        </div>
+
+        <button mat-icon-button (click)="openEventoForm()">
+          <mat-icon class="blue-icon">add</mat-icon>
+        </button>
+      </header>
+
+
 
       <mat-form-field>
-        <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+        <mat-label>Buscar evento</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input>
       </mat-form-field>
 
       <div class="table-container">
@@ -53,7 +70,7 @@
                 <mat-icon class="blue-icon">edit_outline</mat-icon>
               </button>
 
-              <button mat-icon-button (click)="deleteEvent(element.id)">
+              <button mat-icon-button (click)="openDeleteEventDialog(element.id)">
                 <mat-icon class="red-icon">delete_outline</mat-icon>
               </button>
             </td>

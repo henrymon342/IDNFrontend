@@ -35,7 +35,7 @@ export class DetalleIglesiaComponent implements OnInit{
 
   getChurch(idChurch: number): void{
     console.log(idChurch);
-    this._iglesiaService.get(idChurch).subscribe({
+    this._iglesiaService.obtenerIglesia(idChurch).subscribe({
       next: (res:any) => {
         console.log(res.data.iglesia);
         this.iglesia = res.data.iglesia as Iglesia;

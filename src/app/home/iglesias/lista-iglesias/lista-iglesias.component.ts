@@ -38,7 +38,7 @@ export class ListaIglesiasComponent implements OnInit {
   }
 
   getChurchs(): void{
-    this._iglesiaService.getAll().subscribe({
+    this._iglesiaService.obtenerIglesias().subscribe({
       next: async (res:any) => {
         console.log(await res);
         this.churchs = await res.data;
