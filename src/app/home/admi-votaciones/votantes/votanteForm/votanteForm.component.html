@@ -1,0 +1,60 @@
+
+
+  <div class="container">
+    <div class="header">
+      <h2>{{title==undefined?'Añadir':'Modificar'}} Delegado</h2>
+      <button mat-icon-button matMiniFab (click)="cerrar(false)">
+        <mat-icon class="blue-icon" color="warn">close</mat-icon>
+      </button>
+    </div>
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <!-- Nombre -->
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" />
+      <mat-error *ngIf="form.get('nombre')?.hasError('required') && form.get('nombre')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Congregacion -->
+    <mat-form-field appearance="outline">
+      <mat-label>Congregación</mat-label>
+      <input matInput formControlName="congregacion" />
+      <mat-error *ngIf="form.get('congregacion')?.hasError('required') && form.get('congregacion')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Ministerio -->
+    <mat-form-field appearance="outline">
+      <mat-label>Ministerio</mat-label>
+      <input matInput formControlName="ministerio" />
+      <mat-error *ngIf="form.get('ministerio')?.hasError('required') && form.get('ministerio')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Cargo -->
+    <mat-form-field appearance="outline">
+      <mat-label>Cargo</mat-label>
+      <input matInput formControlName="cargo" />
+      <mat-error *ngIf="form.get('cargo')?.hasError('required') && form.get('cargo')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Código -->
+    <mat-form-field appearance="outline">
+      <mat-label>Código</mat-label>
+      <input matInput formControlName="codigo" readonly />
+      <mat-error *ngIf="form.get('codigo')?.hasError('required') && form.get('codigo')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- Habilitado -->
+    <div style="display: flex; justify-content: space-evenly; align-items: center;">
+      <p style="align-self: center;">Habilitado</p>
+      <mat-slide-toggle formControlName="habilitado" style="align-self: center;">
+        {{ form.get('habilitado')?.value ? 'Sí' : 'No' }}
+      </mat-slide-toggle>
+    </div>
+
+
+    <button mat-raised-button color="primary" type="submit" class="unir-columnas">
+      {{title==undefined?'Añadir':'Modificar'}}
+    </button>
+  </form>
+</div>

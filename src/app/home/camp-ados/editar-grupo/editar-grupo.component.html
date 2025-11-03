@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="header">
+      <h3>{{title}} grupo</h3>
+    </div>
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <!-- name -->
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" />
+      <mat-error *ngIf="form.get('name')?.hasError('required')">El nombre es obligatorio</mat-error>
+    </mat-form-field>
+
+    <!-- color picker -->
+    <div style="justify-self: center;grid-row: span 4;">
+      <chrome-picker
+        [color]="form.get('color')?.value"
+        (colorChange)="changeColor($event)"
+      ></chrome-picker>
+    </div>
+
+    <!-- nro de Participantes -->
+    <mat-form-field appearance="outline">
+      <mat-label>Nro de participantes</mat-label>
+      <input matInput formControlName="participants" type="number" />
+      <mat-error *ngIf="form.get('participants')?.hasError('required')">Este campo es obligatorio</mat-error>
+      <mat-error *ngIf="form.get('participants')?.hasError('min')">Debe ser mayor a 0</mat-error>
+      <mat-error *ngIf="form.get('participants')?.hasError('max')">No puede ser mayor a 25</mat-error>
+    </mat-form-field>
+
+    <div style="width: auto; height: auto;padding: 1em;" class="flag" [style.background-color]="form.get('color')?.value">
+      <div class="logo-sinergia"></div>
+    </div>
+
+    <div style="font-weight: 600; justify-self: center;">
+      {{form.get('color')?.value}}
+    </div>
+
+    <button mat-raised-button color="primary" type="submit" class="unir-columnas">
+      {{title}}
+    </button>
+  </form>
+</div>

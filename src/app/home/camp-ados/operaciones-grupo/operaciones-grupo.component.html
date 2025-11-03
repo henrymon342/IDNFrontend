@@ -1,0 +1,22 @@
+<div matRipple [matRippleCentered]="true">
+  <div class="list-cards">
+    <img *ngFor="let card of cartasRepartidas" class="card-img" style="width: 100px; height: 150px;" [src]="getCardImage(card)" [alt]="card">
+  </div>
+  <header class="header">
+    <button mat-icon-button (click)="openOperationCardDialog('Quitar', '-1')">
+      <mat-icon class="blue-icon">exposure_neg_1</mat-icon>
+    </button>
+
+    <div>
+      <button mat-icon-button (click)="sendNotificationUpdate()">
+        <mat-icon class="blue-icon">updateCardList</mat-icon>
+      </button>
+    </div>
+
+    <h5>{{data.name}}</h5>
+
+    <button mat-icon-button (click)="openOperationCardDialog('Añadir', '+1')">
+      <mat-icon class="blue-icon">exposure_plus_1</mat-icon>
+    </button>
+  </header>
+</div>

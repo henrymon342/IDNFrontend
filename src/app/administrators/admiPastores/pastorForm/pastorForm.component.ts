@@ -23,6 +23,10 @@ import { ImagenService } from "../../../core/services/imagen.service";
 import { ToastrService } from 'ngx-toastr';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { FamilyMember } from "../../../core/models/familyMember";
+import { Education } from "../../../core/models/education";
+import { ConfirmModel } from "../../../core/models/confirmModel";
+import { MatDialog } from "@angular/material/dialog";
+import { ConfirmDialog } from "../../../shared/confirmDialog/confirm-dialog";
 
 @Component({
   selector: 'app-iglesia-form',
@@ -58,6 +62,7 @@ export class PastorFormComponent {
   public title: string;
   public form!: FormGroup;
   public formFamily!: FormGroup;
+  public formEducation!: FormGroup;
   public readonly CATEGORIES: string[] = ['LOCAL', 'DISTRITAL', 'PRESBITERO'];
   public readonly STARTDATE = new Date(1990, 0, 1);
   public readonly ESTADO_CIVIL: string[] = ['SOLTERO', 'CASADO', 'VIUDO'];
@@ -72,11 +77,16 @@ export class PastorFormComponent {
   public imagenIglesia: ImageModel = new ImageModel();
 
   displayedColumns: string[] = ['nro', 'name', 'age', 'health', 'observation' , 'actions'];
-  dataSource = new MatTableDataSource<FamilyMember>();
+  displayedColumnsEducation: string[] = ['nro', 'nivel', 'nombreinst', 'gestiongraduacion', 'grado' , 'actions'];
+  dataSourceFamily = new MatTableDataSource<FamilyMember>();
+  dataSourceEducation = new MatTableDataSource<Education>();
   public familyList:FamilyMember[] = [];
+  public educationList: Education[] = [];
+
 
   readonly _pastorService = inject(PastorService);
   readonly _imageService = inject(ImagenService);
+  readonly dialog = inject(MatDialog);
   constructor(private fb: FormBuilder,
     private _toastService:ToastrService
   ) {
@@ -95,7 +105,6 @@ export class PastorFormComponent {
       nombre_esposa: [''],
       fecha_nac_esposa: [''],
       lugar_nac_esposa: [''],
-      // hijos: ['', [Validators.required]],
       category: ['LOCAL', [Validators.required]],
       year: ['', [Validators.required]],
       dado_en: ['', [Validators.required]],
@@ -110,10 +119,18 @@ export class PastorFormComponent {
       option_places_serv: ['IGLESIA', [Validators.required]], // esta variable es auxiliar
     })
     this.formFamily = this.fb.group({
+      id: [null],
       name: ['', [Validators.required]],
       age: [null, [Validators.required]],
       health: ['', [Validators.required]],
       observation: ['', [Validators.required]],
+    })
+    this.formEducation = this.fb.group({
+      id: [null],
+      nivel: ['', Validators.required],
+      nombreinst: ['', Validators.required],
+      gestiongraduacion: ['', Validators.required],
+      grado: ['', Validators.required],
     })
   }
 
@@ -228,7 +245,7 @@ export class PastorFormComponent {
   }
 
   public addItem(){
-    const item = this.formFamily.value
+    let item = this.formFamily.value
     console.log(item);
     // 1. validar el formulario de formfamily
     if(!this.formFamily.valid){
@@ -236,16 +253,67 @@ export class PastorFormComponent {
       return;
     }
     // 2. Añadir a un array de familymembers
+    item.id = this.familyList.length
     this.familyList.push(item)
-    this.dataSource.data = this.familyList
+    this.dataSourceFamily.data = [...this.familyList]
     this.formFamily.reset()
   }
 
-  public deleteItem(idItem: number){
-    // postrar dialog para eliminar item
+  public openDeleteItemDialog(id: number, type: string){
+    console.log({id, type});
+
+    const confirmData: ConfirmModel = {
+      title: 'Eliminar item',
+      message: 'Esta seguro?'
+    };
+    this.dialog
+      .open(ConfirmDialog, {
+        data: confirmData
+      })
+      .afterClosed()
+      .subscribe((confirmado: Boolean) => {
+        if (confirmado) {
+          // eliminar
+          if(type == 'FAMILY'){
+            this.deleteFamilyItem(id);
+          }
+          if(type == 'EDUCATION'){
+            this.deleteEducationItem(id);
+          }
+        }
+      });
+    }
+
+  public deleteFamilyItem(idItem: number){
+    this.familyList.splice(idItem, 1);
+    this.dataSourceFamily.data = [...this.familyList];
   }
 
   public modifyItem(idItem: number){
+    // MOSTRAR UN popup para modificar item
+  }
+
+public addItemEducation(){
+    const item = this.formEducation.value
+    console.log(item);
+    // 1. validar el formulario de formfamily
+    if(!this.formEducation.valid){
+      this.formEducation.markAllAsTouched()
+      return;
+    }
+    // 2. Añadir a un array de familymembers
+    item.id = this.educationList.length
+    this.educationList.push(item)
+    this.dataSourceEducation.data = [...this.educationList]
+    this.formEducation.reset()
+  }
+
+  public deleteEducationItem(idItem: number){
+    this.educationList.splice(idItem, 1);
+    this.dataSourceEducation.data = [...this.educationList];
+  }
+
+  public modifyItemEducation(idItem: number){
     // MOSTRAR UN popup para modificar item
   }
 }

@@ -1,0 +1,15 @@
+  <div class="container">
+    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- Code -->
+      <mat-form-field appearance="outline">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="code" />
+        <mat-error *ngIf="form.get('code')?.hasError('required') && form.get('code')?.touched">Este campo es obligatorio</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">
+        Ingresar
+      </button>
+    </form>
+  </div>
+

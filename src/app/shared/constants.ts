@@ -205,4 +205,21 @@ export class IDNConstants {
         cites: '(Génesis 18:25; 1 Samuel 2:10; Salmo 50:6; Isaías 26:19; Daniel 12:2-3; Mateo 25:31-46; Marcos 9:43-48; Lucas 16:19-31; 20:27-38; Juan 3:16- 18; 5:25-29; 11:21-27; Hechos 17:30-31; Romanos 2:1-16; 14:7-12; 1 Corintios 15:12-58; 2 Corintios 5:10; 2 Tesalonicenses 1:5-10; Apocalipsis 20:11-15; 22:1-15).'
       }
     ];
+
+    public static readonly CARDS: any = [
+      "1_B", "1_G", "1_R", "1_Y",
+      "2_B", "2_G", "2_R", "2_Y",
+      "3_B", "3_G", "3_R", "3_Y",
+      "4_B", "4_G", "4_R", "4_Y",
+      "5_B", "5_G", "5_R", "5_Y",
+      "6_B", "6_G", "6_R", "6_Y",
+      "7_B", "7_G", "7_R", "7_Y",
+      "8_B", "8_G", "8_R", "8_Y",
+      "9_B", "9_G", "9_R", "9_Y",
+      "BLOCK_B", "BLOCK_G", "BLOCK_R", "BLOCK_Y",
+      "REVERSE_B", "REVERSE_G", "REVERSE_R", "REVERSE_Y",
+      "WILD_1", "WILD_2",
+      "+2_B", "+2_G", "+2_R", "+2_Y",
+      "+4_1", "+4_2"
+    ];
 }

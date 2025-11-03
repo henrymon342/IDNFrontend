@@ -157,7 +157,7 @@
 
     <h3 class="just-join-columns">Datos de salud de familia</h3>
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 just-join-columns">
+    <table mat-table [dataSource]="dataSourceFamily" class="mat-elevation-z8 just-join-columns">
       <!-- Nro Column -->
       <ng-container matColumnDef="nro">
         <th mat-header-cell *matHeaderCellDef> No. </th>
@@ -192,12 +192,12 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Acciones </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button (click)="deleteItem(element.id)">
-            <mat-icon class="blue-icon">edit_outline</mat-icon>
+          <button mat-icon-button (click)="modifyItem(element.id)">
+            <mat-icon class="red-icon">edit_outline</mat-icon>
           </button>
 
-          <button mat-icon-button (click)="modifyItem(element.id)">
-            <mat-icon class="red-icon">delete_outline</mat-icon>
+          <button mat-icon-button (click)="openDeleteItemDialog(element.id, 'FAMILY')">
+            <mat-icon class="blue-icon">delete_outline</mat-icon>
           </button>
         </td>
       </ng-container>
@@ -206,7 +206,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <form [formGroup]="formFamily" class="form-family just-join-columns">
+    <div [formGroup]="formFamily" class="form-family just-join-columns">
       <mat-form-field appearance="outline">
         <mat-label>Nombre</mat-label>
         <input formControlName="name"
@@ -231,10 +231,94 @@
         type="text"
         matInput>
       </mat-form-field>
-      <button mat-raised-button color="primary" type="button" (click)="addItem()">
-        Añadir
+      <button mat-icon-button color="primary" type="button" (click)="addItem()">
+        <mat-icon class="blue-icon">add</mat-icon>
       </button>
-    </form>
+    </div>
+
+    <h3 class="just-join-columns">Educación secular y teológica</h3>
+
+    <table mat-table [dataSource]="dataSourceEducation" class="mat-elevation-z8 just-join-columns">
+      <!-- Nro Column -->
+      <ng-container matColumnDef="nro">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.nro}} </td>
+      </ng-container>
+
+      <!-- Nivel Column -->
+      <ng-container matColumnDef="nivel">
+        <th mat-header-cell *matHeaderCellDef> Nivel </th>
+        <td mat-cell *matCellDef="let element"> {{element.nivel}} </td>
+      </ng-container>
+
+      <!-- Nombre de la institución Column -->
+      <ng-container matColumnDef="nombreinst">
+        <th mat-header-cell *matHeaderCellDef> Nombre de la institución </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombreinst}} </td>
+      </ng-container>
+
+      <!-- Año de graduación Column -->
+      <ng-container matColumnDef="gestiongraduacion">
+        <th mat-header-cell *matHeaderCellDef> Año de graduación </th>
+        <td mat-cell *matCellDef="let element"> {{element.gestiongraduacion}} </td>
+      </ng-container>
+
+      <!-- Grado Column -->
+      <ng-container matColumnDef="grado">
+        <th mat-header-cell *matHeaderCellDef> Grado </th>
+        <td mat-cell *matCellDef="let element"> {{element.grado}} </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button (click)="modifyItemEducation(element.id)">
+            <mat-icon class="red-icon">edit_outline</mat-icon>
+          </button>
+
+          <button mat-icon-button (click)="openDeleteItemDialog(element.id, 'EDUCATION')">
+            <mat-icon class="blue-icon">delete_outline</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsEducation"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsEducation;"></tr>
+    </table>
+
+    <div [formGroup]="formEducation" class="form-family just-join-columns">
+      <mat-form-field appearance="outline">
+        <mat-label>Nivel</mat-label>
+        <input formControlName="nivel"
+        type="text"
+        matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre de institución</mat-label>
+        <input formControlName="nombreinst"
+        type="text"
+        matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Año de graduación</mat-label>
+        <mat-select formControlName="gestiongraduacion">
+          @for (year of YEARS; track year) {
+            <mat-option [value]="year">{{year}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Grado</mat-label>
+        <input formControlName="grado"
+        type="text"
+        matInput>
+      </mat-form-field>
+      <button mat-icon-button color="primary" type="button" (click)="addItemEducation()">
+        <mat-icon class="blue-icon">add</mat-icon>
+      </button>
+    </div>
 
 
     <!-- Preview image -->

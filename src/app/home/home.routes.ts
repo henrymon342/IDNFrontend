@@ -20,6 +20,9 @@ export const HOME_ROUTES: Routes = [
       { path: 'eventos', component: EventosComponent },
       { path: 'recursos', component: RecursosComponent },
       { path: 'listaiglesias', component: ListaIglesiasComponent },
+      { path: 'admi-votacion', loadChildren: () => import('./admi-votaciones/admi-votaciones.routes').then(m => m.ADMI_VOTACIONES_ROUTES) },
+      { path: 'votacion', loadChildren: () => import('./votaciones/votaciones.routes').then(m => m.VOTACIONES_ROUTES) },
+      { path: 'camp-ados', loadChildren: () => import('./camp-ados/camp-ados.routes').then(m => m.CAMP_ADOS_ROUTES) },
       { path: '', redirectTo: 'enquecreemos', pathMatch: 'full' }
     ]
   }

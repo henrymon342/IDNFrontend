@@ -14,6 +14,7 @@ export const ADMINS_ROUTES: Routes = [
       { path: 'iglesias', component: AdmiIglesiasComponent },
       { path: 'usuarios', component: AdmiUsuariosComponent },
       { path: 'pastores', component: AdmiPastoresComponent },
+      { path: '', redirectTo: 'eventos', pathMatch: 'full' },
       { path: '**', pathMatch: 'full', redirectTo: 'eventos'}
     ]
   }

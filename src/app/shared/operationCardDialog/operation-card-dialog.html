@@ -1,0 +1,16 @@
+<h2 mat-dialog-title> {{data.type}} {{data.value}} </h2>
+<mat-dialog-content>
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- Descripción -->
+    <mat-form-field appearance="outline">
+      <mat-label>Descripción</mat-label>
+      <input matInput formControlName="description" />
+      <mat-error *ngIf="form.get('description')?.hasError('required') && form.get('description')?.touched">La descripción es obligatoria</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" class="unir-columnas">
+      Ok
+  </button>
+  </form>
+</mat-dialog-content>
+
+

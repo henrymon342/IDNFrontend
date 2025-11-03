@@ -1,0 +1,23 @@
+<div class="card" [style.border]="'8px solid ' + grupo?.color" style="position: relative;">
+  <div class="card-header"
+       style="position: relative; z-index: 2;"
+       [style.background-color]="grupo?.color"
+
+       (click)="openBottomSheet()">
+    <h4>{{ grupo?.name }}</h4>
+    <div class="participants" [style.background-color]="grupo?.color">{{ cards.length }}</div>
+  </div>
+
+  <div class="card-body" style="position: relative; z-index: 1;">
+    <p>Participantes: {{ grupo?.participants }}</p>
+  </div>
+
+  <div class="actions" [style.color]="grupo?.color">
+    <button mat-icon-button (click)="openEditGroup()">
+      <mat-icon class="blue-icon">edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="openDeleteGroup()">
+      <mat-icon class="blue-icon">delete</mat-icon>
+    </button>
+  </div>
+</div>

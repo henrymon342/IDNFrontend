@@ -1,0 +1,47 @@
+.card{
+  width: 200px;
+  height: auto;
+  border-radius: 16px;
+  display: grid;
+  cursor: pointer;
+
+  .card-header{
+    border-radius: 4px 4px 0 0;
+    h4{
+      text-align: center;
+      color: white;
+      margin-top: 16px;
+      font-size: 32px;
+      margin-bottom: 0;
+    }
+
+    .participants{
+      width: 64px;
+      height: 64px;
+      background: red;
+      border-radius: 50%;
+      color: white;
+      padding: 8px;
+      border: 8px solid white;
+      text-align: center;
+      align-self: center;
+      justify-self: center;
+      position: relative;
+      top: 30px;
+      font-size: 24px;
+      font-weight: 600;
+    }
+  }
+
+  .card-body{
+    border-radius: 0 0 8px 8px;
+    padding: 1em;
+  }
+
+  .actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+}

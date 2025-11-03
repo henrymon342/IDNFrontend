@@ -1,0 +1,12 @@
+<mat-dialog-content>
+  <mat-form-field class="example-full-width">
+    <mat-label>Ronda</mat-label>
+    <input matInput [(ngModel)]="ronda">
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close (click)="changeRonda()">
+    Ok
+  </button>
+</mat-dialog-actions>

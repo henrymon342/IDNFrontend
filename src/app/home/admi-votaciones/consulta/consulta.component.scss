@@ -1,0 +1,29 @@
+.container{
+  padding: 16px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .form{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+
+    .boton{
+      padding: 8px;
+    }
+  }
+
+
+}
+
+.candidad{
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    FONT-WEIGHT: BOLD;
+    FONT-SIZE: 24PX;
+  }

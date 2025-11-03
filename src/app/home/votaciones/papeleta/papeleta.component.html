@@ -1,0 +1,32 @@
+  <div class="container">
+    <div class="header">
+      <h4> VOLETA DE VOTACIÓN</h4>
+    </div>
+
+    <div *ngFor="let grupo of grupos">
+      <h3>{{ grupo.cargo }}</h3>
+
+      <div *ngFor="let candidato of grupo.candidatos">
+        <label>
+          <input
+            type="radio"
+            name="{{ grupo.id }}"
+            [checked]="grupo.seleccionado?.id === candidato.id"
+            (change)="seleccionar(grupo, candidato)"
+          />
+          {{ candidato.nombre }} - {{ candidato.congregacion }}
+        </label>
+      </div>
+
+      <p *ngIf="grupo.seleccionado">
+        Seleccionado en {{ grupo.cargo }}:
+        {{ grupo.seleccionado.nombre }} ({{ grupo.seleccionado.id }})
+      </p>
+      <hr>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="doVote()" class="unir-columnas">
+      Votar
+    </button>
+  </div>
+

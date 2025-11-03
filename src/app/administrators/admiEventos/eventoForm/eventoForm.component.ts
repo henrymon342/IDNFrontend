@@ -23,7 +23,7 @@ import { EventoService } from "../../../core/services/evento.service";
   selector: 'app-event-form',
   standalone: true,
   imports: [CommonModule, MatFormFieldModule, MatInputModule, MatIconModule,
-    RouterLink, MatSidenavModule, MatSidenavModule, MatButtonModule,
+    RouterLink, MatSidenavModule, MatButtonModule,
     ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule,
     MatSelectModule, MatRadioModule, MatDatepickerModule, NgxMatTimepickerModule,
     MatListModule, MatChipsModule],

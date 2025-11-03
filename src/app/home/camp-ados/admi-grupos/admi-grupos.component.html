@@ -1,0 +1,28 @@
+
+
+
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="over" position="end" (closed)="onClose()">
+    <!-- <app-event-form [drawer]="drawer" [eventId]="eventoId" (closeDrawer)="onClose($event)"></app-event-form> -->
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <div class="container">
+      <header class="header">
+        <h2>Admi grupos Component</h2>
+
+        <button mat-icon-button (click)="openBottomSheet()">
+          <mat-icon class="blue-icon">add</mat-icon>
+        </button>
+      </header>
+
+      <section class="cards">
+        @for (grupo of grupos; track grupo.groupId) {
+          <app-grupo [grupo]="grupo" (hasDeleted)="onDelete($event)"></app-grupo>
+        }
+      </section>
+    </div>
+  </div>
+
+</mat-drawer-container>

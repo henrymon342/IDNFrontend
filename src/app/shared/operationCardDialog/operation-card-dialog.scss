@@ -1,0 +1,12 @@
+mat-dialog-content{
+  padding: 1m !important;
+}
+
+.form{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding-top: 1em;
+}

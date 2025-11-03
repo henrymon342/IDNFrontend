@@ -1,0 +1,52 @@
+
+
+  <div class="container">
+    <div class="header">
+      <h4> VOLETA DE VOTACIÓN ADMIN</h4>
+      <button mat-icon-button matMiniFab (click)="borrarDatosVoleta()">
+        <mat-icon class="blue-icon" color="warn">trash</mat-icon>
+      </button>
+      <button mat-icon-button matMiniFab (click)="cerrar(false)">
+        <mat-icon class="blue-icon" color="warn">close</mat-icon>
+      </button>
+
+      <!-- @for (item of grupos; track $index) {
+        <p>{{item.cargo}}</p>
+        <p> Vote por {{ item.porCuantosVotar }}</p>
+        @for (candidato of item.candidatos; track $index) {
+          <p>{{candidato.nombre}}</p>
+          <p>{{candidato.congregacion}}</p>
+
+
+        }
+      } -->
+
+
+    </div>
+    <div *ngFor="let grupo of grupos">
+      <h3>{{ grupo.cargo }}</h3>
+
+      <div *ngFor="let candidato of grupo.candidatos">
+        <label>
+          <input
+            type="radio"
+            name="{{ grupo.id }}"
+            [checked]="grupo.seleccionado?.id === candidato?.id"
+            (change)="seleccionar(grupo, candidato)"
+          />
+          {{ candidato?.nombre }} - {{ candidato?.congregacion }}
+        </label>
+      </div>
+
+      <p *ngIf="grupo.seleccionado">
+        Seleccionado en {{ grupo.cargo }}:
+        {{ grupo.seleccionado.nombre }} ({{ grupo.seleccionado.id }})
+      </p>
+      <hr>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="doVote()" class="unir-columnas">
+      Votar
+    </button>
+
+</div>

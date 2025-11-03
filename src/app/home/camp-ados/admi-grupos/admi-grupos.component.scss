@@ -1,0 +1,59 @@
+.example-container {
+  max-height: 100vh;
+  height: 70vh;
+  // overflow-y: auto;
+  .example-sidenav {
+    width: 80vw; /* o cualquier medida */
+    padding: 0 0 1em 1em;
+  }
+
+  .example-sidenav-content{
+    .container{
+      padding: 1em;
+
+      .header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .actions{
+          width: auto;
+        }
+      }
+
+      .cards{
+        display: flex;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1em;
+        flex-wrap: wrap;
+        app-grupo{
+          justify-self: center;
+        }
+      }
+    }
+  }
+
+  mat-drawer-content {
+    width: 900px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+  <div class="container">
+    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Ronda</mat-label>
+        <input matInput formControlName="ronda" />
+        <mat-error *ngIf="form.get('ronda')?.hasError('required') && form.get('ronda')?.touched">Este campo es obligatorio</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Ministerio</mat-label>
+        <input matInput formControlName="ministerio" />
+        <mat-error *ngIf="form.get('ministerio')?.hasError('required') && form.get('ministerio')?.touched">Este campo es obligatorio</mat-error>
+      </mat-form-field>
+
+      <div class="boton">
+        <button mat-icon-button type="submit" matTooltip="cerrar sesión">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+    </form>
+
+
+
+  </div>
+
+  <div class="candidad">
+    <span>
+      CANTIDAD DE VOTOS: {{cantidad}}
+    </span>
+  </div>
