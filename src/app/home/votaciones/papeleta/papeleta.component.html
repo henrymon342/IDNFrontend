@@ -3,7 +3,7 @@
       <h4> BOLETA DE VOTACIÓN</h4>
     </div>
 
-   
+
     <h2>{{datavoter.nombre}} - {{datavoter.cargo}} </h2>
     <p>{{datavoter.congregacion}}</p>
     <p>{{datavoter.ministerio}}</p>
@@ -12,9 +12,9 @@
       <h3>{{ grupo.cargo }}</h3>
 
       <div *ngFor="let candidato of grupo.candidatos">
-        <label  
+        <label
           class="candidato"
-         
+
         >
           <input
             type="radio"
@@ -28,7 +28,7 @@
 
       <p *ngIf="grupo.seleccionado">
         Seleccionado en {{ grupo.cargo }}:
-        {{ grupo.seleccionado.nombre }} 
+        {{ grupo.seleccionado.nombre }}
       </p>
       <hr>
     </div>
@@ -84,7 +84,7 @@
   </div>
 
   <button mat-raised-button color="primary" (click)="doVote()" class="unir-columnas">
-    ✅ VOTAR
+    VOTAR
   </button>
 </div>
 

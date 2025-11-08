@@ -3,9 +3,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 86vh;
+  height: 90vh;
+  border-radius: 0 0 10px 10px;
   background: linear-gradient(135deg, #3f51b5, #5c6bc0); // colores adaptables
-  padding: 1rem;
   perspective: 1000px; // Para animaciones 3D si se usan
 }
 
@@ -34,7 +34,7 @@ h2 {
 // Estilizamos el mat-form-field para que luzca pro
 mat-form-field {
   width: 100%;
-  
+
   mat-label {
     color: #3f51b5;
   }
@@ -48,11 +48,11 @@ button {
   border-radius: 8px;
   padding: 0.8rem;
   transition: transform 0.25s ease-in-out;
-  
+
   &:hover {
     transform: scale(1.04); // efecto hover
   }
-  
+
   &:active {
     transform: scale(0.98); // feedback al click
   }
