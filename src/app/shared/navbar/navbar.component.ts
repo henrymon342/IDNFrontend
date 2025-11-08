@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -7,6 +7,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { RouterModule } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
+import { LocalStorageService } from '../../core/services/localstorage.service';
 @Component({
     selector: 'app-navbar',
     standalone: true,
@@ -22,15 +23,35 @@ import {MatButtonModule} from '@angular/material/button';
         MatButtonModule
     ]
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   estaEnSesion = false;
   panelOpenState = false;
+
+  user: any;
+  userData: any;
 
   constructor( private router: Router,
     // private _cookieService: CookieService,
     // private alertaService: AlertaService,
     // private loginService: LoginService
+    private _localStorageService: LocalStorageService,
+
   ) { }
+
+  ngOnInit(): void {
+    this.user = this._localStorageService.getItem('user');
+    //this.userData = this._localStorageService.getItem('x-access');
+
+    console.log(this.user);
+    console.log(this.userData);
+
+    if(this.user){
+      this.estaEnSesion = true;
+      if(this.user === "comunicaciones@idn.com"){
+        console.log("Es super usuario!");
+      }
+    }
+  }
 
 
 goToLogin() {
@@ -38,6 +59,8 @@ goToLogin() {
 }
 
 cerrarSesion(){
+  this._localStorageService.removeItem('user');
+  this.estaEnSesion = false;
   // this._cookieService.delete('tokenidn');
   // this._cookieService.delete('user');
   // this.alertaService.mostrarLoading('cerrando sesión')

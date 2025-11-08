@@ -25,7 +25,24 @@
   </div>
 
   <div class="candidad">
-    <span>
-      CANTIDAD DE VOTOS: {{cantidad}}
-    </span>
+    <ng-container *ngIf="responseData?.length > 0; else noCandidatos">
+      <div class="candidato-card" *ngFor="let candidato of responseData; let i = index">
+        <div class="card-header">
+          <h3 class="candidato-nombre">{{ candidato.nombre | titlecase }}</h3>
+          <span class="candidato-cargo">{{ candidato.cargo }}</span>
+        </div>
+        <div class="card-body">
+          <div class="candidato-count">
+            <span class="count-label">Cantidad:</span>
+            <span class="count-value">{{ candidato.count }}</span>
+          </div>
+          </div>
+      </div>
+    </ng-container>
+
+    <ng-template #noCandidatos>
+      <div class="no-candidatos">
+        <p>No hay candidatos disponibles para mostrar.</p>
+      </div>
+    </ng-template>
   </div>

@@ -15,6 +15,7 @@
   @else {
     <button mat-icon-button (click)="goToLogin()" matTooltip="iniciar sesión">
       <mat-icon>login</mat-icon>
+      entrar
     </button>
   }
   <!-- <div *ngIf="!estaEnSesion">
@@ -126,17 +127,16 @@
         </div>
       </mat-list-item>
 
-      <mat-list-item class="item" routerLink="admi-votacion" rourterLinkActive="active" >
-        <div class="content">
-          <!-- <div class="material-symbols-outlined item_icon">
-            real_estate_agent
-          </div> -->
-          <svg fill="#118ab2" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 160C544 124.7 515.3 96 480 96L160 96zM216 288C229.3 288 240 298.7 240 312L240 424C240 437.3 229.3 448 216 448C202.7 448 192 437.3 192 424L192 312C192 298.7 202.7 288 216 288zM400 376C400 362.7 410.7 352 424 352C437.3 352 448 362.7 448 376L448 424C448 437.3 437.3 448 424 448C410.7 448 400 437.3 400 424L400 376zM320 192C333.3 192 344 202.7 344 216L344 424C344 437.3 333.3 448 320 448C306.7 448 296 437.3 296 424L296 216C296 202.7 306.7 192 320 192z"/></svg>
-          <div class="item_texto">Votaciones admin</div>
-        </div>
-      </mat-list-item>
+      @if(this.user === "comunicaciones@idn.com"){
+        <mat-list-item class="item" routerLink="admi-votacion" rourterLinkActive="active" >
+          <div class="content">
+            <svg fill="#118ab2" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 160C544 124.7 515.3 96 480 96L160 96zM216 288C229.3 288 240 298.7 240 312L240 424C240 437.3 229.3 448 216 448C202.7 448 192 437.3 192 424L192 312C192 298.7 202.7 288 216 288zM400 376C400 362.7 410.7 352 424 352C437.3 352 448 362.7 448 376L448 424C448 437.3 437.3 448 424 448C410.7 448 400 437.3 400 424L400 376zM320 192C333.3 192 344 202.7 344 216L344 424C344 437.3 333.3 448 320 448C306.7 448 296 437.3 296 424L296 216C296 202.7 306.7 192 320 192z"/></svg>
+            <div class="item_texto">Votaciones admin</div>
+          </div>
+        </mat-list-item>
+      }
 
-      <mat-list-item class="item" routerLink="votacion" rourterLinkActive="active" >
+        <mat-list-item class="item" routerLink="votacion" rourterLinkActive="active" >
         <div class="content">
           <svg fill="#118ab2" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M584 352C597.3 352 608 362.7 608 376L608 480C608 515.3 579.3 544 544 544L96 544C60.7 544 32 515.3 32 480L32 376C32 362.7 42.7 352 56 352C69.3 352 80 362.7 80 376L80 480C80 488.8 87.2 496 96 496L544 496C552.8 496 560 488.8 560 480L560 376C560 362.7 570.7 352 584 352zM448 96C483.3 96 512 124.7 512 160L512 384C512 419.3 483.3 448 448 448L192 448C156.7 448 128 419.3 128 384L128 160C128 124.7 156.7 96 192 96L448 96zM410.9 180.6C400.2 172.8 385.2 175.2 377.4 185.9L291.8 303.6L265.3 276.2C256.1 266.7 240.9 266.4 231.4 275.6C221.9 284.8 221.6 300 230.8 309.5L277.2 357.5C282.1 362.6 289 365.3 296.1 364.8C303.2 364.3 309.7 360.7 313.9 355L416.2 214.1C424 203.4 421.6 188.4 410.9 180.6z"/></svg>
           <div class="item_texto">Votación</div>
