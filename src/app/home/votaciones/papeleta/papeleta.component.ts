@@ -38,6 +38,7 @@ export class PapeletaComponent implements OnInit {
   public grupos: GrupoVoleta[];
   private voter: any;
   private ronda: any;
+  public datavoter: any;
 
   private readonly _localStorageService = inject(LocalStorageService);
   private readonly _voletaService = inject(VoletaService);
@@ -51,6 +52,8 @@ export class PapeletaComponent implements OnInit {
   ngOnInit(): void {
     this.getDatosVoleta();
     this.getExtradata();
+    this.datavoter = this._localStorageService.getItem("voter")
+    console.log(this.datavoter);
   }
 
   private getExtradata(){

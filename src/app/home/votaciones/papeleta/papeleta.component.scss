@@ -1,0 +1,186 @@
+/*// Contenedor principal de la boleta
+.container {
+  max-width: 600px;          // Ancho máximo para que no ocupe toda la pantalla
+  margin: 2rem auto;         // Centrar vertical y horizontal
+  padding: 2rem;             // Espacio interno
+  border-radius: 12px;       // Bordes redondeados
+  background: #f9f9fb;       // Fondo claro
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); // Sombra suave
+  font-family: 'Poppins', sans-serif; // Fuente moderna
+
+}
+
+// Encabezado de la boleta
+.header {
+  text-align: center;        // Centrar texto
+  margin-bottom: 2rem;       // Separación del resto del contenido
+  
+  h4 {
+    background: #3f51b5;   
+    color: #ffffff;    
+    padding: 1rem;      
+    border-radius: 10px;   
+    letter-spacing: 2px;     
+    text-transform: uppercase; 
+  }
+}
+
+// Título de cada grupo/cargo
+h3 {
+  color: #3f51b5;            // Azul para destacar
+  font-size: 1.3rem;         // Tamaño de letra
+  margin-top: 1.8rem;        // Separación superior
+  font-weight: 600;           // Negrita
+  border-left: 4px solid #3f51b5; // Barra a la izquierda
+  border-right: 4px solid #3f51b5;
+  padding-left: 0.5rem;      // Espacio entre barra y texto
+  text-align: center; 
+                        //por verse
+}
+
+h2 {
+  background: #a9afd2;     // Fondo azul
+    color: #ffffff;           // Texto blanco
+    padding: 1rem;           // Espacio interno
+    border-radius: 10px;     // Bordes redondeados
+    letter-spacing: 2px;     // Espacio entre letras
+    text-transform: uppercase; // Texto en mayúsculas
+    text-align: center; 
+}
+
+
+// Línea divisoria
+hr {
+  margin-top: 1.5rem;        // Separación superior
+  border: 0;                  // Elimina borde por defecto
+  border-top: 2px dashed #ccc; // Línea punteada gris
+}
+
+// Botón de votar
+.unir-columnas {
+  width: 100%;               // Ocupa todo el ancho
+  font-size: 1.2rem;         // Tamaño de letra más grande
+  padding: 0.8rem;           // Espaciado interno
+  margin-top: 2rem !important; // Separación superior
+  position:center;
+}
+
+*/
+
+
+// Contenedor Principal
+.container {
+  max-width: 650px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  font-family: 'Poppins', sans-serif;
+}
+
+// Encabezado
+.header h4 {
+  text-align: center;
+  background: #3f51b5;
+  color: #ffffff;
+  padding: 1rem;
+  border-radius: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+// Tarjeta del votante
+.voter-info {
+  background: #e3e7ff;
+  padding: 1.2rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.05);
+
+  h2 {
+    margin: 0;
+    color: #16216a;
+  }
+
+  .cargo {
+    font-weight: 600;
+    margin: 5px 0;
+  }
+}
+
+// Títulos de grupo
+h3 {
+  font-size: 1.25rem;
+  margin-top: 2rem;
+  text-align: center;
+  font-weight: 600;
+  color: #283593;
+}
+
+// Lista de candidatos
+.candidatos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+// Tarjetas de candidato
+.candidato {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background: #f4f6ff;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: 0.25s;
+  position: relative;
+
+  input {
+    margin-right: 12px;
+  }
+
+  &:hover {
+    border-color: #3f51b5;
+    transform: scale(1.01);
+  }
+}
+
+// Cuando está seleccionado ✅
+.seleccionado {
+  background: #c6d0ff;
+  border-color: #3f51b5;
+  font-weight: bold;
+  box-shadow: 0 0 12px rgba(63,81,181,0.35);
+}
+
+// Texto selección
+.sel-msg {
+  font-size: 0.9rem;
+  color: #2e7d32;
+  margin-top: 8px;
+}
+
+// Línea separadora
+hr {
+  border: none;
+  border-top: 2px dashed #ccc;
+  margin: 1.5rem 0;
+}
+
+// Botón
+.unir-columnas {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.2rem;
+  margin-top: 2rem !important;
+}
+p{
+  text-align: center;
+}
+
+
+
+

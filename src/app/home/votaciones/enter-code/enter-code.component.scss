@@ -1,13 +1,71 @@
+// Fondo con gradiente suave
 .container {
   display: flex;
-  justify-content: center;  /* centra horizontal */
-  align-items: center;      /* centra vertical */
-  height: 86vh;            /* ocupa toda la altura de la ventana */
+  justify-content: center;
+  align-items: center;
+  height: 86vh;
+  background: linear-gradient(135deg, #3f51b5, #5c6bc0); // colores adaptables
+  padding: 1rem;
+  perspective: 1000px; // Para animaciones 3D si se usan
 }
 
+// Tarjeta del formulario visualmente destacada
 .form {
+  background: #ffffff;
+  padding: 2.2rem 2rem;
+  border-radius: 14px;
+  width: 330px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  width: 300px; /* opcional: ancho fijo */
+  gap: 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18); // sombra más marcada
+  animation: slideUp 0.6s ease-out; // animación elegante
+  transform-origin: bottom;
+}
+
+// Centramos título si luego agregas uno
+h2 {
+  text-align: center;
+  color: #3f51b5;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+// Estilizamos el mat-form-field para que luzca pro
+mat-form-field {
+  width: 100%;
+  
+  mat-label {
+    color: #3f51b5;
+  }
+}
+
+// Botón con estilo más pro
+button {
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.8rem;
+  transition: transform 0.25s ease-in-out;
+  
+  &:hover {
+    transform: scale(1.04); // efecto hover
+  }
+  
+  &:active {
+    transform: scale(0.98); // feedback al click
+  }
+}
+
+// Animación suave al entrar
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

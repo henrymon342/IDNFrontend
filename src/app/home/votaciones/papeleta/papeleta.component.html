@@ -1,13 +1,21 @@
-  <div class="container">
+<!-- <div class="container">
     <div class="header">
-      <h4> VOLETA DE VOTACIÓN</h4>
+      <h4> BOLETA DE VOTACIÓN</h4>
     </div>
+
+   
+    <h2>{{datavoter.nombre}} - {{datavoter.cargo}} </h2>
+    <p>{{datavoter.congregacion}}</p>
+    <p>{{datavoter.ministerio}}</p>
 
     <div *ngFor="let grupo of grupos">
       <h3>{{ grupo.cargo }}</h3>
 
       <div *ngFor="let candidato of grupo.candidatos">
-        <label>
+        <label  
+          class="candidato"
+         
+        >
           <input
             type="radio"
             name="{{ grupo.id }}"
@@ -20,7 +28,7 @@
 
       <p *ngIf="grupo.seleccionado">
         Seleccionado en {{ grupo.cargo }}:
-        {{ grupo.seleccionado.nombre }} ({{ grupo.seleccionado.id }})
+        {{ grupo.seleccionado.nombre }} 
       </p>
       <hr>
     </div>
@@ -28,5 +36,55 @@
     <button mat-raised-button color="primary" (click)="doVote()" class="unir-columnas">
       Votar
     </button>
+  </div> */
+
+-->
+
+
+<div class="container">
+  <div class="header">
+    <h4>BOLETA DE VOTACIÓN</h4>
   </div>
+
+  <!-- Datos del votante -->
+  <div class="voter-info">
+    <h2>{{ datavoter.nombre }}</h2>
+    <p class="cargo">{{ datavoter.cargo }}</p>
+    <p>{{ datavoter.congregacion }} | {{ datavoter.ministerio }}</p>
+  </div>
+
+  <!-- Grupos por cargo -->
+  <div *ngFor="let grupo of grupos">
+    <h3>{{ grupo.cargo }}</h3>
+
+    <div class="candidatos">
+      <label
+        class="candidato"
+        *ngFor="let candidato of grupo.candidatos"
+        [ngClass]="{'seleccionado': grupo.seleccionado?.id === candidato.id}"
+      >
+        <input
+          type="radio"
+          name="{{ grupo.id }}"
+          [checked]="grupo.seleccionado?.id === candidato.id"
+          (change)="seleccionar(grupo, candidato)"
+        />
+        <span>
+          <strong>{{ candidato.nombre }}</strong><br>
+          <small>{{ candidato.congregacion }}</small>
+        </span>
+      </label>
+    </div>
+
+    <p *ngIf="grupo.seleccionado" class="sel-msg">
+      ✅ Selección: {{ grupo.seleccionado.nombre }}
+    </p>
+
+    <hr>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="doVote()" class="unir-columnas">
+    ✅ VOTAR
+  </button>
+</div>
 
