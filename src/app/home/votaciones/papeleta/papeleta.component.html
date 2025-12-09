@@ -41,50 +41,32 @@
 -->
 
 
-<div class="container">
-  <div class="header">
-    <h4>BOLETA DE VOTACIÓN</h4>
+<div *ngFor="let grupo of grupos">
+  <h3>{{ grupo.cargo }}</h3>
+
+  <div class="candidatos">
+    <label class="candidato"
+      *ngFor="let candidato of grupo.candidatos"
+      [ngClass]="{'seleccionado': candidato.selected}">
+
+      <input type="checkbox"
+       [checked]="candidato.selected"
+       (change)="toggleSelection(grupo, candidato, $event)" />
+
+      <span>
+        <strong>{{ candidato.nombre }}</strong><br>
+        <small>{{ candidato.congregacion }}</small>
+      </span>
+    </label>
   </div>
 
-  <!-- Datos del votante -->
-  <div class="voter-info">
-    <h2>{{ datavoter.nombre }}</h2>
-    <p class="cargo">{{ datavoter.cargo }}</p>
-    <p>{{ datavoter.congregacion }} | {{ datavoter.ministerio }}</p>
-  </div>
+  <p *ngIf="grupo.porCuantosVotar>0" class="sel-msg">
+    🗳 Selección: {{ grupo.porCuantosVotar }} / {{grupo.porCuantosVotar}}
+  </p>
 
-  <!-- Grupos por cargo -->
-  <div *ngFor="let grupo of grupos">
-    <h3>{{ grupo.cargo }}</h3>
-
-    <div class="candidatos">
-      <label
-        class="candidato"
-        *ngFor="let candidato of grupo.candidatos"
-        [ngClass]="{'seleccionado': grupo.seleccionado?.id === candidato.id}"
-      >
-        <input
-          type="radio"
-          name="{{ grupo.id }}"
-          [checked]="grupo.seleccionado?.id === candidato.id"
-          (change)="seleccionar(grupo, candidato)"
-        />
-        <span>
-          <strong>{{ candidato.nombre }}</strong><br>
-          <small>{{ candidato.congregacion }}</small>
-        </span>
-      </label>
-    </div>
-
-    <p *ngIf="grupo.seleccionado" class="sel-msg">
-      ✅ Selección: {{ grupo.seleccionado.nombre }}
-    </p>
-
-    <hr>
-  </div>
-
-  <button mat-raised-button color="primary" (click)="doVote()" class="unir-columnas">
-    VOTAR
-  </button>
+  <hr>
 </div>
 
+<button mat-raised-button color="primary" (click)="doVote()" class="unir-columnas">
+  Votar
+</button>

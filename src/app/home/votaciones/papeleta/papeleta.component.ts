@@ -39,6 +39,7 @@ export class PapeletaComponent implements OnInit {
   private voter: any;
   private ronda: any;
   public datavoter: any;
+  // public maxSeleccion = 1;
 
   private readonly _localStorageService = inject(LocalStorageService);
   private readonly _voletaService = inject(VoletaService);
@@ -76,30 +77,53 @@ export class PapeletaComponent implements OnInit {
   }
 
   public doVote(){
-    console.log("GRUPOS: ", this.grupos);
-    this.voter = this._localStorageService.getItem("voter");
-    console.log("voter: ", this.voter);
-    this.grupos.forEach(grupo => {
-      console.log(grupo.seleccionado);
-      const data = {
-        idVotante: this.voter.id,
-        idCandidato: grupo.seleccionado?.id,
-        ministerio: this.voter.ministerio,
-        ronda: this.ronda
+    console.log(this.grupos);
+
+    // console.log("GRUPOS: ", this.grupos);
+    // this.voter = this._localStorageService.getItem("voter");
+    // console.log("voter: ", this.voter);
+    // this.grupos.forEach(grupo => {
+    //   console.log(grupo.seleccionado);
+    //   const data = {
+    //     idVotante: this.voter.id,
+    //     idCandidato: grupo.seleccionado?.id,
+    //     ministerio: this.voter.ministerio,
+    //     ronda: this.ronda
+    //   }
+    //   this._votacionService.create(data).subscribe(res => {
+    //     console.log(res);
+    //   });
+    // });
+
+    // this.voter.habilitado = false;
+    // console.log(this.voter);
+
+    // this._delegadoService.update(this.voter.id, this.voter).subscribe(res =>{
+    //   console.log(res);
+    // });
+
+    // this.router.navigate(['/home/votacion/enter-code']);
+    // this._toastService.success("Usted acaba de realizar su votación");
+  }
+
+  toggleSelection(grupo: any, candidato: any, event: any) {
+    // Inicializar contador
+    if (!grupo.count) grupo.count = 0;
+
+    // Si intenta marcar
+    if (event.target.checked) {
+      if (grupo.count < grupo.porCuantosVotar) {
+        candidato.selected = true;
+        grupo.count++;
+      } else {
+        event.target.checked = false; // ← REVERSA MARCADO
+        alert("Solo puedes seleccionar " + grupo.porCuantosVotar);
       }
-      this._votacionService.create(data).subscribe(res => {
-        console.log(res);
-      });
-    });
-
-    this.voter.habilitado = false;
-    console.log(this.voter);
-
-    this._delegadoService.update(this.voter.id, this.voter).subscribe(res =>{
-      console.log(res);
-    });
-
-    this.router.navigate(['/home/votacion/enter-code']);
-    this._toastService.success("Usted acaba de realizar su votación");
+    }
+    // Si desmarca
+    else {
+      candidato.selected = false;
+      grupo.count--;
+    }
   }
 }

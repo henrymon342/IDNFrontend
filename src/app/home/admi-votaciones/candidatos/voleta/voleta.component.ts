@@ -26,6 +26,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Candidato } from '../../../../core/models/candidato';
 import {SelectionModel} from '@angular/cdk/collections';
 import { VoletaService } from "../../../../core/services/voleta.service";
+import { ConfirmModel } from "../../../../core/models/confirmModel";
+import { ConfirmDialog } from "../../../../shared/confirmDialog/confirm-dialog";
 
 export interface CandidatoDto {
   id: number;
@@ -107,6 +109,45 @@ export class VoletaComponent implements OnInit {
     this._voletaService.deleteDataVoleta(true).subscribe(res => {
       console.log(res);
     });
+  }
+
+  public openDeleteCandidatoDialog(){
+    const confirmData: ConfirmModel = {
+      title: 'Eliminar datos de voleta',
+      message: 'Esta seguro?'
+    };
+    this.dialog
+      .open(ConfirmDialog, {
+        data: confirmData
+      })
+      .afterClosed()
+      .subscribe((confirmado: Boolean) => {
+        if (confirmado) {
+          console.log(confirmado);
+          this.borrarDatosVoleta();
+        }
+      });
+  }
+
+  toggleSelection(grupo: any, candidato: any, event: any) {
+    // Inicializar contador
+    if (!grupo.count) grupo.count = 0;
+
+    // Si intenta marcar
+    if (event.target.checked) {
+      if (grupo.count < grupo.porCuantosVotar) {
+        candidato.selected = true;
+        grupo.count++;
+      } else {
+        event.target.checked = false; // ← REVERSA MARCADO
+        alert("Solo puedes seleccionar " + grupo.porCuantosVotar);
+      }
+    }
+    // Si desmarca
+    else {
+      candidato.selected = false;
+      grupo.count--;
+    }
   }
 
   cerrar(operacion: boolean) {

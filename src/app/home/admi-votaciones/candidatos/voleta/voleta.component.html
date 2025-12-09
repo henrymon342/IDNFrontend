@@ -1,27 +1,14 @@
 
 
-  <div class="container">
+  <!-- <div class="container">
     <div class="header">
       <h4> VOLETA DE VOTACIÓN ADMIN</h4>
-      <button mat-icon-button matMiniFab (click)="borrarDatosVoleta()">
-        <mat-icon class="blue-icon" color="warn">trash</mat-icon>
+      <button mat-icon-button matMiniFab (click)="openDeleteCandidatoDialog()">
+        <mat-icon class="red-icon">delete_outline</mat-icon>
       </button>
       <button mat-icon-button matMiniFab (click)="cerrar(false)">
         <mat-icon class="blue-icon" color="warn">close</mat-icon>
       </button>
-
-      <!-- @for (item of grupos; track $index) {
-        <p>{{item.cargo}}</p>
-        <p> Vote por {{ item.porCuantosVotar }}</p>
-        @for (candidato of item.candidatos; track $index) {
-          <p>{{candidato.nombre}}</p>
-          <p>{{candidato.congregacion}}</p>
-
-
-        }
-      } -->
-
-
     </div>
     <div *ngFor="let grupo of grupos">
       <h3>{{ grupo.cargo }}</h3>
@@ -49,4 +36,29 @@
       Votar
     </button>
 
+</div> -->
+<div *ngFor="let grupo of grupos">
+  <h3>{{ grupo.cargo }}</h3>
+
+  <div class="candidatos">
+    <label class="candidato"
+      *ngFor="let candidato of grupo.candidatos"
+      [ngClass]="{'seleccionado': candidato.selected}">
+
+      <input type="checkbox"
+       [checked]="candidato.selected"
+       (change)="toggleSelection(grupo, candidato, $event)" />
+
+      <span>
+        <strong>{{ candidato.nombre }}</strong><br>
+        <small>{{ candidato.congregacion }}</small>
+      </span>
+    </label>
+  </div>
+
+  <p *ngIf="grupo.porCuantosVotar>0" class="sel-msg">
+    🗳 Selección: {{ grupo.porCuantosVotar }} / {{grupo.porCuantosVotar}}
+  </p>
+
+  <hr>
 </div>

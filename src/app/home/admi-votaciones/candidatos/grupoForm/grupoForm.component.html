@@ -16,12 +16,12 @@
       <mat-error *ngIf="form.get('cargo')?.hasError('required') && form.get('cargo')?.touched">Este campo es obligatorio</mat-error>
     </mat-form-field>
 
-    <!-- Nombre -->
-    <!-- <mat-form-field appearance="outline">
+    <!-- Por Cuantos votar -->
+    <mat-form-field appearance="outline">
       <mat-label>Por cuantos votar</mat-label>
       <input matInput formControlName="cantidad" />
       <mat-error *ngIf="form.get('cantidad')?.hasError('required') && form.get('cantidad')?.touched">Este campo es obligatorio</mat-error>
-    </mat-form-field> -->
+    </mat-form-field>
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="grid-column: span 2;">
 
