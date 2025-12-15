@@ -77,7 +77,41 @@ export class PapeletaComponent implements OnInit {
   }
 
   public doVote(){
+    this.voter = this._localStorageService.getItem("voter");
+    let seleccionados: Candidato[] = [];
     console.log(this.grupos);
+    this.grupos.forEach(grupo => {
+      console.log(grupo.candidatos);
+      grupo.candidatos.forEach(seleccionado => {
+        if(seleccionado.selected == true){
+          console.log(seleccionado);
+          seleccionados.push(seleccionado)
+        }
+      });
+    });
+
+    console.log({seleccionados});
+    seleccionados.forEach(seleccinado => {
+      const data = {
+        idVotante: this.voter.id,
+        idCandidato: seleccinado?.id,
+        ministerio: this.voter.ministerio,
+        ronda: this.ronda
+      }
+        this._votacionService.create(data).subscribe(res => {
+          console.log(res);
+        });
+    });
+
+    this.voter.habilitado = false;
+    console.log(this.voter);
+
+    this._delegadoService.update(this.voter.id, this.voter).subscribe(res =>{
+      console.log(res);
+    });
+
+    this.router.navigate(['/home/votacion/enter-code']);
+    this._toastService.success("Usted acaba de realizar su votación");
 
     // console.log("GRUPOS: ", this.grupos);
     // this.voter = this._localStorageService.getItem("voter");
