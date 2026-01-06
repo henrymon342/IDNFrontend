@@ -5,6 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, Ma
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { ExtradataService } from "../../../../core/services/extradata.service";
+import { firstValueFrom } from "rxjs";
 
 @Component({
   selector: 'ronda-dialog',
@@ -19,21 +20,43 @@ export class RondaDialog {
 
   ronda: string = '';
 
-
   readonly _extraDataService = inject(ExtradataService);
   constructor(
     public dialogRef: MatDialogRef<RondaDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
+    console.log(this.data);
 
   }
 
 
-  changeRonda() {
-    console.log('Valor de ronda:', this.ronda);
-    this._extraDataService.updateFirst(this.ronda).subscribe(res =>{
-      console.log( res.data.ronda);
-      this.dialogRef.close({ ronda: this.ronda, estado: 'confirmado' });
-    });
+  async updateRonda(): Promise<boolean> {
+    try {
+      const res = await firstValueFrom(
+        this._extraDataService.patchingFirst({ronda: this.ronda})
+      );
+
+      this.data = this.ronda;
+      return true;
+
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  }
+
+  async changeRonda() {
+    console.log("comienza updateRonda");
+
+    const ok = await this.updateRonda();
+    console.log("termina updateRonda");
+
+    console.log(ok);
+    if(ok){
+      console.log("comienza close dialog");
+      this.dialogRef.close({ ronda: this.data, estado: true });
+    }else{
+      this.dialogRef.close({ estado: false });
+    }
   }
 }

@@ -3,6 +3,7 @@ import { AdmiVotacionesComponent } from './admi-votaciones.component';
 import { VotantesComponent } from './votantes/votantes.component';
 import { CandidatosComponent } from './candidatos/candidatos.component';
 import { ConsultaComponent } from './consulta/consulta.component';
+import { EntornoComponent } from './entorno/entorno.component';
 
 
 export const ADMI_VOTACIONES_ROUTES: Routes = [
@@ -12,6 +13,7 @@ export const ADMI_VOTACIONES_ROUTES: Routes = [
     children:[
       { path: 'votantes', component: VotantesComponent },
       { path: 'candidatos', component: CandidatosComponent },
+      { path: 'entorno', component: EntornoComponent },
       { path: 'consulta', component: ConsultaComponent },
       { path: '', redirectTo: 'votantes', pathMatch: 'full' }
     ]

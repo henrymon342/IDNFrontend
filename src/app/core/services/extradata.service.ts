@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { Observable, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,10 @@ export class ExtradataService {
   updateFirst(extradata: any) {
     return this.http.post<any>(`${this.baseUrl}/extradata/first`, {ronda:extradata});
   }
+
+  patchingFirst(extradata: any) {
+    return this.http.post<any>(`${this.baseUrl}/extradata/patching`, extradata);
+}
 
   delete(id:number) {
     return this.http.delete<any>(`${this.baseUrl}/extradata/${id}`);

@@ -1,0 +1,21 @@
+  <div class="container">
+    <div class="bloque">
+      <label class="label">
+        Ronda:
+      </label>
+      <button mat-icon-button (click)="openChangeRondaDialog()">
+        {{ ronda }}
+      </button>
+    </div>
+
+    <div class="bloque">
+      <label class="label">
+        Habilitar votación
+      </label>
+      <mat-slide-toggle
+        [(ngModel)]="habilitado"
+        (change)="onToggleChange($event)">
+        {{ habilitado ? "Activado" : "Desactivado" }}
+      </mat-slide-toggle>
+    </div>
+  </div>

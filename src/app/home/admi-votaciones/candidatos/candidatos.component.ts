@@ -33,6 +33,7 @@ import { RondaDialog } from './rondaDialog/rondaDialog.component';
 export class CandidatosComponent {
 
   ronda: number = null!;
+  habilitado: boolean = false;
 
   public displayedColumns: string[] = [ 'Nro', 'nombre', 'congregacion', 'ministerio', 'cargo', 'habilitado', 'mas'];
   public dataSource = new MatTableDataSource<Candidato>();
@@ -52,6 +53,7 @@ export class CandidatosComponent {
     this._extradataService.getFirst().subscribe(res => {
       console.log(res);
       this.ronda = res.data.ronda;
+      this.habilitado = res.data.habilitado;
     });
   }
 
@@ -129,7 +131,7 @@ export class CandidatosComponent {
     const dialogRef = this.dialog.open(RondaDialog, {
       restoreFocus: false,
       panelClass: 'custom',
-      data: { ronda: this.ronda }
+      data: { ronda: this.ronda, habilitado: this.habilitado }
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -1,0 +1,19 @@
+.container{
+  padding: 16px;
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+
+  .bloque{
+    display: flex;
+
+    .label{
+      justify-self: center;
+      align-self: center;
+      padding-right: 8px;
+    }
+  }
+
+}
+

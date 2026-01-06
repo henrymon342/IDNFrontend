@@ -1,4 +1,6 @@
-  <div class="container">
+<div class="container">
+  @if(votacionHabilitada)
+  {
     <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
       <!-- Code -->
       <h2>Ingresa tu codigo de votación</h2>
@@ -12,5 +14,9 @@
         Ingresar
       </button>
     </form>
-  </div>
+  }
+  @else{
+    <p>Las votaciones no estan habilitadas</p>
+  }
+</div>
 

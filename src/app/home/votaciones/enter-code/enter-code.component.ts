@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { VotanteService } from '../../../core/services/votante.service';
 import { LocalStorageService } from '../../../core/services/localstorage.service';
 import { ToastService } from '../../../core/services/toast.service';
+import { ExtradataService } from '../../../core/services/extradata.service';
 
 @Component({
   selector: 'enter-code',
@@ -20,12 +21,24 @@ import { ToastService } from '../../../core/services/toast.service';
 export class EnterCodeComponent {
 
   public form!: FormGroup;
+  public votacionHabilitada: boolean = false;
 
   private readonly _votanteService = inject(VotanteService);
   private readonly _localStorageService = inject(LocalStorageService);
   readonly _toastService = inject(ToastService);
+  private readonly _extradataService = inject(ExtradataService);
+
   constructor(private fb: FormBuilder, private router: Router){
     this.createForm();
+    this.getEstadoVotacion();
+
+  }
+
+  private getEstadoVotacion(){
+    this._extradataService.getFirst().subscribe(res => {
+      console.log(res.data.habilitado);
+      this.votacionHabilitada = res.data.habilitado;
+    })
   }
 
   private createForm(): void{
