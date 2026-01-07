@@ -113,6 +113,7 @@ export class GrupoFormComponent {
         candidatosIds: JSON.stringify(ids)
       }).subscribe( res => {
         console.log(res);
+        this.cerrar(true);
       });
     }
   }

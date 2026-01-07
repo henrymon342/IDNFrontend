@@ -7,6 +7,21 @@
   border-radius: 0 0 10px 10px;
   background: linear-gradient(135deg, #3f51b5, #5c6bc0); // colores adaptables
   perspective: 1000px; // Para animaciones 3D si se usan
+
+  .deshabilitado{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+
+    .vote{
+      // font-size: 2em;
+      width: auto;
+      font-size: 60px;
+      height: auto;
+      text-align: center;
+    }
+  }
 }
 
 // Tarjeta del formulario visualmente destacada

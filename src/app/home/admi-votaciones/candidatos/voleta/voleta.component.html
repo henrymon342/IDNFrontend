@@ -37,8 +37,23 @@
     </button>
 
 </div> -->
+
+<div class="header">
+  <div> VOLETA DE VOTACIÓN ADMIN </div>
+  <button mat-icon-button matMiniFab (click)="openDeleteCandidatoDialog()">
+    <mat-icon class="red-icon">delete_outline</mat-icon>
+  </button>
+  <button mat-icon-button matMiniFab (click)="cerrar(false)">
+    <mat-icon class="blue-icon" color="warn">close</mat-icon>
+  </button>
+</div>
 <div *ngFor="let grupo of grupos">
-  <h3>{{ grupo.cargo }}</h3>
+  <div class="cargo-row">
+    <h3>{{ grupo.cargo }}</h3>
+    <button mat-icon-button matMiniFab (click)="deleteGroup(grupo)">
+      <mat-icon class="red-icon">delete_outline</mat-icon>
+    </button>
+  </div>
 
   <div class="candidatos">
     <label class="candidato"

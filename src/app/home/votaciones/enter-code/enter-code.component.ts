@@ -9,12 +9,12 @@ import { VotanteService } from '../../../core/services/votante.service';
 import { LocalStorageService } from '../../../core/services/localstorage.service';
 import { ToastService } from '../../../core/services/toast.service';
 import { ExtradataService } from '../../../core/services/extradata.service';
-
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'enter-code',
   standalone: true,
   imports: [CommonModule, RouterOutlet, MatFormFieldModule, FormsModule, ReactiveFormsModule,
-    MatInputModule, MatButtonModule ],
+    MatInputModule, MatButtonModule, MatIconModule ],
   templateUrl: './enter-code.component.html',
   styleUrl: './enter-code.component.scss'
 })

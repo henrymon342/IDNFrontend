@@ -5,19 +5,22 @@
         <input matInput (keyup)="applyFilter($event)" #input>
       </mat-form-field>
 
-      <button mat-icon-button (click)="openChangeRondaDialog()">
+      <!-- <button mat-icon-button (click)="openChangeRondaDialog()">
         {{ ronda }}
+      </button> -->
+
+      <button mat-icon-button (click)="openVoletaForm()" title="voleta">
+        <mat-icon color="primary" class="material-symbols-outlined">
+          how_to_vote
+        </mat-icon>
       </button>
 
-      <button mat-icon-button (click)="openVoletaForm()">
-        <mat-icon class="blue-icon">Voleta</mat-icon>
+      <button mat-raised-button color="primary" (click)="openAddGrupoForm()" title="Añadir grupo">
+        Añadir grupo
       </button>
 
-      <button mat-icon-button (click)="openAddGrupoForm()">
-        <mat-icon class="blue-icon">Grupos</mat-icon>
-      </button>
 
-      <button mat-icon-button (click)="openCandidatoForm()">
+      <button mat-icon-button (click)="openCandidatoForm()" title="Añadir candidato">
         <mat-icon class="blue-icon">add</mat-icon>
       </button>
 

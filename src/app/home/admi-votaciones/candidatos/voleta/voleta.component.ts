@@ -153,4 +153,12 @@ export class VoletaComponent implements OnInit {
   cerrar(operacion: boolean) {
     this.bottomSheetRef.dismiss({ resultado: operacion });
   }
+
+  deleteGroup(group: any){
+    console.log({group});
+    this._voletaService.delete(group.id).subscribe(res=>{
+      console.log(res);
+      this.cerrar(true);
+    });
+  }
 }

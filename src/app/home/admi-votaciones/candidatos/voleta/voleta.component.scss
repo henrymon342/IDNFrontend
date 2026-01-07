@@ -1,7 +1,4 @@
-.container{
-  padding: 0 1em 0 1em;
-
-  .header{
+.header{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,6 +7,17 @@
       color: red;
     }
   }
+
+.cargo-row {
+  display: flex;
+  align-items: center;      /* centra verticalmente */
+  justify-content: space-between;
+  gap: 8px;                 /* espacio entre h3 y botón */
+}
+.container{
+  padding: 0 1em 0 1em;
+
+
 
   .form{
     display:grid;
