@@ -40,33 +40,48 @@
 
 -->
 
+<div class="container">
 
-<div *ngFor="let grupo of grupos">
-  <h3>{{ grupo.cargo }}</h3>
-
-  <div class="candidatos">
-    <label class="candidato"
-      *ngFor="let candidato of grupo.candidatos"
-      [ngClass]="{'seleccionado': candidato.selected}">
-
-      <input type="checkbox"
-       [checked]="candidato.selected"
-       (change)="toggleSelection(grupo, candidato, $event)" />
-
-      <span>
-        <strong>{{ candidato.nombre }}</strong><br>
-        <small>{{ candidato.congregacion }}</small>
-      </span>
-    </label>
+  <!-- 🧾 Datos del votante -->
+  <div class="voter-info">
+    <h1>{{ datavoter.ministerio }}</h1>
+    <h2>{{ datavoter.nombre }}</h2>
+    <p>{{ datavoter.congregacion }}</p>
   </div>
 
-  <p *ngIf="grupo.porCuantosVotar>0" class="sel-msg">
-    🗳 Selección: {{ grupo.porCuantosVotar }} / {{grupo.porCuantosVotar}}
-  </p>
+  <!-- 🗳️ Grupos de votación -->
+  <div *ngFor="let grupo of grupos">
+    <h3>{{ grupo.cargo }}</h3>
 
-  <hr>
+    <div class="candidatos">
+      <label class="candidato"
+        *ngFor="let candidato of grupo.candidatos"
+        [ngClass]="{'seleccionado': candidato.selected}">
+
+        <input type="checkbox"
+          [checked]="candidato.selected"
+          (change)="toggleSelection(grupo, candidato, $event)" />
+
+        <span>
+          <strong>{{ candidato.nombre }}</strong><br>
+          <small>{{ candidato.congregacion }}</small>
+        </span>
+      </label>
+    </div>
+
+    <p *ngIf="grupo.porCuantosVotar > 0" class="sel-msg">
+      🗳 Selección: {{ grupo.porCuantosVotar }} / {{ grupo.porCuantosVotar }}
+    </p>
+
+    <hr>
+  </div>
+
+  <!-- 🔘 Botón -->
+  <button mat-raised-button
+          color="primary"
+          (click)="doVote()"
+          class="unir-columnas">
+    Votar
+  </button>
+
 </div>
-
-<button mat-raised-button color="primary" (click)="doVote()" class="unir-columnas">
-  Votar
-</button>
