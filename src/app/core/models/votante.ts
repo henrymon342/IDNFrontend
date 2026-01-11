@@ -6,4 +6,5 @@ export class Votante {
   cargo: string;
   codigo: string;
   habilitado: boolean;
+  yavoto: boolean;
 }

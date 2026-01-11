@@ -23,6 +23,10 @@ export class VotanteService {
     return this.http.get<any>(`${this.baseUrl}/votante/bycode/${code}`);
   }
 
+  getAlreadyVoted(){
+    return this.http.get<any>(`${this.baseUrl}/votante/alreadyVoted`);
+  }
+
   create(votante: any) {
     return this.http.post<any>(`${this.baseUrl}/votante`, votante);
   }
@@ -33,5 +37,9 @@ export class VotanteService {
 
   delete(id:number) {
     return this.http.delete<any>(`${this.baseUrl}/votante/${id}`);
+  }
+
+  setStatusVoter(){
+    return this.http.get<any>(`${this.baseUrl}/votante/setStatusVoter`);
   }
 }

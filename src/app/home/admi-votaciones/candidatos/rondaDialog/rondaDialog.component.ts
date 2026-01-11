@@ -6,6 +6,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { ExtradataService } from "../../../../core/services/extradata.service";
 import { firstValueFrom } from "rxjs";
+import { VotanteService } from "../../../../core/services/votante.service";
 
 @Component({
   selector: 'ronda-dialog',
@@ -21,6 +22,7 @@ export class RondaDialog {
   ronda: string = '';
 
   readonly _extraDataService = inject(ExtradataService);
+  readonly _votanteService = inject(VotanteService);
   constructor(
     public dialogRef: MatDialogRef<RondaDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -55,6 +57,9 @@ export class RondaDialog {
     if(ok){
       console.log("comienza close dialog");
       this.dialogRef.close({ ronda: this.data, estado: true });
+      this._votanteService.setStatusVoter().subscribe(res =>{
+        console.log(res);
+      });
     }else{
       this.dialogRef.close({ estado: false });
     }

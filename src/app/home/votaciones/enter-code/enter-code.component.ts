@@ -57,7 +57,11 @@ export class EnterCodeComponent {
           console.log("existe");
           if(!res.data.habilitado){
             this.router.navigate(['/home/votacion/enter-code']);
-            this._toastService.error("Usted no esta habilitado para votar");
+            if(res.data.yavoto){
+              this._toastService.info("Usted ya realizo su votación");
+            }else{
+              this._toastService.error("Usted no esta habilitado para votar");
+            }
             return;
           }
 

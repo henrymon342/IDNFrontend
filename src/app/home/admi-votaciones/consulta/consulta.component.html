@@ -25,9 +25,38 @@
   </div>
 
   <div class="candidad">
-    <ng-container *ngIf="responseData?.length > 0; else noCandidatos">
-      <div class="candidato-card" *ngFor="let candidato of responseData; let i = index">
-        <div class="card-header">
+    <div class="candidatos-container" *ngIf="responseData?.length > 0; else noCandidatos">
+      @for (item of responseData; track item[0]) {
+        <div class="candidato-card">
+          <div class="cargo">{{ item[0] }}</div>
+
+          <ul class="candidatos-lista">
+            @for (candidato of item[1]; track candidato.idCandidato) {
+              <li class="candidato-item">
+                <span class="nombre">{{ candidato.nombre }}</span>
+                <span class="votos">{{ candidato.count }} votos</span>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+
+      <div class="contador-votos">
+        <h4>Votos virtuales realizados</h4>
+        <span class="numero">{{ totalVotosVirtuales }}</span>
+      </div>
+    </div>
+      <!-- <div class="candidato-card" *ngFor="let candidato of responseData; let i = index">
+        {{candidato |json}}
+        {{candidato[0]}}:
+        <ul>
+        @for (candidato of item[1]; track candidato.idCandidato) {
+          <li>
+            {{ candidato.nombre }} - {{ candidato.count }} votos
+          </li>
+          }
+        </ul> -->
+        <!-- <div class="card-header">
           <h3 class="candidato-nombre">{{ candidato.nombre | titlecase }}</h3>
           <span class="candidato-cargo">{{ candidato.cargo }}</span>
         </div>
@@ -36,13 +65,12 @@
             <span class="count-label">Cantidad:</span>
             <span class="count-value">{{ candidato.count }}</span>
           </div>
-          </div>
-      </div>
-    </ng-container>
+          </div> -->
+      <!-- </div> -->
 
     <ng-template #noCandidatos>
       <div class="no-candidatos">
-        <p>No hay candidatos disponibles para mostrar.</p>
+        <p>No hay datos disponibles para mostrar.</p>
       </div>
     </ng-template>
   </div>

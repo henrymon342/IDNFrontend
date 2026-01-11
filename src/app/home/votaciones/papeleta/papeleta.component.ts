@@ -101,9 +101,11 @@ export class PapeletaComponent implements OnInit {
         this._votacionService.create(data).subscribe(res => {
           console.log(res);
         });
+
     });
 
     this.voter.habilitado = false;
+    this.voter.yavoto = true;
     console.log(this.voter);
 
     this._delegadoService.update(this.voter.id, this.voter).subscribe(res =>{

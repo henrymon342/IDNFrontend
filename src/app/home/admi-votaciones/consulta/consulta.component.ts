@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { VotacionService } from '../../../core/services/votacion.service';
 import { MatButtonModule } from "@angular/material/button";
 import {MatIconModule} from '@angular/material/icon';
+import { VotanteService } from '../../../core/services/votante.service';
 
 @Component({
   selector: 'app-crear-grupo',
@@ -21,10 +22,12 @@ export class ConsultaComponent {
   public cantidad: number;
   public responseData: any;
   public candidatosAgrupados: any;
+  public totalVotosVirtuales : any;
 
 
 
   private readonly _votacionService = inject(VotacionService);
+  private readonly _votanteService = inject(VotanteService);
   constructor(private fb: FormBuilder){
     this.createForms();
   }
@@ -41,39 +44,48 @@ export class ConsultaComponent {
     if(!this.form.valid) return;
     this._votacionService.consulta(this.form.value).subscribe(res =>{
       console.log(res);
-      this.responseData = res.data;
-      this.cantidad = res.data.length;
+      this.responseData = Object.entries(res.data);
 
-      this.candidatosAgrupados = this.groupByCargoArray(this.responseData);
-      console.log(this.candidatosAgrupados);
+      // for (const cargo in this.responseData) {
+      //   console.log("Cargo:", cargo);
+      //   console.log("Candidatos:", this.responseData[cargo]);
+      // }
+      // this.candidatosAgrupados = this.groupByCargoArray(this.responseData);
+      // console.log(this.candidatosAgrupados);
+
 
     });
+
+    this._votanteService.getAlreadyVoted().subscribe(res =>{
+      console.log(res);
+      this.totalVotosVirtuales = res.data;
+    })
   }
 
-  groupByCargoArray(candidatos: any[]): any[] {
-    // 1. Agrupación intermedia usando un objeto para eficiencia (misma lógica que antes)
-    const tempAgrupado = candidatos.reduce((acc, candidato) => {
-      const cargoKey = candidato.cargo;
+  // groupByCargoArray(candidatos: any[]): any[] {
+  //   // 1. Agrupación intermedia usando un objeto para eficiencia (misma lógica que antes)
+  //   const tempAgrupado = candidatos.reduce((acc, candidato) => {
+  //     const cargoKey = candidato.cargo;
 
-      if (!acc[cargoKey]) {
-        acc[cargoKey] = [];
-      }
+  //     if (!acc[cargoKey]) {
+  //       acc[cargoKey] = [];
+  //     }
 
-      // Opcional: Ordenar cada sub-lista por count (votos) de mayor a menor
-      acc[cargoKey].push(candidato);
-      acc[cargoKey].sort((a:any, b:any) => b.count - a.count);
+  //     // Opcional: Ordenar cada sub-lista por count (votos) de mayor a menor
+  //     acc[cargoKey].push(candidato);
+  //     acc[cargoKey].sort((a:any, b:any) => b.count - a.count);
 
-      return acc;
-    });
+  //     return acc;
+  //   });
 
-    // 2. Transformación final: Convertir el objeto temporal en el array deseado
-    const resultadoArray: any[] = Object.keys(tempAgrupado).map(key => ({
-      CARGO: key,
-      LISTA: tempAgrupado[key]
-    }));
-    console.log(resultadoArray);
+  //   // 2. Transformación final: Convertir el objeto temporal en el array deseado
+  //   const resultadoArray: any[] = Object.keys(tempAgrupado).map(key => ({
+  //     CARGO: key,
+  //     LISTA: tempAgrupado[key]
+  //   }));
+  //   console.log(resultadoArray);
 
-    // Opcional: Ordenar los grupos principales por la clave (alfabéticamente)
-    return resultadoArray;
-  }
+  //   // Opcional: Ordenar los grupos principales por la clave (alfabéticamente)
+  //   return resultadoArray;
+  // }
 }
