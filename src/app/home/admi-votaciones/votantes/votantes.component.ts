@@ -19,6 +19,8 @@ import { VotanteFormComponent } from './votanteForm/votanteForm.component';
 import { VotanteService } from '../../../core/services/votante.service';
 import { ToastService } from '../../../core/services/toast.service';
 import { CodigoService } from '../../../core/services/codigo.service';
+import { ColumnDataDialog } from './ColumnDataDialog/column-data-dialog';
+import { ColumnDataCsv } from '../../../core/models/columnDataCsv';
 
 @Component({
   selector: 'app-crear-grupo',
@@ -34,6 +36,7 @@ export class VotantesComponent {
 
 
   public votanteId: number | undefined;
+  public columnCsv: ColumnDataCsv = new ColumnDataCsv();
 
   displayedColumns: string[] = [ 'Nro', 'nombre', 'congregacion', 'ministerio', 'cargo', 'codigo', 'habilitado', 'mas'];
   public dataSource = new MatTableDataSource<Votante>();
@@ -114,4 +117,52 @@ export class VotantesComponent {
     });
   }
 
+  public downloadData(){
+    const dialogRef = this.dialog.open(ColumnDataDialog, {
+      data: this.columnCsv,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if(result){
+        this.columnCsv = result;
+        this.generateCSV(this.columnCsv);
+      }
+      console.log(this.columnCsv);
+    });
+  }
+
+  private generateCSV(csvdata:any){
+    this._votanteService.generateCsv(csvdata).subscribe(res =>{
+      console.log(res.data);
+      if(res.data){
+        this.descargarCSV(res.data, 'votantes.csv');
+      }
+    })
+  }
+
+ descargarCSV(csvData: string, fileName: string = 'exportacion.csv'): void {
+    // 1. El BOM (Byte Order Mark) permite que Excel reconozca tildes y eñes (UTF-8)
+    const BOM = '\uFEFF';
+    const blob = new Blob([BOM + csvData], { type: 'text/csv;charset=utf-8;' });
+
+    // 2. Crear un link oculto en el DOM
+    const link = document.createElement('a');
+
+    // 3. Crear la URL del objeto Blob
+    if (link.download !== undefined) {
+      const url = URL.createObjectURL(blob);
+      link.setAttribute('href', url);
+      link.setAttribute('download', fileName);
+      link.style.visibility = 'hidden';
+
+      // 4. Añadir, hacer clic y remover
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // 5. Limpiar la memoria
+      URL.revokeObjectURL(url);
+    }
+  }
 }

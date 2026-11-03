@@ -42,4 +42,8 @@ export class VotanteService {
   setStatusVoter(){
     return this.http.get<any>(`${this.baseUrl}/votante/setStatusVoter`);
   }
+
+  generateCsv(data:any){
+    return this.http.post<any>(`${this.baseUrl}/votante/generatecsv`,data);
+  }
 }

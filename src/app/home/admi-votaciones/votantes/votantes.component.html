@@ -11,6 +11,12 @@
           <input matInput (keyup)="applyFilter($event)" #input>
         </mat-form-field>
 
+        <button mat-icon-button (click)="downloadData()" title="descargar excel">
+          <mat-icon color="primary" class="material-symbols-outlined">
+            download
+          </mat-icon>
+        </button>
+
         <button mat-icon-button (click)="openVotanteForm()">
           <mat-icon class="blue-icon">add</mat-icon>
         </button>

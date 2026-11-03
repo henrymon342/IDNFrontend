@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Elegir columnas para exportar</h2>
+
+<mat-dialog-content [formGroup]="form" >
+  <p>Seleccione los campos que desea incluir en el archivo CSV:</p>
+
+  <div class="form">
+    <mat-checkbox formControlName="nombre">Nombre Completo</mat-checkbox>
+    <mat-checkbox formControlName="congregacion">Congregación</mat-checkbox>
+    <mat-checkbox formControlName="ministerio">Ministerio</mat-checkbox>
+    <mat-checkbox formControlName="cargo">Cargo</mat-checkbox>
+    <mat-checkbox formControlName="codigo">Código</mat-checkbox>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="form.value" cdkFocusInitial>
+    Exportar
+  </button>
+</mat-dialog-actions>
