@@ -38,17 +38,17 @@ export class LoginComponent {
 
 login(): void {
     const credentials: LoginForm = this.form.value;
-    console.log(credentials);
     this._authService.login(credentials).subscribe({
       next: (res) => {
-        console.log(res);
+        console.log(res.error);
         if( !res.success ){
-          this._toastService.error(res.data.message);
+          this._toastService.error(res.error.data.message);
         }else{
           if( res.data.token ){
             const username = res.data.username
             this._localStorageService.setItem('user', username);
             this._localStorageService.setItem('x-access', res.data.admin);
+            this._toastService.success('Bienvenido usted es administrador administrador')
             // this._localStorageService.setItem('token-idn', res.data.token);
             if( username === 'henrymc' && res.data.type == "PASTORES"){
               this.router.navigate(['/auth/administrador']);
@@ -72,8 +72,10 @@ login(): void {
         }
       },
       error: (err) => {
-        this._toastService.error('Credenciales no validas ' + err.message)
-        console.log(err);
+        console.log(err.error);
+        this._toastService.error(
+          err.error?.data?.message || err.error?.message || err.message
+        );
       }
     });
   }

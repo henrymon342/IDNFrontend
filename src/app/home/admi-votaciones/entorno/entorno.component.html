@@ -1,21 +1,54 @@
-  <div class="container">
-    <div class="bloque">
-      <label class="label">
-        Ronda:
-      </label>
-      <button mat-icon-button (click)="openChangeRondaDialog()">
-        {{ ronda }}
-      </button>
+
+<div class="container">
+
+  <div class="bloque">
+    <div>
+      <label class="label">Ronda actual</label>
+      <span class="subtitulo">Configurar ronda de votación</span>
     </div>
 
-    <div class="bloque">
-      <label class="label">
-        Habilitar votación
-      </label>
-      <mat-slide-toggle
-        [(ngModel)]="habilitado"
-        (change)="onToggleChange($event)">
-        {{ habilitado ? "Activado" : "Desactivado" }}
-      </mat-slide-toggle>
-    </div>
+    <button mat-stroked-button color="primary"
+      (click)="openChangeRondaDialog()">
+      {{ ronda }}
+      <mat-icon>edit</mat-icon>
+    </button>
   </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="bloque">
+    <div>
+      <label class="label">Habilitar votación</label>
+      <span class="subtitulo">
+        {{ habilitado ? 'Activado' : 'Desactivado' }}
+      </span>
+    </div>
+
+    <mat-slide-toggle
+      [(ngModel)]="habilitado"
+      (change)="onToggleChange($event)">
+    </mat-slide-toggle>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre del ministerio</mat-label>
+      <input matInput formControlName="ministerio">
+
+      <mat-error *ngIf="form.get('ministerio')?.hasError('required')">
+        El ministerio es obligatorio
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary"
+      type="submit" [disabled]="form.invalid">
+      <mat-icon>add</mat-icon>
+      Registrar
+    </button>
+
+  </form>
+
+</div>

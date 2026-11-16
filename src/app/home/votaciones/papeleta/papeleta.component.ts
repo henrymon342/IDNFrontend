@@ -37,9 +37,10 @@ export class PapeletaComponent implements OnInit {
 
   public grupos: GrupoVoleta[];
   private voter: any;
-  private ronda: any;
   public datavoter: any;
   // public maxSeleccion = 1;
+  public extradata: any;
+
 
   private readonly _localStorageService = inject(LocalStorageService);
   private readonly _voletaService = inject(VoletaService);
@@ -60,7 +61,7 @@ export class PapeletaComponent implements OnInit {
   private getExtradata(){
     this._extradataService.getFirst().subscribe(res => {
       console.log(res);
-      this.ronda = res.data.ronda;
+      this.extradata = res.data;
     });
   }
 
@@ -93,13 +94,20 @@ export class PapeletaComponent implements OnInit {
     console.log({seleccionados});
     seleccionados.forEach(seleccinado => {
       const data = {
-        idVotante: this.voter.id,
+        idCodigo: this.voter.idCodigo,
         idCandidato: seleccinado?.id,
-        ministerio: this.voter.ministerio,
-        ronda: this.ronda
+        ministerio: this.extradata.ministerio,
+        ronda: this.extradata.ronda
       }
+      console.log(data)
+    // "idCodigo": "12346",
+    // "idCandidato": "1a3f01b0-1238-44e1-ad69-70e5861aefbc",
+    // "ministerio": "JNI",
+    // "ronda": "1"
+
         this._votacionService.create(data).subscribe(res => {
           console.log(res);
+          this._localStorageService.removeItem("voter");  
         });
 
     });
@@ -108,9 +116,9 @@ export class PapeletaComponent implements OnInit {
     this.voter.yavoto = true;
     console.log(this.voter);
 
-    this._delegadoService.update(this.voter.id, this.voter).subscribe(res =>{
-      console.log(res);
-    });
+    // this._delegadoService.update(this.voter.id, this.voter).subscribe(res =>{
+    //   console.log(res);
+    // });
 
     this.router.navigate(['/home/votacion/enter-code']);
     this._toastService.success("Usted acaba de realizar su votación");

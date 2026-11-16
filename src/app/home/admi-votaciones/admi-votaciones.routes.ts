@@ -4,6 +4,7 @@ import { VotantesComponent } from './votantes/votantes.component';
 import { CandidatosComponent } from './candidatos/candidatos.component';
 import { ConsultaComponent } from './consulta/consulta.component';
 import { EntornoComponent } from './entorno/entorno.component';
+import { CodigoComponent } from './codigo/codigo.component';
 
 
 export const ADMI_VOTACIONES_ROUTES: Routes = [
@@ -11,6 +12,7 @@ export const ADMI_VOTACIONES_ROUTES: Routes = [
     path: '',
     component: AdmiVotacionesComponent,
     children:[
+      { path: 'codigo', component: CodigoComponent },
       { path: 'votantes', component: VotantesComponent },
       { path: 'candidatos', component: CandidatosComponent },
       { path: 'entorno', component: EntornoComponent },

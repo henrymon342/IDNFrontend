@@ -1,0 +1,66 @@
+.container{
+  padding: 0 1em 0 1em;
+
+  .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    .input-search{
+      width: 100%;
+    }
+  }
+
+  .form{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+
+  .unir-columnas{
+    grid-column: span 2;
+    justify-self: center;
+    width: 100%;
+    text-align: center;
+  }
+
+  .lista-encargados{
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+}
+
+.flag {
+  display: block;
+  transform-origin: left center;
+  justify-self: center;
+  border-radius: 1em;
+  // animation: wave 2s infinite ease-in-out;
+}
+
+@keyframes wave {
+  0% { transform: rotateZ(0deg) skewY(0deg); }
+  20% { transform: rotateZ(2deg) skewY(4deg); }
+  40% { transform: rotateZ(-2deg) skewY(-4deg); }
+  60% { transform: rotateZ(2deg) skewY(4deg); }
+  80% { transform: rotateZ(-2deg) skewY(-4deg); }
+  100% { transform: rotateZ(0deg) skewY(0deg); }
+}
+
+.logo-sinergia {
+  width: 350px;
+  height: 150px;
+  background-image: url('../../../assets/logos/siner1.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  justify-self: center;
+}
+
+
+
+
+
+

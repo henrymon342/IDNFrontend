@@ -10,6 +10,9 @@ import { LocalStorageService } from '../../../core/services/localstorage.service
 import { ToastService } from '../../../core/services/toast.service';
 import { ExtradataService } from '../../../core/services/extradata.service';
 import { MatIconModule } from '@angular/material/icon';
+import { Codigo } from '../../../core/models/codigo';
+import { VotacionService } from '../../../core/services/votacion.service';
+import { DatosExtra } from '../../../core/models/datosExtra';
 @Component({
   selector: 'enter-code',
   standalone: true,
@@ -22,8 +25,10 @@ export class EnterCodeComponent {
 
   public form!: FormGroup;
   public votacionHabilitada: boolean = false;
+  public estado: DatosExtra;
 
   private readonly _votanteService = inject(VotanteService);
+  private readonly _votacionService = inject(VotacionService);
   private readonly _localStorageService = inject(LocalStorageService);
   readonly _toastService = inject(ToastService);
   private readonly _extradataService = inject(ExtradataService);
@@ -36,6 +41,8 @@ export class EnterCodeComponent {
 
   private getEstadoVotacion(){
     this._extradataService.getFirst().subscribe(res => {
+      console.log(res);
+      this.estado = res.data;
       console.log(res.data.habilitado);
       this.votacionHabilitada = res.data.habilitado;
     })
@@ -51,28 +58,49 @@ export class EnterCodeComponent {
     if (this.form.valid) {
       const code = this.form.value.code;
       console.log(code);
-      this._votanteService.getByCode(code).subscribe( res => {
+      this._votacionService.verifyvoted({ronda: this.estado.ronda, ministerio: this.estado.ministerio, code: code}).subscribe( res => {
         console.log(res);
-        if(res.data.id != null){
-          console.log("existe");
-          if(!res.data.habilitado){
-            this.router.navigate(['/home/votacion/enter-code']);
-            if(res.data.yavoto){
-              this._toastService.info("Usted ya realizo su votación");
-            }else{
-              this._toastService.error("Usted no esta habilitado para votar");
-            }
-            return;
-          }
+        if(res.data.available){
+          this._toastService.success("Usted esta habilitado para votar");
+          this._localStorageService.setItem("voter", res.data)
+          setTimeout(() => {
+            this.router.navigate(['/home/votacion/papeleta']);
+          }, 3000);
 
-          this._localStorageService.setItem("voter", res.data);
-          // TODO: enviar a la pantalla de votaciones osea la la papeleta
-          this.router.navigate(['/home/votacion/papeleta']);
         }else{
-          console.log(res.data);
-          //TODO: mostrar mensaje, el codigo no es valido
+          this.router.navigate(['/home/votacion/enter-code']);
+          this._toastService.info(res.data.message);
         }
-      });
+        this.form.get('code')?.setValue("");
+      })
+      // "ronda": "1",
+      // "ministerio": "JNI",
+      // "code": "12341"
+
+
+
+      // this._votanteService.getByCode(code).subscribe( res => {
+      //   console.log(res);
+      //   if(res.data.id != null){
+      //     console.log("existe");
+      //     if(!res.data.habilitado){
+      //       this.router.navigate(['/home/votacion/enter-code']);
+      //       if(res.data.yavoto){
+      //         this._toastService.info("Usted ya realizo su votación");
+      //       }else{
+      //         this._toastService.error("Usted no esta habilitado para votar");
+      //       }
+      //       return;
+      //     }
+
+      //     this._localStorageService.setItem("voter", res.data);
+      //     // TODO: enviar a la pantalla de votaciones osea la la papeleta
+      //     this.router.navigate(['/home/votacion/papeleta']);
+      //   }else{
+      //     console.log(res.data);
+      //     //TODO: mostrar mensaje, el codigo no es valido
+      //   }
+      // });
     } else {
       this.form.markAllAsTouched();
     }

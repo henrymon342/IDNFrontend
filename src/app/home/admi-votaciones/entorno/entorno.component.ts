@@ -8,12 +8,15 @@ import { MatDialog } from "@angular/material/dialog";
 import { RondaDialog } from "../candidatos/rondaDialog/rondaDialog.component";
 import { ExtradataService } from "../../../core/services/extradata.service";
 import {MatSlideToggleChange, MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatBottomSheetRef } from "@angular/material/bottom-sheet";
+import { ToastrService } from "ngx-toastr";
+import { MatDivider } from "@angular/material/divider";
 
 @Component({
   selector: 'app-crear-grupo',
   standalone: true,
   imports: [CommonModule, FormsModule, MatInputModule, ReactiveFormsModule, MatButtonModule,
-    MatIconModule, MatSlideToggleModule
+    MatIconModule, MatSlideToggleModule, MatDivider
    ],
   templateUrl: './entorno.component.html',
   styleUrl: './entorno.component.scss'
@@ -22,11 +25,18 @@ export class EntornoComponent {
 
   ronda: string = '';
   habilitado: boolean = false;
-
+ public form: FormGroup;
+ 
   private readonly _extradataService = inject(ExtradataService);
   private readonly dialog = inject(MatDialog);
-  constructor(){
+  constructor(
+    private fb: FormBuilder,
+    private _toastService: ToastrService
+  ){
     this.getRonda();
+    this.form = this.fb.group({
+      ministerio: ['', [Validators.required, Validators.minLength(3)]]
+    });
   }
 
   private getRonda(){
@@ -34,10 +44,9 @@ export class EntornoComponent {
       console.log(res);
       this.ronda = res.data.ronda;
       this.habilitado = res.data.habilitado;
-    });
-
-    this._extradataService.getAll().subscribe(res => {
-      console.log(res);
+      this.form.patchValue({
+        ministerio: res.data.ministerio
+      });
     });
   }
 
@@ -62,6 +71,22 @@ export class EntornoComponent {
     this.habilitado = event.checked;
     this._extradataService.patchingFirst({habilitado: this.habilitado}).subscribe(res =>{
       console.log(res);
+    });
+  }
+
+  onSubmit(): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    this._extradataService.patchingFirst(this.form.value).subscribe({
+      next: (res) => {
+        console.log(res)
+      },
+      error: (err) => {
+        this._toastService.error('Error al registrar el ministerio');
+      }
     });
   }
 }

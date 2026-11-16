@@ -34,4 +34,8 @@ export class VotacionService {
   delete(id:number) {
     return this.http.delete<any>(`${this.baseUrl}/votacion/${id}`);
   }
+
+  verifyvoted(votacion: any) {
+    return this.http.post<any>(`${this.baseUrl}/votacion/verifyvoted`, votacion);
+  }
 }

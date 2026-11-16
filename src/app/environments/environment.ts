@@ -2,7 +2,7 @@
 export const environment = {
   production: false,
   // URL: 'https://samnazlp.org.bo/api',
-  URL: 'http://localhost:3030/api',
+  URL: 'http://localhost:3000/api',
 
 
   recaptcha: {

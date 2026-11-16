@@ -1,0 +1,36 @@
+
+
+  <div class="container">
+    <div class="header">
+      <h2>{{title==undefined?'Añadir':'Modificar'}} Delegado</h2>
+      <button mat-icon-button matMiniFab (click)="cerrar(false)">
+        <mat-icon class="blue-icon" color="warn">close</mat-icon>
+      </button>
+    </div>
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <!-- Código -->
+  <mat-form-field appearance="outline">
+    <mat-label>Código (CI)</mat-label>
+    <input matInput formControlName="code" />
+
+    <mat-error *ngIf="form.get('code')?.hasError('required') && form.get('code')?.touched">
+      Este campo es obligatorio
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Estado -->
+  <div class="estado-container">
+    <span>Estado:</span>
+
+    <mat-slide-toggle formControlName="available" color="primary">
+      {{ form.get('available')?.value ? 'Disponible' : 'No disponible' }}
+    </mat-slide-toggle>
+  </div>
+
+  <button mat-raised-button color="primary" type="submit" class="unir-columnas">
+    {{ title == undefined ? 'Añadir' : 'Modificar' }}
+  </button>
+
+</form>
+</div>
